@@ -1,0 +1,47 @@
+tooltip: {
+    crosshairs: true,
+    shared: true,
+    outside: true,
+    useHTML: true,
+    formatter: function () {
+        let val_tmp = (this.points)
+        
+        let txt = ''
+        txt += '<b>'+this.x+'</b></br>'
+        let name_val = ['upper', 'lower', 'mid', 'max', 'min']
+        let k = 0
+        let switch_key = 0
+        for(let i=0;i<val_tmp.length;i++){
+          if(val_tmp[i]['color'] == '#ff0000d9'){
+            switch_key = 1
+          }
+          if(val_tmp[i]['color'] == '#000000' && switch_key != 2){
+            switch_key = 2
+            k = 3
+          }
+          let color = val_tmp[i]['color']
+          let year_format = (parseInt(tmp_key[i])+543)
+          if( year_format == 2561){
+            color = '#cd5c5c'
+          }else if(name_val[k]=='lower'){
+            color = '#ff6347'
+          }else if(name_val[k]=='min'){
+            color = '#696969'
+          }
+
+          
+          if(switch_key == 0){
+            txt += `<a style='width:10px;height:10px;display:inline-block;border-radius:90px;background:${color};'> </a><a> ${parseInt(tmp_key[i])+543}</a>: <b>${val_tmp[i]['y']} ล้าน ลบ.ม.</b></br>`
+          }else if(switch_key == 1){
+            txt += `<a style='width:10px;height:10px;display:inline-block;border-radius:90px;background:${color};'> </a><a> ${name_val[k]}</a>: <b>${val_tmp[i]['y']} ล้าน ลบ.ม.</b></br>`
+            k += 1
+          }else if(switch_key == 2){
+            txt += `<a style='width:10px;height:10px;display:inline-block;border-radius:90px;background:${color};'> </a><a> ${name_val[k]}</a>: <b>${val_tmp[i]['y']} ล้าน ลบ.ม.</b></br>`
+            k += 1
+          }
+          
+        }
+        return txt;
+
+    }
+  },

@@ -1,0 +1,3 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[100.98286728519662,13.485791603700005]},"properties":{"Tide_Station_Name_T":"บางปะกง (ฉะเชิงเทรา)","Tide_Station_Code":"bpk","id":1,"lowest":1.67}}
+]}
