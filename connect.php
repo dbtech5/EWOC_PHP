@@ -1,6 +1,6 @@
 <?php
 
-    /*  Debug */
+    /*  Debug aaa */
 
 	$servername = "localhost";
     $username = "root";
