@@ -1,6 +1,6 @@
 <?php
 
-    /*  Debug kao */
+    /*  Debug kaoqqq */
 
 	$servername = "localhost";
     $username = "root";
