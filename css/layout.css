@@ -1140,10 +1140,10 @@ label{
     display: flex;
 }
 .Spilt-Screen > div:nth-child(1) {
-    width: 100%;
+    width: 70%;
 }
 .Spilt-Screen > div:nth-child(2) {
-    width: 0%;
+    width: 30%;
 }
 
 

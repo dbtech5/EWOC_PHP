@@ -29,6 +29,9 @@
 			font-family: 'Prompt', sans-serif;
 		}
 
+		.ol-zoom {
+			display: none !important;
+		}
 		h5 {
 			display: inline-block;
 			font-size: 14px;
@@ -87,7 +90,7 @@
 		}
 
 		.pad-Main {
-			padding: 20px 80px;
+			padding: 0px 0px;
 		}
 		@media only screen and (max-width: 600px) {
 			.pad-Main {
@@ -231,53 +234,223 @@
 				</div>
 		   	</div>
 
-
 			<!-- Main Content -->
-		   	<div class="Main-container pad-Main" style="overflow-y: scroll;">
-					<div class="panel">
-						<select onchange="loadCanvas()" id="canvas-pick">
-							<option value="reservoir">อ่างเก็บน้ำ</option>
-							<option value="flow">ปริมาณน้ำท่า</option>
-							<option value="rain">ปริมาณน้ำฝน</option>
-							<option value="wq">คุณภาพน้ำ</option>
-							<option value="pump">สถานีสูบน้ำ</option>
-							<option value="customer">การใช้น้ำลูกค้า</option>
-							<option value="tele">โทรมาตร</option>
-						</select>
-
-						<h5 id="date-info">วันที่</h5>
-					</div>
-					<script>
-						const queryString = window.location.search;
-						const urlParams = new URLSearchParams(queryString);
-						console.log(urlParams.get('type'))
-						if(urlParams.get('type')!=undefined){
-							document.getElementById('canvas-pick').value = urlParams.get('type')
-						}
-						
-						function loadCanvas(){
-							let url = "index.php?type="+document.getElementById('canvas-pick').value
-							console.log(url)
-							window.location.href = url
-						}
-
-						var parttern_label = {
-								'01':'มกราคม',
-								'02':'กุมภาพันธ์',
-								'03':'มีนาคม',
-								'04':'เมษายน',
-								'05':'พฤกษาคม',
-								'06':'มิถุนายน',
-								'07':'กรกฏาคม',
-								'08':'สิงหาคม',
-								'09':'กันยายน',
-								'10':'ตุลาคม',
-								'11':'พฤศจิกายน',
-								'12':'ธันวาคม',
+			<div class="Main-container pad-Main" style="overflow-y: scroll;">
+			<div class="Spilt-Screen">
+					<div>
+						<!-- content -->
+						<div id="content">
+							<!-- Page Content  -->
+							<!-- tooltip style -->
+							<style>
+								canvas {
+									width: 100% !important;
+									height: 100% !important;
 								}
-					</script>
-					
-					
+								div.tooltip_menu span {
+									display: none;
+									position: absolute;
+									width: 120px;
+									text-align: center;
+									padding: 5px 0;
+									border-radius: 6px;
+									background: rgba(0, 0, 0, 0.267);
+									color: #fff;
+									position: absolute;
+									z-index: 1;
+								}
+	
+								div.tooltip_menu:hover span {
+									display: block;
+								}
+							</style>
+	
+							<div id="filter_icon" style=" padding:4px; position:absolute; left:10px; z-index:99;
+													/* top:64px; border-radius:1px; border: 1px solid #42ACA8; */">
+								<!-- <i class="fa fa-align-justify fa-1.5x"></i> -->
+								<div class="tooltip_menu">
+									<img src=./img/OpenLayers_logo.svg style="width:42px;">
+									<span class="tooltiptext">รายการข้อมูล</span>
+								</div>
+							</div>
+	
+							<!-- tooltip -->
+							<div id="tooltip" class="ol-popup">
+								<div id="tooltip-content"></div>
+							</div>
+	
+							<!-- Hover -->
+							<div id="hover-Cross_Section"></div>
+							<div id="hover-MapControl"></div>
+							<div id="hover-Trans_Station"></div>
+							<div id="hover-River_Distance"></div>
+							<div id="hover-Reservoir"></div>
+							<div id="hover-Irr_Project"></div>
+							<div id="hover-Irr_Pump"></div>
+							<div id="hover-Weather_Station"></div>
+							<div id="hover-Rain_Station"></div>
+							<div id="hover-Level_Station"></div>
+							<div id="hover-Bridge"></div>
+							<div id="hover-Diversion_Dam"></div>
+							<div id="hover-Regulator"></div>
+							<div id="hover-Weir"></div>
+							<div id="hover-Levee"></div>
+							<div id="hover-Polder"></div>
+							<div id="hover-Culvert"></div>
+							<div id="hover-Factory"></div>
+							<div id="hover-Waterdepth"></div>
+							<div id="hover-Floodmark"></div>
+							<div id="hover-Wetland"></div>
+	
+							<!-- popup -->
+							<!-- <div id="popup" class="ol-popup">
+								<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+								<div id="popup-content"></div>
+							</div> -->
+	
+							<!-- province -->
+							<div id="popup-Province" class="ol-popup">
+								<a href="#" id="popup-closer-Province" class="ol-popup-closer"></a>
+								<div id="popup-content-Province"></div>
+							</div>
+	
+							<!-- village -->
+							<div id="popup-Village" class="ol-popup">
+								<a href="#" id="popup-closer-Village" class="ol-popup-closer"></a>
+								<div id="popup-content-Village"></div>
+							</div>
+	
+							<!-- Trans_Station -->
+							<div id="popup-Trans_Station" class="ol-popup">
+								<a href="#" id="popup-closer-Trans_Station" class="ol-popup-closer"></a>
+								<div id="popup-content-Trans_Station"></div>
+							</div>
+	
+							<!-- Wetland -->
+							<div id="popup-Wetland" class="ol-popup">
+								<a href="#" id="popup-closer-Wetland" class="ol-popup-closer"></a>
+								<div id="popup-content-Wetland"></div>
+							</div>
+	
+							<!-- River_Distance -->
+							<div id="popup-River_Distance" class="ol-popup">
+								<a href="#" id="popup-closer-River_Distance" class="ol-popup-closer"></a>
+								<div id="popup-content-River_Distance"></div>
+							</div>
+	
+							<!-- Reservoir -->
+							<div id="popup-Reservoir" class="ol-popup">
+								<a href="#" id="popup-closer-Reservoir" class="ol-popup-closer"></a>
+								<div id="popup-content-Reservoir"></div>
+							</div>
+	
+							<!-- Irr_Project -->
+							<div id="popup-Irr_Project" class="ol-popup">
+								<a href="#" id="popup-closer-Irr_Project" class="ol-popup-closer"></a>
+								<div id="popup-content-Irr_Project"></div>
+							</div>
+	
+							<!-- Irr_Pump -->
+							<div id="popup-Irr_Pump" class="ol-popup">
+								<a href="#" id="popup-closer-Irr_Pump" class="ol-popup-closer"></a>
+								<div id="popup-content-Irr_Pump"></div>
+							</div>
+	
+							<!-- Well -->
+							<div id="popup-Well" class="ol-popup">
+								<a href="#" id="popup-closer-Well" class="ol-popup-closer"></a>
+								<div id="popup-content-Well"></div>
+							</div>
+	
+							<!-- Weather_Station -->
+							<div id="popup-Weather_Station" class="ol-popup">
+								<a href="#" id="popup-closer-Weather_Station" class="ol-popup-closer"></a>
+								<div id="popup-content-Weather_Station"></div>
+							</div>
+	
+							<!-- Rain_Station -->
+							<div id="popup-Rain_Station" class="ol-popup">
+								<a href="#" id="popup-closer-Rain_Station" class="ol-popup-closer"></a>
+								<div id="popup-content-Rain_Station"></div>
+							</div>
+	
+							<!-- Level_Station -->
+							<div id="popup-Level_Station" class="ol-popup">
+								<a href="#" id="popup-closer-Level_Station" class="ol-popup-closer"></a>
+								<div id="popup-content-Level_Station"></div>
+							</div>
+	
+							<!-- Obstruction -->
+							<!-- Bridge -->
+							<div id="popup-Bridge" class="ol-popup">
+								<a href="#" id="popup-closer-Bridge" class="ol-popup-closer"></a>
+								<div id="popup-content-Bridge"></div>
+							</div>
+							<!-- Diversion_Dam -->
+							<div id="popup-Diversion_Dam" class="ol-popup">
+								<a href="#" id="popup-closer-Diversion_Dam" class="ol-popup-closer"></a>
+								<div id="popup-content-Diversion_Dam"></div>
+							</div>
+							<!-- Weir -->
+							<div id="popup-Weir" class="ol-popup">
+								<a href="#" id="popup-closer-Weir" class="ol-popup-closer"></a>
+								<div id="popup-content-Weir"></div>
+							</div>
+							<!-- Regulator -->
+							<div id="popup-Regulator" class="ol-popup">
+								<a href="#" id="popup-closer-Regulator" class="ol-popup-closer"></a>
+								<div id="popup-content-Regulator"></div>
+							</div>
+							<!-- Levee -->
+							<div id="popup-Levee" class="ol-popup">
+								<a href="#" id="popup-closer-Levee" class="ol-popup-closer"></a>
+								<div id="popup-content-Levee"></div>
+							</div>
+							<!-- Polder -->
+							<div id="popup-Polder" class="ol-popup">
+								<a href="#" id="popup-closer-Polder" class="ol-popup-closer"></a>
+								<div id="popup-content-Polder"></div>
+							</div>
+							<!-- Culvert -->
+							<div id="popup-Culvert" class="ol-popup">
+								<a href="#" id="popup-closer-Culvert" class="ol-popup-closer"></a>
+								<div id="popup-content-Culvert"></div>
+							</div>
+	
+							<!-- Cross_Section -->
+							<div id="popup-Cross_Section" class="ol-popup">
+								<a href="#" id="popup-closer-Cross_Section" class="ol-popup-closer"></a>
+								<div id="popup-content-Cross_Section"></div>
+							</div>
+	
+							<!-- MapControl -->
+							<div id="popup-MapControl" class="ol-popup">
+								<a href="#" id="popup-closer-MapControl" class="ol-popup-closer"></a>
+								<div id="popup-content-MapControl"></div>
+							</div>
+							<!-- Waterdepth -->
+							<div id="popup-Waterdepth" class="ol-popup">
+								<a href="#" id="popup-closer-Waterdepth" class="ol-popup-closer"></a>
+								<div id="popup-content-Waterdepth"></div>
+							</div>
+	
+							<!-- Floodmark -->
+							<div id="popup-Floodmark" class="ol-popup">
+								<a href="#" id="popup-closer-Floodmark" class="ol-popup-closer"></a>
+								<div id="popup-content-Floodmark"></div>
+							</div>
+	
+							<!-- Factory -->
+							<div id="popup-Factory" class="ol-popup">
+								<a href="#" id="popup-closer-Factory" class="ol-popup-closer"></a>
+								<div id="popup-content-Factory"></div>
+							</div>
+	
+							<div id="mouse-position" class="text-right" ></div>
+						</div>
+					</div>
+
+					<div>
 					<center>
 						
 						<!--
@@ -1161,68 +1334,6 @@
 							}else if($_GET['type']=='tele'){
 								$sql_s = "SELECT * FROM `tele_info`";
 							?>
-							<canvas id="canvas" width="1000px" height="600px">
-
-							</canvas>
-							<script>
-								var canvas = document.getElementById('canvas'),
-								context = canvas.getContext('2d');
-								context.translate(0.5, 0.5);
-
-								// var base_image = newImage
-								var base_image = new Image();
-								
-								// Get the position text.
-								var position_text = [
-									[
-										[455,495],
-										[560,495],
-										[635,495],
-									],
-								]
-
-								canvas.addEventListener('click',(e)=>{
-									console.log(e.offsetX,e.offsetY)
-								})
-								context.font = "10px Arial";
-								base_image.src = 'img/main/สถานีโทรมาตร.png';
-								base_image.onload = function(){
-									
-									context.imageSmoothingQuality = "high";
-									context.drawImage(base_image, 0, 0,canvas.width,canvas.height);
-									
-									
-								
-								
-							<?php 
-								$result_s = $conn->query($sql_s);
-								$k = 1;
-								$r = 0;
-								if ($result_s->num_rows > 0) {
-									while($row = $result_s->fetch_assoc()) {
-										$sql = "SELECT * FROM `tele_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
-										$result = $conn->query($sql);
-										if ($result->num_rows > 0) {
-											while($row_s = $result->fetch_assoc()) {
-												
-												echo 'console.log("'.$row['tambon'].'");';
-												echo 'context.fillText("'.($row_s['wl']==''?'ไม่มีค่า':$row_s['wl']).'", position_text['.$r.'][0][0], position_text['.$r.'][0][1]);';
-												echo 'context.fillText("'.($row_s['discharge']==''?'ไม่มีค่า':$row_s['discharge']).'", position_text['.$r.'][1][0], position_text['.$r.'][1][1]);';
-												echo 'context.fillText("'.$row_s['rain_mm'].'", position_text['.$r.'][2][0], position_text['.$r.'][2][1]);';
-												if($k==1){
-													$k = 0;
-													$f_d = explode('-',explode(' ',$row_s['date_time'])[0]);
-													echo 'document.getElementById("date-info").innerHTML="รายงานสถานการณ์สถานีโทรมาตรวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
-												}
-												$r += 1;
-											}
-										}
-									}
-								}
-								echo "}";
-
-							?>
-							</script>
 								<table>
 									<tr>
 										<td>ลำดับ</td>
@@ -1263,149 +1374,6 @@
 						}else{
 							$sql_s = "SELECT * FROM `reservoir_info` ORDER BY `no`";
 						?>
-						<canvas id="canvas" width="1000px" height="600px">
-
-						</canvas>
-						<script>
-							var canvas = document.getElementById('canvas'),
-							context = canvas.getContext('2d');
-							context.translate(0.5, 0.5);
-
-							var base_image = new Image();
-							var position_text = [
-								[
-									[309,392],
-									[309,412],
-									[355,414],
-								],
-								[
-									[390,306],
-									[392,328],
-									[437,329],
-								],
-								[
-									[577,295],
-									[577,316],
-									[623,316],
-								],
-								[
-									[183,136],
-									[183,157],
-									[235,157],
-								],
-								[
-									[183,75],
-									[183,97],
-									[235,97],
-								],
-								[
-									[350,190],
-									[350,212],
-									[400,213],
-								],
-								[
-									[522,149],
-									[522,170],
-									[574,173],
-								],
-								[
-									[183,372],
-									[183,393],
-									[235,394],
-								],
-								[
-									[183,430],
-									[183,453],
-									[235,452],
-								],
-								[
-									[183,309],
-									[183,330],
-									[235,330],
-								],
-								[
-									[183,194],
-									[183,215],
-									[235,215],
-								],
-								[
-									[505,50],
-									[505,72],
-									[553,72],
-								],
-								[
-									[183,252],
-									[183,273],
-									[235,273],
-								],
-								[
-									[425,372],
-									[425,393],
-									[468,393],
-								],
-							]
-
-							canvas.addEventListener('click',(e)=>{
-								console.log(e.offsetX,e.offsetY)
-							})
-							
-
-							context.font = "10px Arial";
-							base_image.src = 'img/main/reservoir.png';
-							base_image.onload = function(){
-								
-								context.imageSmoothingQuality = "high";
-								context.drawImage(base_image, 0, 0,canvas.width,canvas.height);
-								
-								
-							
-							
-						<?php 
-							$result_s = $conn->query($sql_s);
-							$r = 0;
-							$k = 1;
-							if ($result_s->num_rows > 0) {
-								while($row = $result_s->fetch_assoc()) {
-									$sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' ORDER BY `date` DESC, `date` ASC LIMIT 1";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-										while($row_s = $result->fetch_assoc()) {
-											/*
-											echo "<tr>";
-											echo "<td>".$row['no']."</td>";
-											echo "<td>".$row['res_name']."</td>";
-											echo "<td>".$row['district']."</td>";
-											echo "<td>".$row['province']."</td>";
-											echo "<td>".$row['maxvol']."</td>";
-											echo "<td>".$row['nhvol']."</td>";
-											echo "<td>".$row['minvol']."</td>";
-											echo "<td>".$row_s['volume']."</td>";
-											echo "<td>".floorp($row_s['volume']*100/$row['nhvol'],2)."</td>";
-											echo "<td>".$row_s['inflow']."</td>";
-											echo "<td>".$row_s['outflow']."</td>";
-											echo "</tr>";
-											*/
-											echo 'console.log("'.$row['res_name'].'");';
-											echo 'context.fillText("'.$row_s['volume'].'", position_text['.$r.'][0][0]*canvas.width/800, position_text['.$r.'][0][1]*canvas.height/500);';
-											echo 'context.fillText("'.$row_s['inflow'].'", position_text['.$r.'][1][0]*canvas.width/800, position_text['.$r.'][1][1]*canvas.height/500);';
-											echo 'context.fillText("'.$row_s['outflow'].'", position_text['.$r.'][2][0]*canvas.width/800, position_text['.$r.'][2][1]*canvas.height/500);';
-											if($k==1){
-												$k = 0;
-												$f_d = explode('-',$row_s['date']);
-												echo 'document.getElementById("date-info").innerHTML="รายงานสถานการณ์น้ำข้อมูลอ่างเก็บน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
-											}
-											
-											$r += 1;
-											
-										}
-									}
-								}
-							}
-							echo "}";
-
-						?>
-						</script>
-
 							<table>
 								<tr>
 									<td>ลำดับ</td>
@@ -1453,51 +1421,29 @@
 					?>
 					</center>
 					</div>
-					
-						<div class="container-right-box" style="display:none;">
-							<!--
-							<div class="header-right-box">
-								<h3><i class="fa fa-exclamation-circle"></i> จำนวนอ่างเก็บน้ำ</h3>
-							</div>
-							<div class="right-box">
-								<div>
-									<i class="fa fa-database"></i>
-								</div>
-								<div class="content-box">
-									<p class="header-inner-right">จำนวนอ่างทั้งหมด <%= data.length %> อ่าง</p>
-									<a href="#"><i class="fa fa-link"></i>&nbsp;รายละเอียด</a>			
-								</div>
-							</div>
-							<div class="container-select-group">
-								<div class="content-box" onclick="filter_data()" style="background: rgb(40,55,139);
-								background: linear-gradient(176deg, rgba(40,55,139,1) 0%, rgba(15,18,74,1) 100%);">
-									<p>ทั้งหมด</p>
-								</div>
-								<div class="content-box" onclick="filter_data('l')" style="background: rgb(139,40,94);
-								background: linear-gradient(176deg, rgba(139,40,94,1) 0%, rgba(74,15,44,1) 100%);">
-									<p>ขนาดใหญ่</p>
-								</div>
-								<div class="content-box" onclick="filter_data('m')" style="background: rgb(139,81,40);
-								background: linear-gradient(176deg, rgba(139,81,40,1) 0%, rgba(94,61,23,1) 100%);">
-									<p>ขนาดกลาง</p>			
-								</div>
-							</div>
-							-->
-							<div class="select_type_data">
-								<select onchange="load_info(this)">
-									<option>อ่างเก็บน้ำ</option>
-									<option>สถานีสูบน้ำ</option>
-									<option>ปริมาณน้ำท่า</option>
-									<option>สถานีคุณภาพน้ำ</option>
-									<option>การใช้น้ำลูกค้า</option>
-								</select>
-							</div>
-							<div id="feed-resorvoir">
-								
-							</div>
+				</div>
+				
+			</div>
 
-						</div>
-			
+
+			<!--  Layer Dialog -->
+			<div class="dialog-layer">
+				<div class="header-close">
+					<a onclick="toggleDialog(false)">
+						<i class="fa fa-times" aria-hidden="true" style="top:10px; right:10px; position:absolute;"></i>
+					</a>
+				</div>
+				<div class="header-layer">
+					<h4>ตั้งค่าเพิ่มเติม <i class="fa fa-gear"></i></h4>
+				</div>
+				<div>
+					<div class="group-property">
+					</div>
+					<div id="container-layer">
+						<div class="none-layer element-layer"><p>ไม่มีเลเยอร์</p></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -1527,369 +1473,15 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/utm-latlng@1.0.5/UTMLatLngFront.js"></script>
 	<script type="text/javascript" src="./js/ol-layerswitcher.js"></script>
 	<script type="text/javascript" src="./js/modal.js"></script>
+	<script type="text/javascript" src="./js/lightbox.js"></script>
+	<script type="text/javascript" src="./js/map_script.js"></script>
+	<script type="text/javascript" src="./js/map_layers.js"></script>
+	<script type="text/javascript" src="./js/map_controls_index.js"></script>
+	<script type="text/javascript" src="./js/map_layercontrols.js"></script>
 	<script type="text/javascript" src="./js/slidbar.js"></script>
 
 	
 
-	<script>
-		
-		var data_storage = []
-		var data_storage_pump = []
-		var data_storage_wq = []
-		var data_storage_inflow = []
-		var data_storage_customer = []
-        <?php 
-            
-            
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            
-            $sql = "SELECT * FROM `reservoir_info` ORDER BY `no`";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <?php
-                    echo "data_storage.push(['".$row["res_name"]."','" . $row["res_code"]."','" . $row["maxvol"]."','" . $row["district"]."','" . $row["res_code"]."']);";
-            ?>
-            <?php
-                }
-            } else {
-            
-            }
-			
-			$sql = "SELECT * FROM `pump_info` ORDER BY `no`";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <?php
-                    echo "data_storage_pump.push(['".$row["pump_code"]."','" . $row["pump_name"]."']);";
-            ?>
-            <?php
-                }
-            } else {
-            
-            }
-
-			$sql = "SELECT * FROM `customer_info` ORDER BY `no`";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <?php
-                    echo "data_storage_customer.push(['".$row["customer_code"]."','" . $row["customer_name"]."']);";
-            ?>
-            <?php
-                }
-            } else {
-            
-            }
-
-			$sql = "SELECT * FROM `flow_info` ORDER BY `no`";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <?php
-                    echo "data_storage_inflow.push(['".$row["river"]."','" . $row["sta_code"]."','" . $row["sta_id"]."']);";
-            ?>
-            <?php
-                }
-            } else {
-            
-            }
-
-			$sql = "SELECT * FROM `wq_info` ORDER BY `no`";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <?php
-                    echo "data_storage_wq.push(['".$row["sta_code"]."','" . $row["station"]."']);";
-            ?>
-            <?php
-                }
-            } else {
-            
-            }
-			
-			
-            $conn->close();
-        ?>
-
-        /*
-		<% data.forEach((e)=>{%>
-			data_storage.push(['<%= e[0] %>','<%= e[1] %>',<%= e[2] %>,'<%= e[3] %>'])
-		<% })%>
-        */
-		
-		function filter_data(size='a'){
-			let time = 0
-			$('#feed-resorvoir').empty()
-			data_storage.forEach((list_data)=>{
-				setTimeout(()=>{
-					if(size == 'a' || size == list_data[3]){
-						$('#feed-resorvoir').append(`
-						<a href='?page=data&key=อ่างเก็บน้ำ${list_data[0]}'>
-							<div class="card-reservoir">
-								<div class="card-title-show">
-									<p>อ่างเก็บน้ำ${list_data[0]}</p><p id="${list_data[1]}_date"></p>
-								</div>
-								<div class="card-content">
-									<span>
-										<h5 id="${list_data[1]}_volume">น้ำในอ่าง : 0</h5>
-										<h5 id="${list_data[1]}_inflow">น้ำไหลลงอ่าง : 0</h5>
-									</span>
-									<span>
-										<h5>ความจุเก็บกัก : ${list_data[2]} ล้าน ลบ.ม</h5>
-										
-									</span>
-								</div>
-							</div>
-						</a>
-						`)
-					}
-					load_data_card(list_data[4])
-				},time)
-				time += 200
-			})
-			
-			function load_data_card(code){
-				let data_body = { 'code' : code, 'type':1}
-				$.ajax({
-                    type: 'POST',
-                    url: 'info_data.php',
-                    data: data_body
-                }).done(function(data) {
-                    let tmp = data.split(',')
-                    $('#'+code+'_volume').text('น้ำในอ่าง : '+tmp[0]+' ล้าน ลบ.ม')
-                    $('#'+code+'_inflow').text('น้ำไหลลงอ่าง : '+tmp[1]+' ล้าน ลบ.ม')
-                    $('#'+code+'_date').text(tmp[2].split('-').reverse().join('/').replaceAll(' ',''))
-                }).fail(function() {
-                    // if posting your form failed
-                    alert("Posting failed.");
-                });
-                
-			}
-		}
-
-
-		function filter_data_wq(){
-			let time = 0
-			$('#feed-resorvoir').empty()
-			data_storage_wq.forEach((list_data)=>{
-				setTimeout(()=>{
-					$('#feed-resorvoir').append(`
-						<a href='?page=data&key=อ่างเก็บน้ำ${list_data[0]}'>
-							<div class="card-reservoir">
-								<div class="card-title-show">
-									<p>${list_data[0]}</p><p id="${list_data[0]}_date" style="width:70%"></p>
-								</div>
-								<div class="card-content">
-									<span style='width:100%'>
-										<h5 id="${list_data[0]}_salinity">ระดับน้ำ : 0</h5>
-										<h5 id="${list_data[0]}_ec">ปริมาณน้ำ : 0</h5>
-										<h5 id="${list_data[0]}_do">ปริมาณน้ำ : 0</h5>
-										<h5 id="${list_data[0]}_ph">ปริมาณน้ำ : 0</h5>
-										<h5 id="${list_data[0]}_tds">ปริมาณน้ำ : 0</h5>
-										<h5 id="${list_data[0]}_temp">ปริมาณน้ำ : 0</h5>
-									</span>
-								</div>
-							</div>
-						</a>
-					`)
-					load_data_qw(list_data[0])
-				},time)
-				time += 200
-			})
-			
-			function load_data_qw(code){
-				let data_body = { 'code' : code, 'type':3}
-				$.ajax({
-                    type: 'POST',
-                    url: 'info_data.php',
-                    data: data_body
-                }).done(function(data) {
-                    let tmp = data.split(',')
-					console.log(code)
-                    $('#'+code+'_salinity').text('ความเค็ม : '+tmp[0]+' g/l')
-                    $('#'+code+'_ec').text('ค่าการนำไฟฟ้า : '+tmp[1]+' uS/cm')
-					$('#'+code+'_do').text('ออกซิเจนในน้ำ : '+tmp[2]+' mg/l')
-					$('#'+code+'_ph').text('กรดขด่าง : '+tmp[3]+' pH')
-					$('#'+code+'_tds').text('ของแข็งละลายน้ำ : '+tmp[4]+' mg/l')
-					$('#'+code+'_temp').text('อุณหภูมิ : '+tmp[5]+' C')
-                    $('#'+code+'_date').text(tmp[6])
-                }).fail(function() {
-                    // if posting your form failed
-                    alert("Posting failed.");
-                });
-                
-			}
-		}
-
-		function filter_data_customer(){
-			let time = 0
-			$('#feed-resorvoir').empty()
-			data_storage_customer.forEach((list_data)=>{
-				setTimeout(()=>{
-					$('#feed-resorvoir').append(`
-						<a href='?page=data&key=อ่างเก็บน้ำ${list_data[0]}'>
-							<div class="card-reservoir">
-								<div class="card-title-show">
-									<p>${list_data[1]}</p><p id="${list_data[0]}_date"></p>
-								</div>
-								<div class="card-content">
-									<span style='width:100%'>
-										<h5 id="${list_data[0]}_wateruse">ปริมาณการใช้น้ำ : 0 ลบ.ม.</h5>
-									</span>
-								</div>
-							</div>
-						</a>
-					`)
-					load_data_customer(list_data[0])
-				},time)
-				time += 200
-			})
-			
-			function load_data_customer(code){
-				let data_body = { 'code' : code, 'type':4}
-				$.ajax({
-                    type: 'POST',
-                    url: 'info_data.php',
-                    data: data_body
-                }).done(function(data) {
-                    let tmp = data.split(',')
-					//console.log(tmp)
-                    $('#'+code+'_wateruse').text('ปริมาณการใช้น้ำ : '+tmp[2]+' ลบ.ม.')
-                    $('#'+code+'_date').text(tmp[1])
-                }).fail(function() {
-                    // if posting your form failed
-                    alert("Posting failed.");
-                });
-                
-			}
-		}
-
-		function filter_data_info(){
-			let time = 0
-			$('#feed-resorvoir').empty()
-			data_storage_inflow.forEach((list_data)=>{
-				setTimeout(()=>{
-					$('#feed-resorvoir').append(`
-						<a href='?page=data&key=อ่างเก็บน้ำ${list_data[0]}'>
-							<div class="card-reservoir">
-								<div class="card-title-show">
-									<p>${list_data[1]}</p><p id="${list_data[2]}_date"></p>
-								</div>
-								<div class="card-content">
-									<span>
-										<h5 id="${list_data[2]}_wl">ระดับน้ำ : 0</h5>
-										<h5 id="${list_data[2]}_discharge">ปริมาณน้ำ : 0</h5>
-									</span>
-									<span>
-										
-									</span>
-								</div>
-							</div>
-						</a>
-					`)
-					load_data_card(list_data[2])
-				},time)
-				time += 200
-			})
-			
-			function load_data_card(code){
-				let data_body = { 'code' : code, 'type':2}
-				$.ajax({
-                    type: 'POST',
-                    url: 'info_data.php',
-                    data: data_body
-                }).done(function(data) {
-                    let tmp = data.split(',')
-					console.log(code)
-                    $('#'+code+'_wl').text('ระดับน้ำ : '+tmp[0]+' ม.รทก')
-                    $('#'+code+'_discharge').text('ปริมาณน้ำ : '+tmp[1]+' ลบ.ม/วินาที')
-                    $('#'+code+'_date').text(tmp[2].split('-').reverse().join('/').replaceAll(' ',''))
-                }).fail(function() {
-                    // if posting your form failed
-                    alert("Posting failed.");
-                });
-                
-			}
-		}
-
-		function filter_data_pump(){
-			let time = 0
-			$('#feed-resorvoir').empty()
-			data_storage_pump.forEach((list_data)=>{
-				setTimeout(()=>{
-					$('#feed-resorvoir').append(`
-						<a href='?page=data&key=อ่างเก็บน้ำ${list_data[0]}'>
-							<div class="card-reservoir">
-								<div class="card-title-show">
-									<p>${list_data[1]}</p><p id="${list_data[0]}_date"></p>
-								</div>
-								<div class="card-content">
-									<span>
-										<h5 id="${list_data[0]}_flow">ระดับน้ำ : 0</h5>
-									</span>
-									<span>
-										
-									</span>
-								</div>
-							</div>
-						</a>
-					`)
-					load_data_pump(list_data[0])
-				},time)
-				time += 200
-			})
-			
-			function load_data_pump(code){
-				let data_body = { 'code' : code, 'type':5}
-				$.ajax({
-                    type: 'POST',
-                    url: 'info_data.php',
-                    data: data_body
-                }).done(function(data) {
-                    let tmp = data.split(',')
-					console.log(code)
-                    $('#'+code+'_flow').text('ระดับน้ำ : '+tmp[0]+' ม.รทก')
-                    $('#'+code+'_date').text(tmp[1].split('-').reverse().join('/').replaceAll(' ',''))
-                }).fail(function() {
-                    // if posting your form failed
-                    alert("Posting failed.");
-                });
-                
-			}
-		}
-			
-		
-		filter_data()
-
-		function load_info(e){
-			let select = e.value
-			console.log(select)
-			if(select == "อ่างเก็บน้ำ"){
-				filter_data()
-			}else if(select == "สถานีสูบน้ำ"){
-				filter_data_pump()
-			}else if(select == "ปริมาณน้ำท่า"){
-				filter_data_info()
-			}else if(select == "สถานีคุณภาพน้ำ"){
-				filter_data_wq()
-			}else if(select == "การใช้น้ำลูกค้า"){
-				filter_data_customer()
-			}
-		}
-	</script>
 </body>
 
 </html>
