@@ -775,6 +775,41 @@ a.article:hover {
     line-height: 65px;
 }
 /*---------------------------------------------------*/
+.header-content {
+    margin-left: 11%;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.Split-Inner {
+  display: flex;
+}
+
+.Split-Inner > div:nth-child(1) {
+  width: 20%;
+  padding-left: 10%;
+}
+.Split-Inner > div:nth-child(2) {
+  width: 80%;
+  padding: 0;
+}
+
+.nav-btn-left {
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  border:0px solid transparent;
+  margin-left: 75px;
+  font-size: 12px;
+  user-select: none;
+  border-radius: 15px;
+}
+
+.nav-btn-left:nth-child(1) {
+  margin-top: 0px !important;
+}
 
 .list-menu-hide{
     width:100%;
@@ -1137,11 +1172,13 @@ label{
     width: 100%;
     height: 100vh;
     display: flex;
+    overflow: hidden;
 }
 .Spilt-Screen > div:nth-child(1) {
     width: 70%;
 }
 .Spilt-Screen > div:nth-child(2) {
+  padding-top: 49px;
     width: 30%;
 }
 

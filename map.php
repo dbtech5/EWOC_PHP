@@ -57,9 +57,9 @@
 				<div class="list-menu-hide">
 					<div>
 						<a href="index.php" class="tooltip-nav">
-                            <i class="fa fa-home"></i>
-                            <span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
-                        </a>
+                <i class="fa fa-home"></i>
+                <span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
+            </a>
 					</div>
 					<div>
 						<a href="map.php" class="tooltip-nav">
