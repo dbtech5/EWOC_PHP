@@ -23,7 +23,7 @@
 
 <body>
 	<div id="dialog_table">
-		
+
 	</div>
 	<div id="dialog_temp">
 		<i class="fa fa-times dialog_temp_fa"></i>
@@ -35,13 +35,12 @@
 			<div id="toggleHead">
 				<div id="header-element">
 					<div>
-						
+
 						<div class="menu-action">
 							<i class="fa fa-reorder" onclick="toggleMenuLeft()"></i>
 						</div>
 						<div class="header-title">
-							<h5>โครงการเชื่อมโยงฐานข้อมูลและพัฒนาระบบช่วยตัดสินใจในการบริหารจัดการน้ำ</h5>
-							<p>พื้นที่ชายฝั่งทะเลตะวันออก (จังหวัดระยอง ชลบุรี ฉะเชิงเทรา)</p>
+							<h5>โครงการเชื่อมโยงฐานข้อมูลและพัฒนาระบบช่วยตัดสินใจในการบริหารจัดการน้ำ พื้นที่ชายฝั่งทะเลตะวันออก (จังหวัดระยอง ชลบุรี ฉะเชิงเทรา)</h5>
 						</div>
 						<div class="logo">
 							<img src="./img/logo.png" width="50px" />
@@ -123,7 +122,7 @@
 
 			<!-- Main Content -->
 		   	<div class="Main-container">
-				<!-- button fab select menu 
+				<!-- button fab select menu
 				<a id="control-fab">
 					<input type="image" style="background-color: Transparent; border: none; margin-left:70%;"
 						src='./img/basemap_button_48x48.png' width=38 alt="website" title="website" />
@@ -507,7 +506,7 @@
 																</div>
 															</div>
 															<div class="sub-filter-text col-lg-10">ท่อคลองวังโตนด</div>
-														</li> -->												
+														</li> -->
 													</ul>
 												</div>
 											</li>
@@ -602,7 +601,7 @@
 												<div class="filter_info">
 													<ul class="sub-filter list-unstyled">
 
-														<!-- สถานีตรวจอากาศ 
+														<!-- สถานีตรวจอากาศ
 														<li class="row">
 															<div class="col-lg-2" style="padding-top:4px;">
 																<div class="round">
@@ -684,7 +683,7 @@
 															</div>
 														</li>
 
-														<!-- เส้นชั้นน้ำฝน 
+														<!-- เส้นชั้นน้ำฝน
 														<li class="row">
 															<div class="col-lg-2" style="padding-top:4px;">
 																<div class="round">
@@ -794,7 +793,7 @@
 				<div class="Spilt-Screen">
 					<div>
 						<div>
-							
+
 						</div>
 						<!-- content -->
 						<div id="content">
@@ -813,12 +812,12 @@
 									position: absolute;
 									z-index: 1;
 								}
-	
+
 								div.tooltip_menu:hover span {
 									display: block;
 								}
 							</style>
-	
+
 							<div id="filter_icon" style=" padding:4px; position:absolute; left:10px; z-index:99;
 													/* top:64px; border-radius:1px; border: 1px solid #42ACA8; */">
 								<!-- <i class="fa fa-align-justify fa-1.5x"></i> -->
@@ -827,12 +826,12 @@
 									<span class="tooltiptext">รายการข้อมูล</span>
 								</div>
 							</div>
-	
+
 							<!-- tooltip -->
 							<div id="tooltip" class="ol-popup">
 								<div id="tooltip-content"></div>
 							</div>
-	
+
 							<!-- Hover -->
 							<div id="hover-Cross_Section"></div>
 							<div id="hover-MapControl"></div>
@@ -855,85 +854,85 @@
 							<div id="hover-Waterdepth"></div>
 							<div id="hover-Floodmark"></div>
 							<div id="hover-Wetland"></div>
-	
+
 							<!-- popup -->
 							<!-- <div id="popup" class="ol-popup">
 								<a href="#" id="popup-closer" class="ol-popup-closer"></a>
 								<div id="popup-content"></div>
 							</div> -->
-	
+
 							<!-- province -->
 							<div id="popup-Province" class="ol-popup">
 								<a href="#" id="popup-closer-Province" class="ol-popup-closer"></a>
 								<div id="popup-content-Province"></div>
 							</div>
-	
+
 							<!-- village -->
 							<div id="popup-Village" class="ol-popup">
 								<a href="#" id="popup-closer-Village" class="ol-popup-closer"></a>
 								<div id="popup-content-Village"></div>
 							</div>
-	
+
 							<!-- Trans_Station -->
 							<div id="popup-Trans_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Trans_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Trans_Station"></div>
 							</div>
-	
+
 							<!-- Wetland -->
 							<div id="popup-Wetland" class="ol-popup">
 								<a href="#" id="popup-closer-Wetland" class="ol-popup-closer"></a>
 								<div id="popup-content-Wetland"></div>
 							</div>
-	
+
 							<!-- River_Distance -->
 							<div id="popup-River_Distance" class="ol-popup">
 								<a href="#" id="popup-closer-River_Distance" class="ol-popup-closer"></a>
 								<div id="popup-content-River_Distance"></div>
 							</div>
-	
+
 							<!-- Reservoir -->
 							<div id="popup-Reservoir" class="ol-popup">
 								<a href="#" id="popup-closer-Reservoir" class="ol-popup-closer"></a>
 								<div id="popup-content-Reservoir"></div>
 							</div>
-	
+
 							<!-- Irr_Project -->
 							<div id="popup-Irr_Project" class="ol-popup">
 								<a href="#" id="popup-closer-Irr_Project" class="ol-popup-closer"></a>
 								<div id="popup-content-Irr_Project"></div>
 							</div>
-	
+
 							<!-- Irr_Pump -->
 							<div id="popup-Irr_Pump" class="ol-popup">
 								<a href="#" id="popup-closer-Irr_Pump" class="ol-popup-closer"></a>
 								<div id="popup-content-Irr_Pump"></div>
 							</div>
-	
+
 							<!-- Well -->
 							<div id="popup-Well" class="ol-popup">
 								<a href="#" id="popup-closer-Well" class="ol-popup-closer"></a>
 								<div id="popup-content-Well"></div>
 							</div>
-	
+
 							<!-- Weather_Station -->
 							<div id="popup-Weather_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Weather_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Weather_Station"></div>
 							</div>
-	
+
 							<!-- Rain_Station -->
 							<div id="popup-Rain_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Rain_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Rain_Station"></div>
 							</div>
-	
+
 							<!-- Level_Station -->
 							<div id="popup-Level_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Level_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Level_Station"></div>
 							</div>
-	
+
 							<!-- Obstruction -->
 							<!-- Bridge -->
 							<div id="popup-Bridge" class="ol-popup">
@@ -970,13 +969,13 @@
 								<a href="#" id="popup-closer-Culvert" class="ol-popup-closer"></a>
 								<div id="popup-content-Culvert"></div>
 							</div>
-	
+
 							<!-- Cross_Section -->
 							<div id="popup-Cross_Section" class="ol-popup">
 								<a href="#" id="popup-closer-Cross_Section" class="ol-popup-closer"></a>
 								<div id="popup-content-Cross_Section"></div>
 							</div>
-	
+
 							<!-- MapControl -->
 							<div id="popup-MapControl" class="ol-popup">
 								<a href="#" id="popup-closer-MapControl" class="ol-popup-closer"></a>
@@ -987,24 +986,24 @@
 								<a href="#" id="popup-closer-Waterdepth" class="ol-popup-closer"></a>
 								<div id="popup-content-Waterdepth"></div>
 							</div>
-	
+
 							<!-- Floodmark -->
 							<div id="popup-Floodmark" class="ol-popup">
 								<a href="#" id="popup-closer-Floodmark" class="ol-popup-closer"></a>
 								<div id="popup-content-Floodmark"></div>
 							</div>
-	
+
 							<!-- Factory -->
 							<div id="popup-Factory" class="ol-popup">
 								<a href="#" id="popup-closer-Factory" class="ol-popup-closer"></a>
 								<div id="popup-content-Factory"></div>
 							</div>
-	
+
 							<div id="mouse-position" class="text-right" ></div>
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 
 
@@ -1045,7 +1044,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
-	
+
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
@@ -1062,19 +1061,19 @@
 	<script type="text/javascript" src="./js/map_layercontrols.js"></script>
 	<script type="text/javascript" src="./js/slidbar.js"></script>
 
-	
+
 
 	<script>
 		// script inside
 		var data_storage = []
 		var data_storage_inflow = []
-        <?php 
-            
+        <?php
+
 			include 'connect.php';
-			
+
             $sql = "SELECT * FROM `reservoir_info` ORDER BY `no`";
             $result = $conn->query($sql);
-            
+
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
             ?>
@@ -1084,12 +1083,12 @@
             <?php
                 }
             } else {
-            
+
             }
-			
+
 			$sql = "SELECT * FROM `flow_info` ORDER BY `no`";
             $result = $conn->query($sql);
-            
+
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
             ?>
@@ -1099,9 +1098,9 @@
             <?php
                 }
             } else {
-            
+
             }
-			
+
 
             $conn->close();
         ?>
@@ -1111,7 +1110,7 @@
 			data_storage.push(['<%= e[0] %>','<%= e[1] %>',<%= e[2] %>,'<%= e[3] %>'])
 		<% })%>
         */
-		
+
 		function filter_data(size='a'){
 			let time = 0
 			$('#feed-resorvoir').empty()
@@ -1131,7 +1130,7 @@
 									</span>
 									<span>
 										<h5>ความจุเก็บกัก : ${list_data[2]} ล้าน ลบ.ม</h5>
-										
+
 									</span>
 								</div>
 							</div>
@@ -1142,7 +1141,7 @@
 				},time)
 				time += 200
 			})
-			
+
 			function load_data_card(code){
 				let data_body = { 'code' : code, 'type':1}
 				$.ajax({
@@ -1158,7 +1157,7 @@
                     // if posting your form failed
                     alert("Posting failed.");
                 });
-                
+
 			}
 		}
 
@@ -1179,7 +1178,7 @@
 										<h5 id="${list_data[2]}_discharge">ปริมาณน้ำ : 0</h5>
 									</span>
 									<span>
-										
+
 									</span>
 								</div>
 							</div>
@@ -1189,7 +1188,7 @@
 				},time)
 				time += 200
 			})
-			
+
 			function load_data_card(code){
 				let data_body = { 'code' : code, 'type':2}
 				$.ajax({
@@ -1206,11 +1205,11 @@
                     // if posting your form failed
                     alert("Posting failed.");
                 });
-                
+
 			}
 		}
-			
-		
+
+
 		filter_data()
 
 		function load_info(e){

@@ -23,7 +23,7 @@
 
 <body>
 	<div id="dialog_table">
-		
+
 	</div>
 	<div id="dialog_temp">
 		<i class="fa fa-times dialog_temp_fa"></i>
@@ -38,11 +38,10 @@
 						<div class="menu-action">
 							<i class="fa fa-reorder" onclick="toggleMenuLeft()"></i>
 						</div>
-					
-						
+
+
 						<div class="header-title">
-							<h5>โครงการเชื่อมโยงฐานข้อมูลและพัฒนาระบบช่วยตัดสินใจในการบริหารจัดการน้ำ</h5>
-							<p>พื้นที่ชายฝั่งทะเลตะวันออก (จังหวัดระยอง ชลบุรี ฉะเชิงเทรา)</p>
+							<h5>โครงการเชื่อมโยงฐานข้อมูลและพัฒนาระบบช่วยตัดสินใจในการบริหารจัดการน้ำ พื้นที่ชายฝั่งทะเลตะวันออก (จังหวัดระยอง ชลบุรี ฉะเชิงเทรา)</h5>
 						</div>
 
 						<div class="logo">
@@ -125,7 +124,7 @@
 
             <div class="Main-container" style="overflow: scroll;">
 
-    <!-- Option element for load data-->      
+    <!-- Option element for load data-->
     <div class="header">
         <center>
         <div class="group-element">
@@ -142,7 +141,7 @@
                             <option value="tele">สถานีโทรมาตร</option>
                         </select>
                         <select onchange="load_csv_totable()" id="val_data" style="width: 100%;margin-left: 0px;border-radius: 5px;">
-                            
+
                         <option>-- เลือกอ่างเก็บน้ำ --</option>
                             <option value="ky">อ่างเก็บน้ำคลองใหญ่</option>
                             <!--<option value="krb">อ่างเก็บน้ำคลองระบม</option>
@@ -183,7 +182,7 @@
                             <option>2562</option>
                         </select>
                     </div>
-                    
+
                     <div class="box-group">
                         <p>ถึงปี</p>
                         <div class="lr">
@@ -198,8 +197,8 @@
                             <option>2562</option>
                         </select>
                     </div>
-                    
-                    
+
+
                     <div class="box-group">
                         <p>เพิ่มปี</p>
                         <div class="lr">
@@ -213,7 +212,7 @@
                             <option>2562</option>
                         </select>
                     </div>
-                    
+
                     <button onclick="makeTable()" id="btn_feed">แสดงผล</button>
                 </div>
             </div>
@@ -318,14 +317,14 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_reservoir">รายงานปริมาณน้ำ</h4>    
+                        <h4 style="margin-left:0;" id="alert_reservoir">รายงานปริมาณน้ำ</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-            
-                <div class="group_make_header" style="margin-left:0;width:85%;">    
+
+                <div class="group_make_header" style="margin-left:0;width:85%;">
                     <table style="width:100%;margin-left:0;">
                         <tr>
                             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th><th>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</th><th>น้ำระบาย<br>(ล้าน ลบ.ม.)</th>
@@ -333,7 +332,7 @@
                     </table>
                 </div>
                 <div id="group_make_table" style="margin-left:0;width:85%;">
-                    
+
                     <table id="table_data" style="margin-left:0;width:85%;">
                         <tr style="display: none;">
                             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th><th>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</th><th>น้ำระบาย<br>(ล้าน ลบ.ม.)</th>
@@ -341,7 +340,7 @@
                     </table>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 
     <!-- flow -->
@@ -357,13 +356,13 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_flow">รายงานปริมาณน้ำท่า</h4>    
+                        <h4 style="margin-left:0;" id="alert_flow">รายงานปริมาณน้ำท่า</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-                <div class="group_make_header" style="margin-left:0;">    
+                <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
                             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th>
@@ -371,7 +370,7 @@
                     </table>
                 </div>
                 <div id="flow_group_make_table" style="width:85%;margin-left:0;">
-                    
+
                     <table id="flow_table_data" >
                         <tr style="display: none;">
                             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th><th>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</th><th>น้ำระบาย<br>(ล้าน ลบ.ม.)</th>
@@ -380,7 +379,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- wq -->
@@ -392,8 +391,8 @@
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-        
-        <div class="wq_group_make_header">    
+
+        <div class="wq_group_make_header">
             <table>
                 <tr>
                     <th>วันที่</th><th>ความเค็ม (g/l)</th><th>กรด-ด่าง (pH)</th><th>ออกซิเจนในน้ำ (mg/l)</th><th>ค่าการนำไฟฟ้า (µS/cm)</th><th>อุณหภูมิ (°C)</th><th>ของแข็งละลายน้ำ (mg/l)</th>
@@ -401,9 +400,9 @@
             </table>
         </div>
         <div id="wq_group_make_table">
-            
+
             <table id="wq_table_data">
-                
+
             </table>
         </div>
     </div>
@@ -421,14 +420,14 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_customer">รายงานปริมาณการใช้น้ำของลูกค้า</h4>    
+                        <h4 style="margin-left:0;" id="alert_customer">รายงานปริมาณการใช้น้ำของลูกค้า</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-            
-                <div class="group_make_header" >    
+
+                <div class="group_make_header" >
                     <table style="width:85%;margin-left:0;">
                         <tr>
                             <th>วันที่</th><th>ปริมาณการใช้น้ำของลูกค้า</th>
@@ -436,7 +435,7 @@
                     </table>
                 </div>
                 <div id="customer_group_make_table" style="width:85%;margin-left:0;">
-                    
+
                     <table id="customer_table_data" style="margin-left:0;">
                         <tr style="display: none;">
                             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th><th>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</th><th>น้ำระบาย<br>(ล้าน ลบ.ม.)</th>
@@ -460,14 +459,14 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_pump">รายงานสถานีสูบน้ำ</h4>    
+                        <h4 style="margin-left:0;" id="alert_pump">รายงานสถานีสูบน้ำ</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-                
-                <div class="group_make_header" style="margin-left:0;">    
+
+                <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
                             <th>วันที่</th><th>ปริมาณการสูบน้ำ</th>
@@ -499,13 +498,13 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_rain">รายงานสถานีน้ำฝน</h4>    
+                        <h4 style="margin-left:0;" id="alert_rain">รายงานสถานีน้ำฝน</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-                <div class="group_make_header" style="margin-left:0;">    
+                <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
                             <th>วันที่</th><th>ปริมาณน้ำฝน</th>
@@ -535,13 +534,13 @@
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
                     <div style="width:40%;">
-                        <h4 style="margin-left:0;" id="alert_tele">รายงานสถานีโทรมาตรวัดละหารไร่</h4>    
+                        <h4 style="margin-left:0;" id="alert_tele">รายงานสถานีโทรมาตรวัดละหารไร่</h4>
                     </div>
                     <div style="width:45%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
-                <div class="group_make_header" style="margin-left:0;">    
+                <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
                             <th>วันที่</th>
@@ -566,7 +565,7 @@
 
     <!-- highcharts -->
     <h4>กราฟแสดงผล</h4>
-    
+
     <div>
         <!--
         <div class="box-group" style="margin-left: 10%;">
@@ -574,7 +573,7 @@
             <div class="lr">
 
             </div>
-            
+
             <select id="range_start" onchange="chnage_plot()" style="margin-left:20px;height: 30px;">
                 <option value="2017">2017</option>
                 <option value="2018">2018</option>
@@ -585,7 +584,7 @@
         </div>
         -->
         <br>
-        
+
         <div class="chart-reservoir">
             <figure class="highcharts-main">
                 <div id="highcharts-main" style="height: 800px;"></div>
@@ -625,7 +624,7 @@
             <figure class="highcharts-main">
                 <div id="highcharts-wq-Salinty" style="height: 800px;"></div>
             </figure>
-            
+
             <figure class="highcharts-main">
                 <div id="highcharts-wq-pH" style="height: 800px;"></div>
             </figure>
@@ -680,7 +679,7 @@
     <script>
         function exportReportToExcel() {
             console.log(document.getElementById('val_type').value)
-            let table = document.getElementById(document.getElementById('val_type').value+"_bodyT"); 
+            let table = document.getElementById(document.getElementById('val_type').value+"_bodyT");
             let name_txt = ""
             if($("#val_type").val() == 'reservoir'){
                 name_txt = "ปริมาณน้ำ "
@@ -697,10 +696,10 @@
             }
             name_txt += $("#val_data :selected").text()
             console.log('download file '+name_txt)
-            TableToExcel.convert(table, { 
-                name: `${name_txt}.xlsx`, 
+            TableToExcel.convert(table, {
+                name: `${name_txt}.xlsx`,
                 sheet: {
-                    name: 'ข้อมูล' 
+                    name: 'ข้อมูล'
                 }
             });
         }
@@ -728,7 +727,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-    
+
     <script src="./js/process-data.js"></script>
     <script type="text/javascript" src="./js/slidbar.js"></script>
 
