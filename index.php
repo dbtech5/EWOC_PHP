@@ -1,4 +1,4 @@
-<?php 
+<?php
     error_reporting(E_ERROR | E_PARSE);
 ?>
 <html>
@@ -52,7 +52,7 @@
 		table {
 			font-family: 'Prompt', sans-serif;
 			width: 1000px;
-			
+
 		}
 		tr:nth-child(1) {
 			border-radius: 25px;
@@ -68,7 +68,7 @@
 		.sub-menu {
 			margin-bottom: 20px;
 			width: 1010px;
-			
+
 		}
 		.sub-menu > a {
 			width: 200px;
@@ -134,7 +134,7 @@
 
 <body>
 	<div id="dialog_table">
-		
+
 	</div>
 	<div id="dialog_temp">
 		<i class="fa fa-times dialog_temp_fa"></i>
@@ -149,8 +149,8 @@
 						<div class="menu-action">
 							<i class="fa fa-reorder" onclick="toggleMenuLeft()"></i>
 						</div>
-					
-						
+
+
 						<div class="header-title">
 							<h5>โครงการเชื่อมโยงฐานข้อมูลและพัฒนาระบบช่วยตัดสินใจในการบริหารจัดการน้ำ</h5>
 							<p>พื้นที่ชายฝั่งทะเลตะวันออก (จังหวัดระยอง ชลบุรี ฉะเชิงเทรา)</p>
@@ -259,12 +259,12 @@
 									position: absolute;
 									z-index: 1;
 								}
-	
+
 								div.tooltip_menu:hover span {
 									display: block;
 								}
 							</style>
-	
+
 							<div id="filter_icon" style=" padding:4px; position:absolute; left:10px; z-index:99;
 													/* top:64px; border-radius:1px; border: 1px solid #42ACA8; */">
 								<!-- <i class="fa fa-align-justify fa-1.5x"></i> -->
@@ -273,12 +273,12 @@
 									<span class="tooltiptext">รายการข้อมูล</span>
 								</div>
 							</div>
-	
+
 							<!-- tooltip -->
 							<div id="tooltip" class="ol-popup">
 								<div id="tooltip-content"></div>
 							</div>
-	
+
 							<!-- Hover -->
 							<div id="hover-Cross_Section"></div>
 							<div id="hover-MapControl"></div>
@@ -301,85 +301,85 @@
 							<div id="hover-Waterdepth"></div>
 							<div id="hover-Floodmark"></div>
 							<div id="hover-Wetland"></div>
-	
+
 							<!-- popup -->
 							<!-- <div id="popup" class="ol-popup">
 								<a href="#" id="popup-closer" class="ol-popup-closer"></a>
 								<div id="popup-content"></div>
 							</div> -->
-	
+
 							<!-- province -->
 							<div id="popup-Province" class="ol-popup">
 								<a href="#" id="popup-closer-Province" class="ol-popup-closer"></a>
 								<div id="popup-content-Province"></div>
 							</div>
-	
+
 							<!-- village -->
 							<div id="popup-Village" class="ol-popup">
 								<a href="#" id="popup-closer-Village" class="ol-popup-closer"></a>
 								<div id="popup-content-Village"></div>
 							</div>
-	
+
 							<!-- Trans_Station -->
 							<div id="popup-Trans_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Trans_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Trans_Station"></div>
 							</div>
-	
+
 							<!-- Wetland -->
 							<div id="popup-Wetland" class="ol-popup">
 								<a href="#" id="popup-closer-Wetland" class="ol-popup-closer"></a>
 								<div id="popup-content-Wetland"></div>
 							</div>
-	
+
 							<!-- River_Distance -->
 							<div id="popup-River_Distance" class="ol-popup">
 								<a href="#" id="popup-closer-River_Distance" class="ol-popup-closer"></a>
 								<div id="popup-content-River_Distance"></div>
 							</div>
-	
+
 							<!-- Reservoir -->
 							<div id="popup-Reservoir" class="ol-popup">
 								<a href="#" id="popup-closer-Reservoir" class="ol-popup-closer"></a>
 								<div id="popup-content-Reservoir"></div>
 							</div>
-	
+
 							<!-- Irr_Project -->
 							<div id="popup-Irr_Project" class="ol-popup">
 								<a href="#" id="popup-closer-Irr_Project" class="ol-popup-closer"></a>
 								<div id="popup-content-Irr_Project"></div>
 							</div>
-	
+
 							<!-- Irr_Pump -->
 							<div id="popup-Irr_Pump" class="ol-popup">
 								<a href="#" id="popup-closer-Irr_Pump" class="ol-popup-closer"></a>
 								<div id="popup-content-Irr_Pump"></div>
 							</div>
-	
+
 							<!-- Well -->
 							<div id="popup-Well" class="ol-popup">
 								<a href="#" id="popup-closer-Well" class="ol-popup-closer"></a>
 								<div id="popup-content-Well"></div>
 							</div>
-	
+
 							<!-- Weather_Station -->
 							<div id="popup-Weather_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Weather_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Weather_Station"></div>
 							</div>
-	
+
 							<!-- Rain_Station -->
 							<div id="popup-Rain_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Rain_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Rain_Station"></div>
 							</div>
-	
+
 							<!-- Level_Station -->
 							<div id="popup-Level_Station" class="ol-popup">
 								<a href="#" id="popup-closer-Level_Station" class="ol-popup-closer"></a>
 								<div id="popup-content-Level_Station"></div>
 							</div>
-	
+
 							<!-- Obstruction -->
 							<!-- Bridge -->
 							<div id="popup-Bridge" class="ol-popup">
@@ -416,13 +416,13 @@
 								<a href="#" id="popup-closer-Culvert" class="ol-popup-closer"></a>
 								<div id="popup-content-Culvert"></div>
 							</div>
-	
+
 							<!-- Cross_Section -->
 							<div id="popup-Cross_Section" class="ol-popup">
 								<a href="#" id="popup-closer-Cross_Section" class="ol-popup-closer"></a>
 								<div id="popup-content-Cross_Section"></div>
 							</div>
-	
+
 							<!-- MapControl -->
 							<div id="popup-MapControl" class="ol-popup">
 								<a href="#" id="popup-closer-MapControl" class="ol-popup-closer"></a>
@@ -433,27 +433,27 @@
 								<a href="#" id="popup-closer-Waterdepth" class="ol-popup-closer"></a>
 								<div id="popup-content-Waterdepth"></div>
 							</div>
-	
+
 							<!-- Floodmark -->
 							<div id="popup-Floodmark" class="ol-popup">
 								<a href="#" id="popup-closer-Floodmark" class="ol-popup-closer"></a>
 								<div id="popup-content-Floodmark"></div>
 							</div>
-	
+
 							<!-- Factory -->
 							<div id="popup-Factory" class="ol-popup">
 								<a href="#" id="popup-closer-Factory" class="ol-popup-closer"></a>
 								<div id="popup-content-Factory"></div>
 							</div>
-	
+
 							<div id="mouse-position" class="text-right" ></div>
 						</div>
 					</div>
 
 					<div>
 					<center>
-						
-						<!--
+
+						<!--   p noon
 					<div class='sub-menu'>
 						<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
 						<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
@@ -465,18 +465,18 @@
 					</div>
 					-->
 					<div id="reservoir-canvas">
-					
+
 					<?php
 						include 'connect.php';
 
 						// Returns the floor of the lookup table.
 						function floorp($val, $precision)
 						{
-							$mult = pow(10, $precision); // Can be cached in lookup table        
+							$mult = pow(10, $precision); // Can be cached in lookup table
 							return floor($val * $mult) / $mult;
 						}
-						
-					
+
+
 						if($_GET['type']){
 							if($_GET['type']=='reservoir'){
 								$sql_s = "SELECT * FROM `reservoir_info` ORDER BY `no`";
@@ -495,7 +495,7 @@
 										<td>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</td>
 										<td>น้ำระบาย<br>(ล้าน ลบ.ม.)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -541,7 +541,7 @@
 										<td>ระดับน้ำ<br>(ม.รทก.)</td>
 										<td>ปริมาณน้ำ<br>(ลบ.ม./วินาที)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -581,7 +581,7 @@
 										<td>จังหวัด</td>
 										<td>ปริมาณฝน<br>(มม.)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -619,7 +619,7 @@
 										<td>ของแข็งละลายน้ํา<br>(mg/l)</td>
 										<td>อุณหภูมิ<br>(°C)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -656,7 +656,7 @@
 										<td>สถานีสูบน้ำ</td>
 										<td>ปริมาณการสูบน้ำ (ลบ.ม.)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -690,7 +690,7 @@
 										<td>จำนวนมาตร</td>
 										<td>ปริมาณการใช้น้ำ (ลบ.ม.)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -727,7 +727,7 @@
 										<td>ปริมาณน้ำ<br>(ลบ.ม./วินาที)</td>
 										<td>ปริมาณฝน<br>(มม.)</td>
 									</tr>
-									<?php 
+									<?php
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
@@ -771,7 +771,7 @@
 									<td>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</td>
 									<td>น้ำระบาย<br>(ล้าน ลบ.ม.)</td>
 								</tr>
-								<?php 
+								<?php
 									$result_s = $conn->query($sql_s);
 									if ($result_s->num_rows > 0) {
 										while($row = $result_s->fetch_assoc()) {
@@ -805,7 +805,7 @@
 					</center>
 					</div>
 				</div>
-				
+
 			</div>
 
 
@@ -846,7 +846,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
-	
+
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
@@ -863,7 +863,7 @@
 	<script type="text/javascript" src="./js/map_layercontrols.js"></script>
 	<script type="text/javascript" src="./js/slidbar.js"></script>
 
-	
+
 
 </body>
 
