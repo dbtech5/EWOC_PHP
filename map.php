@@ -790,7 +790,7 @@
 							onchange="opacity_pipe_wangtanod()">
 					</div>
 				-->
-				<div class="Spilt-Screen">
+				<div>
 					<div>
 						<div>
 
