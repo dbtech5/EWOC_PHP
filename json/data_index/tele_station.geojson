@@ -1,0 +1,3 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[101.301265,12.849228]},"properties":{"sta_code":"tele_watlhr","agency":"ew","tambon":"ต.หนองละลอก","district":"อ.บ้านค่าย","province":"จ.ระยอง","lat":12.849228,"long":101.301265}}
+]}
