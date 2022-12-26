@@ -159,17 +159,12 @@ var layer_active = []
 
 // Returns a json representation of the name.
 var name_json = {
-    'Basin_Name_T':'ลุ่มน้ำมูล',
-    'SubBasin_Name_T':'ลุ่มน้ำสาขา',
     'District':'อำเภอ',
-    'MBASIN_E,MBASIN_T':'ลุ่มน้ำประธาน 22 ลุ่มน้ำ',
     'Pump_PWA':'สถานีสูบน้ำ กปภ.',
     'Province':'จังหวัด',
     'Reservoir_Main':'อ่างเก็บน้ำ (หลัก)',
     'pump6':'สถานีสูบน้ำ กปภ.',
     'TAM_NAM_T,AMPHOE_T,PROV_NAM_T':'ตำบล',
-    'Local_Admin_Name_T':'เทศบาล',
-    'River_Name':'กิโลเมตรลำน้ำ',
     'res_name':'อ่างเก็บน้ำ',
     'Rain_Station':'สถานีน้ำฝน',
     'IRR_Name_T':'อ่างเก็บน้ำ (หลัก)',
@@ -179,16 +174,12 @@ var name_json = {
     'station_th':'สถานีตรวจอากาศ',
     'Rain_Station_Code':'สถานีวัดน้ำฝน',
     'Railway':'ทางรถไฟ',
-    'Pipe_Main':'ท่อส่งน้ำ East Water',
-    'Pipe_Klongluang':'ท่อคลองหลวง',
     'Hydro_Station_Code':'สถานีวัดน้ำท่า',
     'SubDistrict':'ตำบล',
-    'Factory_Name':'โรงงาน',
     'Customer':'ลูกค้า',
     'Weather_Station':'สถานีตรวจอากาศ',
     'Rain_Station_Code':'สถานีวัดน้ำฝน',
     'Level_Station':'สถานีวัดน้ำท่า',
-    'Isohyet':'เส้นชั้นน้ำฝน',
     'Trans_Station':'สถานีคมนาคม',
 }
 
