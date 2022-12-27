@@ -24,7 +24,7 @@ $('#Province').change(function () {
         ilayer = this.name;
         choose_active([this.name])
         ilayerfile = './json/basicinfo/province.json';
-        ifont = '18px Sriracha,sans-serif';
+        ifont = '16px Sriracha,sans-serif';
         itextfillcolor = 'rgba(0, 0, 0, 1)';
         itextstrokecolor = 'rgba(255, 255, 255)';
         itextstrokewidth = 4
@@ -47,7 +47,7 @@ $('#District').change(function () {
         choose_active([this.name])
         ilayer = this.name;
         ilayerfile = './json/basicinfo/district.json';
-        ifont = '16px Kanit, sans-serif';
+        ifont = '14px Kanit, sans-serif';
         itextfillcolor = 'rgba(0, 0, 0, 1)';
         itextstrokecolor = 'rgba(255, 255, 255)';
         itextstrokewidth = 2
