@@ -78,7 +78,7 @@ if(type_select){
   for(let i =0;i<el.length;i++){
     document.getElementsByTagName('h4')[i].style.display = 'block'
   }
-  
+
   // val_type feed btn_feed
   setTimeout(()=>{
     document.getElementById("val_data").disabled = false;
@@ -103,7 +103,7 @@ function number_add_comma(txt){
     let spt = txt.split('.')
     txt = spt[0]
     let l = txt.length
-      
+
     for(let i=0;i<txt.length/3;i++){
       k = (l>=4?"&#44;":"") + txt.substring(l-3,l) + k
       l -= 3
@@ -146,7 +146,7 @@ function load_csv_totable(){
         let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
         //console.log(tmp)
         tmp.forEach((data)=>{
-          
+
           let tmp_split = data.replace("}","").split(":")
           let tmp_json = {}
           let tmp_key = filter_charecter(tmp_split[2].split(',')[0])
@@ -166,9 +166,9 @@ function load_csv_totable(){
             if(!year.includes(t)){
               year.push(t)
             }
-            
+
           }
-          
+
         })
         //console.log(storage_data)
         //console.log(year)
@@ -176,7 +176,7 @@ function load_csv_totable(){
         $('#year_select').empty()
         $('#year_select_start').empty()
         $('#year_select_end').empty()
-        
+
         $('#year_select').append('<option>เลือกปี</option>')
         $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -191,7 +191,7 @@ function load_csv_totable(){
             $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
             $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
           }
-          
+
         })
     });
     setTimeout(()=>{
@@ -199,7 +199,7 @@ function load_csv_totable(){
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
+
     $.get("load_rulecurve.php?res_code="+$('#val_data').val(), function( data ) {
       let tmp = (data.substring(1,data.length-2).split('},'))
       storage_data = {}
@@ -215,11 +215,11 @@ function load_csv_totable(){
               mrc_data.push(parseFloat(jm['mrc']))
               nh_data.push(parseFloat(jm['lbc']))
             } catch (error) {
-              
+
             }
-            
+
             //console.log(tmp_key)
-            
+
           }
         }
       })
@@ -228,18 +228,18 @@ function load_csv_totable(){
     $.get("info_name.php?res_code="+$('#val_data').val(), function( data ) {
       name_reservoir = data
     })
-    
+
   }else if($('#val_data').val() != "เลือกน้ำท่า" && type == 'flow'){
     storage_data = {}
     console.log("load_data.php?type=flow&id="+$('#val_data').val())
-    console.log($('#val_data option:selected').text())    
+    console.log($('#val_data option:selected').text())
     document.getElementById('img_flow').src = './img/flow/'+$('#val_data option:selected').text()+'_img.jpg'
     document.getElementById('map_flow').src = './img/flow/'+$('#val_data option:selected').text()+'_map.jpg'
     $.get("load_data.php?type=flow&id="+$('#val_data').val(), function( datas ) {
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[3].split(',')[0])
@@ -248,16 +248,16 @@ function load_csv_totable(){
           tmp_json['date'] = filter_charecter(tmp_split[3].split(',')[0])
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
           tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[4].split(',')[0]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -265,7 +265,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -280,18 +280,18 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-    
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-  
-    
+
+
   }else if($('#val_data').val() != "เลือกเลือกสถานีโทรมาตร" && type == 'tele'){
     storage_data = {}
     console.log("load_data.php?type=tele&id="+$('#val_data').val())
@@ -300,7 +300,7 @@ function load_csv_totable(){
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2]+" "+tmp_split[3])
@@ -310,16 +310,16 @@ function load_csv_totable(){
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[4].split(',')[0]))
           tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
           tmp_json['rain'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -327,7 +327,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -342,18 +342,18 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-    
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
-    
+
+
   }else if($('#val_data').val() != "เลือกสถานีน้ำฝน" && type == 'rain'){
     storage_data = {}
     console.log("load_data.php?type=rain&id="+$('#val_data').val())
@@ -362,7 +362,7 @@ function load_csv_totable(){
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2].split(',')[0])
@@ -370,16 +370,16 @@ function load_csv_totable(){
         if(tmp_key != ""){
           tmp_json['date'] = tmp_key
           tmp_json['rain'] = parseFloat(filter_charecter(tmp_split[3]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -387,7 +387,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -402,17 +402,17 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-  
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
+
   }else if($('#val_data').val() != "เลือกสถานีสูบน้ำ" && type == 'pump'){
     storage_data = {}
     console.log("load_data.php?type=pump&id="+$('#val_data').val())
@@ -421,7 +421,7 @@ function load_csv_totable(){
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2].split(',')[0])
@@ -429,16 +429,16 @@ function load_csv_totable(){
         if(tmp_key != ""){
           tmp_json['date'] = filter_charecter(tmp_split[2].split(',')[0])
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[3].split(',')[0]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -446,7 +446,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -461,17 +461,17 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-  
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
+
   }else if($('#val_data').val() != "เลือกการใช้น้ำลูกค้า" && type == 'customer'){
     storage_data = {}
     console.log("load_data.php?type=customer&id="+$('#val_data').val())
@@ -480,7 +480,7 @@ function load_csv_totable(){
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2].split(',')[0])
@@ -488,16 +488,16 @@ function load_csv_totable(){
         if(tmp_key != ""){
           tmp_json['date'] = filter_charecter(tmp_split[2].split(',')[0])
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[3].split(',')[0]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -505,7 +505,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -520,17 +520,17 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-  
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
+
   }else if($('#val_data').val() != "เลือกคุณภาพ" && type == 'wq'){
     storage_data = {}
     console.log("load_data.php?type=wq&id="+$('#val_data').val())
@@ -539,7 +539,7 @@ function load_csv_totable(){
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       console.log(tmp)
       tmp.forEach((data)=>{
-        
+
         let tmp_split = (data).replaceAll("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2].split(' ')[0])
@@ -554,16 +554,16 @@ function load_csv_totable(){
           tmp_json['PH'] = parseFloat(filter_charecter(tmp_split[8].split(',')[0]))
           tmp_json['Salinty'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
           tmp_json['TDS'] = parseFloat(filter_charecter(tmp_split[9].split(',')[0]))
-          
+
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
           if(!year.includes(t)){
             year.push(t)
           }
-          
+
         }
-        
+
       })
       console.log(storage_data)
       //console.log(year)
@@ -571,7 +571,7 @@ function load_csv_totable(){
       $('#year_select').empty()
       $('#year_select_start').empty()
       $('#year_select_end').empty()
-      
+
       $('#year_select').append('<option>เลือกปี</option>')
       $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
 
@@ -586,17 +586,17 @@ function load_csv_totable(){
           $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
           $('#year_select_end').append('<option>'+(parseInt(item)+543)+'</option>')
         }
-        
+
       })
     });
-  
+
     // The start of the year select.
     setTimeout(()=>{
       let tmp = document.getElementById('year_select_start').options[document.getElementById('year_select_start').options.length-1].value
       document.getElementById('year_select_start').value = tmp
       makeTable()
     }, 200)
-    
+
   }
 }
 
@@ -628,12 +628,12 @@ function select_data(type){
         document.getElementById('year_select_start').dispatchEvent(evt);
         makeTable()
       }, 200)
-      
+
     },300)
   }
 
   // Display a container box select.
-  document.getElementsByClassName('container-box-select')[0].style.display = 'none'  
+  document.getElementsByClassName('container-box-select')[0].style.display = 'none'
   document.getElementById('val_type').value = type
   document.getElementById('val_type').onchange()
   document.getElementById("val_data").disabled = false;
@@ -642,19 +642,19 @@ function select_data(type){
   document.getElementById("year_select_start").disabled = false;
   document.getElementById("year_select_end").disabled = false;
   document.getElementById("year_select").disabled = false;
-  
+
   // Display the info loops.
   let loop = document.getElementsByClassName('info_div').length
   for(let i=0;i<loop;i++){
-    document.getElementsByClassName('info_div')[i].style.display = 'none'  
+    document.getElementsByClassName('info_div')[i].style.display = 'none'
   }
-  
+
   // Displays a list of charts.
   let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
   for(let i=0;i<name_charts.length;i++){
-    document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+    document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
   }
-    
+
   // Display a chart.
   if(type=='reservoir'){
       document.getElementById('reservoir_info').style.display = 'block'
@@ -674,7 +674,7 @@ function select_data(type){
   }else if(type == 'rain'){
       document.getElementById('rain_info').style.display = 'block'
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
-  }else if(type == 'tele'){      
+  }else if(type == 'tele'){
       document.getElementById('tele_info').style.display = 'block'
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
   }
@@ -682,7 +682,7 @@ function select_data(type){
   // Display the box.
   document.getElementsByClassName('box-group')[2].style.display = (type == 'wq'?'none':'flex')
   document.getElementsByClassName('box-group')[3].style.display = (type == 'wq'?'none':'flex')
-  
+
   // Get the margin left of the feed.
   if(type == 'wq'){
     document.getElementById('btn_feed').style.marginLeft = '30%';
@@ -694,11 +694,11 @@ function select_data(type){
 // Loads the options.
 function load_option(){
   // Display a container box select box
-  document.getElementsByClassName('container-box-select')[0].style.display = 'none'  
+  document.getElementsByClassName('container-box-select')[0].style.display = 'none'
 
   // Get value type by id
   let type = document.getElementById('val_type').value
-  
+
   // disabled
   document.getElementById("btn_feed").disabled = false;
   document.getElementById("val_data").disabled = false;
@@ -727,16 +727,16 @@ function load_option(){
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
 
       // Display the reservation info block.
       document.getElementById('reservoir_info').style.display = 'block'
-      
+
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
 
       // Display a chart.
@@ -763,7 +763,7 @@ function load_option(){
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
 
       // Display the flow info block
@@ -772,9 +772,9 @@ function load_option(){
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
-      
+
       // Display a chart.
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
@@ -782,7 +782,7 @@ function load_option(){
     $.get("info_type.php?type="+type, (data)=>{
       // Parse a comma - separated list of data.
       let dt = (data).replaceAll('[','').split('],')
-      
+
       // Add an option to the option list.
       $('#val_data').empty()
       $('#val_data').append(`<option>เลือกสถานีสูบน้ำ</option>`)
@@ -795,23 +795,23 @@ function load_option(){
           $('#val_data').append(`<option value='${d[0].trim()}'>${d[1]}</option>`)
         }
       })
-      
+
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
 
-      
+
       // Display the dump info block
       document.getElementById('pump_info').style.display = 'block'
 
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
-      
+
       // Display a chart.
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
@@ -823,7 +823,7 @@ function load_option(){
       // Add an option to the option list.
       $('#val_data').empty()
       $('#val_data').append(`<option>เลือกการใช้น้ำลูกค้า</option>`)
-      
+
       // Parse a comma - separated list of options.
       dt.forEach((it)=>{
         let d = it.split(',')
@@ -835,7 +835,7 @@ function load_option(){
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
 
       // Display the customer info block.
@@ -844,9 +844,9 @@ function load_option(){
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
-      
+
       // Display a chart.
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
@@ -871,16 +871,16 @@ function load_option(){
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
-      
+
       // Display the wq_info block
       document.getElementById('wq_info').style.display = 'block'
-      
+
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
 
       // Display a chart.
@@ -903,11 +903,11 @@ function load_option(){
           $('#val_data').append(`<option value='${d[0].trim()}'>${d[1]}</option>`)
         }
       })
-      
+
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
 
       // Renderrain_info block
@@ -916,9 +916,9 @@ function load_option(){
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
-      
+
       // Display a chart.
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
@@ -926,7 +926,7 @@ function load_option(){
     $.get("info_type.php?type="+type, (data)=>{
       // Parse a comma - separated list of data.
       let dt = (data).replaceAll('[','').split('],')
-      
+
       // Add an option to the option list.
       $('#val_data').empty()
       $('#val_data').append(`<option>เลือกสถานีโทรมาตร</option>`)
@@ -944,18 +944,18 @@ function load_option(){
       // Display the info loops.
       let loop = document.getElementsByClassName('info_div').length
       for(let i=0;i<loop;i++){
-        document.getElementsByClassName('info_div')[i].style.display = 'none'  
+        document.getElementsByClassName('info_div')[i].style.display = 'none'
       }
-      
+
       // Display tele_info block
       document.getElementById('tele_info').style.display = 'block'
 
       // Displays a list of charts.
       let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
       for(let i=0;i<name_charts.length;i++){
-        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+        document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
       }
-      
+
       // Display a chart.
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
@@ -963,7 +963,7 @@ function load_option(){
   // Display the box.
   document.getElementsByClassName('box-group')[2].style.display = (type == 'wq'?'none':'flex')
   document.getElementsByClassName('box-group')[3].style.display = (type == 'wq'?'none':'flex')
-  
+
   // Get the margin left of the feed.
   if(type == 'wq'){
     document.getElementById('btn_feed').style.marginLeft = '30%';
@@ -975,13 +975,13 @@ function load_option(){
 // Display the info loops.
 let loop = document.getElementsByClassName('info_div').length
 for(let i=0;i<loop;i++){
-  document.getElementsByClassName('info_div')[i].style.display = 'none'  
+  document.getElementsByClassName('info_div')[i].style.display = 'none'
 }
 
 // Displays a list of charts.
 let name_charts = ['flow','pump','customer','reservoir','rain','tele','wq']
 for(let i=0;i<name_charts.length;i++){
-  document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'  
+  document.getElementsByClassName('chart-'+name_charts[i])[0].style.display = 'none'
 }
 
 //load_option()
@@ -989,14 +989,14 @@ for(let i=0;i<name_charts.length;i++){
 // Displays a year select.
 document.getElementById('year_select_start').addEventListener('change',()=>{
   let lit = []
-  
+
   // Computes the number of items in a year select.
   tmp_lst.forEach((item)=>{
     if(( parseInt(item)+543 > parseInt(document.getElementById('year_select_end').value) || parseInt(item)+543 < parseInt(document.getElementById('year_select_start').value) )){
       lit.push(parseInt(item)+543)
     }
   })
-  
+
   $('#year_select').empty()
 
   // Generate a year select clause.
@@ -1008,7 +1008,7 @@ document.getElementById('year_select_start').addEventListener('change',()=>{
 
   // Filter the start of a year select.
   let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-  
+
   // Select the end of a year
   $('#year_select_end').empty()
   $('#year_select_end').append('<option>เลือกปี</option>')
@@ -1041,7 +1041,7 @@ document.getElementById('year_select_end').addEventListener('change',()=>{
   $('#year_select').empty()
   $('#year_select').append('<option>เลือกปี</option>')
   $('#year_select').append('<option>-- ไม่ระบุปี --</option>')
-  
+
   // Generate a year select clause.
   lit.forEach((item)=>{
     $('#year_select').append('<option>'+item+'</option>')
@@ -1054,7 +1054,7 @@ function getTextRange(){
   let text = ""
   text += "ข้อมูล"
   text += $("#val_data :selected").text()
-  
+
   // Generates a year select.
   if(document.getElementById('year_select_end').value == 'เลือกปี'){
     text += " ปี "
@@ -1072,7 +1072,7 @@ function getTextRange(){
     text += " และ "
     text += document.getElementById('year_select').value
   }
-  return text 
+  return text
 }
 
 // Plots the data list.
@@ -1093,7 +1093,7 @@ function plot_data_list(){
     let max = []
     let min = []
     let tmp_key = null
-      
+
     // Parse a volume list.
     Object.keys(storage_data).forEach(head=>{
       // Parse a comma separated list of labels.
@@ -1102,14 +1102,14 @@ function plot_data_list(){
       key_label_empty.push(' ')
       let m = head.split(' ')[0]
       let tmp = parttern_label[m.split("-")[1]]
-          
+
       // Adds a key label if it doesn t already exist.
-      key_label.push(tmp)   
+      key_label.push(tmp)
 
       // Checks if the start and end date of a year are in the range of 543.
       let tmp_year = (parseInt(head)+543)
       let rule = (parseInt(document.getElementById('year_select_start').value) <= tmp_year && document.getElementById('year_select_end').value =='เลือกปี' || (parseInt(document.getElementById('year_select_start').value) <= tmp_year && tmp_year <= parseInt(document.getElementById('year_select_end').value)))
-      
+
       // Parse a rule into inflow and outflow.
       if(rule){
         inflow.push(parseFloat(tmp_data[2]))
@@ -1117,13 +1117,13 @@ function plot_data_list(){
       }
 
       // Create a volume list.
-      for(let k=0;k<5;k++){ 
+      for(let k=0;k<5;k++){
         new_vol_list[k].push(data_val[n][tmp_key[k]] == NaN ? 0: data_val[n][tmp_key[k]])
       }
-          
+
       n++
     })
-    
+
     // This is the main entry point for all dataset series storage_data_viow
     let dataset_series = []
     let storage_data_viow = {}
@@ -1148,25 +1148,25 @@ function plot_data_list(){
           storage_data_viow[tmp] = []
         }
 
-        if((document.getElementById('year_select').value == tmp) || 
-          (tmp == year_ref || tmp >= year_ref && tmp <= year_ref_end) || 
+        if((document.getElementById('year_select').value == tmp) ||
+          (tmp == year_ref || tmp >= year_ref && tmp <= year_ref_end) ||
           (tmp == year_ref && document.getElementById('year_select_end').value == 'เลือกปี')){
           storage_data_viow[tmp].push(value['volume'])
         }
-        
+
         // Sets the maximum and minvol values if necessary.
         if(max.length < 366){
           max.push(value['maxvol'])
           min.push(value['minvol'])
-        }   
+        }
       }
     })
 
     console.log(storage_data_viow)
     // Parse the year_select_start and year_filter.
-    
+
     let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-    
+
     // Parse the year_select and year_exam elements.
     for(let i=1;i<tmp_year_filter.length;i++){
       let year_exam = parseInt(tmp_year_filter[i])
@@ -1182,15 +1182,19 @@ function plot_data_list(){
         })
       }
     }
-      
-      
+
+
     document.getElementById('alert_reservoir').innerHTML = getTextRange()
 
-    Object.entries(storage_data_viow).forEach(([key, value]) => {  
+    let color_list = ['#254690','#254889','#234689','#255689','#254669']
+    let index = 0
+    Object.entries(storage_data_viow).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
-        data: value
+        data: value,
+        color: color_list[index]
       })
+      index += 1
     })
 
     dataset_series.push({
@@ -1231,7 +1235,7 @@ function plot_data_list(){
       color: '#000000',
       data: new Array(365).fill(min[0])
     })
-      
+
     Highcharts.chart('highcharts-main', {
       chart: {
         type: 'spline'
@@ -1280,7 +1284,7 @@ function plot_data_list(){
       },
       series: dataset_series
     });
-    
+
     Highcharts.chart('highcharts-outflow', {
       chart: {
         type: 'spline'
@@ -1375,7 +1379,7 @@ function plot_data_list(){
     document.getElementById('alert_pump').innerHTML = getTextRange()
 
     let year_item = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_split = parseInt(value['date'].split('-')[0])+543
       if(document.getElementById('year_select_start').value == tmp_split && document.getElementById('year_select_end').value == "เลือกปี"){
         if(year_item[tmp_split]==undefined){
@@ -1392,7 +1396,7 @@ function plot_data_list(){
       }
     })
 
-    Object.entries(year_item).forEach(([key, value]) => {  
+    Object.entries(year_item).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
         data: value
@@ -1451,7 +1455,7 @@ function plot_data_list(){
     let year_tmp = {}
     let year_name = {}
 
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
 
       let tmp_split = parseInt(value['date'].split('-')[0])+543
       if(document.getElementById('year_select_start').value == tmp_split && document.getElementById('year_select_end').value == "เลือกปี"){
@@ -1461,7 +1465,7 @@ function plot_data_list(){
         }
         year_tmp[tmp_split].push(value['wl'])
         year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
-        
+
         console.log(value['date'],value['wl'])
       }else if(document.getElementById('year_select_start').value <= tmp_split && document.getElementById('year_select_end').value >= tmp_split || document.getElementById('year_select').value >= tmp_split){
         if(year_tmp[tmp_split] == undefined){
@@ -1470,7 +1474,7 @@ function plot_data_list(){
         }
         year_tmp[tmp_split].push(value['wl'])
         year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
-        
+
         console.log(value['date'],value['wl'])
       }
     })
@@ -1482,7 +1486,7 @@ function plot_data_list(){
         data: value
       })
     })
-    
+
     Highcharts.chart('highcharts-flow-wl', {
       chart: {
         type: 'spline'
@@ -1533,7 +1537,7 @@ function plot_data_list(){
     year_tmp = {}
     year_name = {}
 
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
 
       let tmp_split = parseInt(value['date'].split('-')[0])+543
       if(document.getElementById('year_select_start').value == tmp_split && document.getElementById('year_select_end').value == "เลือกปี"){
@@ -1543,7 +1547,7 @@ function plot_data_list(){
         }
         year_tmp[tmp_split].push(value['discharge'])
         year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
-        
+
       }else if(document.getElementById('year_select_start').value <= tmp_split && document.getElementById('year_select_end').value >= tmp_split || document.getElementById('year_select').value >= tmp_split){
         if(year_tmp[tmp_split] == undefined){
           year_tmp[tmp_split] = []
@@ -1551,10 +1555,10 @@ function plot_data_list(){
         }
         year_tmp[tmp_split].push(value['discharge'])
         year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
-        
+
       }
 
-    
+
     })
     dataset_series = []
     Object.entries(year_tmp).forEach(([key,value])=>{
@@ -1613,11 +1617,11 @@ function plot_data_list(){
     let n = 0
     let item_lit = []
     console.log(storage_data)
-    
+
     document.getElementById('alert_customer').innerHTML = getTextRange()
 
     let year_item = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_split = parseInt(value['date'].split('-')[0])+543
       if(document.getElementById('year_select_start').value == tmp_split && document.getElementById('year_select_end').value == "เลือกปี"){
         if(year_item[tmp_split]==undefined){
@@ -1638,14 +1642,14 @@ function plot_data_list(){
         year_item[tmp_split].push((value['wl']+""=="NaN"?0:value['wl']))
         key_label.push(parttern_label[value['date'].split('-')[1]])
       }
-      
-      
-      
+
+
+
       console.log(value['date'],value['wateruse'],((value['wateruse']+""=="NaN"?" ":value['wateruse'])))
     })
     console.log(item_lit)
 
-    Object.entries(year_item).forEach(([key, value]) => {  
+    Object.entries(year_item).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
         data: value
@@ -1712,7 +1716,7 @@ function plot_data_list(){
 
     let data_lit = {}
     let data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -1723,7 +1727,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       console.log(key,document.getElementById('year_select_start').value)
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
@@ -1732,7 +1736,7 @@ function plot_data_list(){
         })
       }
     })
-    
+
     console.log(Object.values(data_lit_key)[0])
     Highcharts.chart('highcharts-wq-Salinty', {
       chart: {
@@ -1783,7 +1787,7 @@ function plot_data_list(){
 
     data_lit = {}
     data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -1794,7 +1798,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
@@ -1852,7 +1856,7 @@ function plot_data_list(){
 
     data_lit = {}
     data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -1863,7 +1867,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
@@ -1921,7 +1925,7 @@ function plot_data_list(){
 
     data_lit = {}
     data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -1932,7 +1936,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
@@ -1990,7 +1994,7 @@ function plot_data_list(){
 
     data_lit = {}
     data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -2001,7 +2005,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
@@ -2059,7 +2063,7 @@ function plot_data_list(){
 
     data_lit = {}
     data_lit_key = {}
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       let tmp_date = value['date'].split(',')[0].split(' ')[0]
       let tmp_date_format = tmp_date.split('-')[0]
       if(data_lit[parseInt(tmp_date_format)+543] == undefined){
@@ -2070,7 +2074,7 @@ function plot_data_list(){
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
 
-    Object.entries(data_lit).forEach(([key, value]) => {  
+    Object.entries(data_lit).forEach(([key, value]) => {
       console.log(key,)
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
@@ -2132,7 +2136,7 @@ function plot_data_list(){
 
     document.getElementById('alert_rain').innerHTML = getTextRange()
 
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       item_lit.push(!Number.isInteger(value['rain'])?0:value['rain'])
       key_label.push(parttern_label[value['date'].split(',')[0].split('-')[1]])
     })
@@ -2203,7 +2207,7 @@ function plot_data_list(){
     document.getElementById('alert_tele').innerHTML = text
 
     // Creates a label for each item in the storage data.
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       item_lit.push(value['wl']==undefined?0:value['wl'])
       key_label.push(parttern_label[value['date'].split('-')[1]])
     })
@@ -2262,7 +2266,7 @@ function plot_data_list(){
     dataset_series = []
 
     // Adds the discharge labels to the item_lit
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       item_lit.push(value['discharge']==undefined?0:value['discharge'])
       key_label.push(parttern_label[value['date'].split('-')[1]])
     })
@@ -2321,7 +2325,7 @@ function plot_data_list(){
     item_lit = []
 
     // Creates the item_lit labels for the storage data.
-    Object.entries(storage_data).forEach(([key, value]) => {  
+    Object.entries(storage_data).forEach(([key, value]) => {
       item_lit.push(value['rain']==undefined?0:value['rain'])
       key_label.push(value['date'])
     })
@@ -2330,7 +2334,7 @@ function plot_data_list(){
       name: 'สถานีโทรมาตรวัดละหารไร่',
       data: item_lit
     })
-    
+
     // Generates tele - rain plot.
     Highcharts.chart('highcharts-tele-rain', {
       chart: {
@@ -2382,7 +2386,7 @@ function plot_data_list(){
 function makeTable(){
   // empty - empty empty string
   $('#group_make_table').empty()
-  
+
   let n = 0
   let tmp = Object.values(storage_data)
 
@@ -2436,17 +2440,17 @@ function makeTable(){
           da_t = da_t[0].split('-')
           let date_col = parseInt(da_t[2]) +" "+parttern_label[da_t[1]] + " "+(parseInt(da_t[0])+543)
 
-          let rule = (parseInt(document.getElementById('year_select_start').value) == (parseInt(da_t[0])+543) && 
+          let rule = (parseInt(document.getElementById('year_select_start').value) == (parseInt(da_t[0])+543) &&
 
-                      document.getElementById('year_select_end').value =='เลือกปี' || 
-                      (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && 
+                      document.getElementById('year_select_end').value =='เลือกปี' ||
+                      (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) &&
 
-                      document.getElementById("year_select").value != 'เลือกปี') || 
-                      (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && 
-                      document.getElementById("year_select").value != 'เลือกปี') || 
-                      parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || 
-                      ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && 
-                      
+                      document.getElementById("year_select").value != 'เลือกปี') ||
+                      (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) &&
+                      document.getElementById("year_select").value != 'เลือกปี') ||
+                      parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) ||
+                      ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) &&
+
                       (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value)))
 
           if(rule){
@@ -2464,12 +2468,12 @@ function makeTable(){
             if(inflow_set[(parseInt(da_t[0])+543)]==undefined){
               inflow_set[(parseInt(da_t[0])+543)] = []
             }
-            
+
             // Checks if the outflow set is undefined and adds it to the output set.
             if(outflow_set[(parseInt(da_t[0])+543)]==undefined){
               outflow_set[(parseInt(da_t[0])+543)] = []
             }
-            
+
             // Converts a string to a number.
             inflow_set[(parseInt(da_t[0])+543)].push((data_filter[3] && data_filter[3] != "" && data_filter[3] != '#N/A')?data_filter[3]:0)
             outflow_set[(parseInt(da_t[0])+543)].push((data_filter[4] && data_filter[4] != "" && data_filter[4] != '#N/A')?data_filter[4]:0)
@@ -2489,7 +2493,7 @@ function makeTable(){
         let data_val = Object.values(storage_data)
         let n = 0
         let text = getTextRange()
-        
+
         // Render flow body.
         $('#flow_bodyT').empty()
         $('#flow_bodyT').append(`
@@ -2500,7 +2504,7 @@ function makeTable(){
             <th>วันที่</th><th>ระดับน้ำ<br>(ม.รทก.)</th><th>ปริมาตรน้ำ<br>(ล้าน ลบ.ม.)</th>
           </tr>
         `)
-        
+
         Object.keys(storage_data).forEach(head => {
           // Parse date and column labels.
           let data_filter = Object.values(data_val[n])
@@ -2511,7 +2515,7 @@ function makeTable(){
           console.log(parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543))
           if((parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
             console.log('debug')
-            
+
             // Convert the flow body to a td.
             $('#flow_bodyT').append(`
               <tr>
@@ -2547,7 +2551,7 @@ function makeTable(){
           da_t = da_t[0].split(',')
           da_t = da_t[0].split('-')
           let date_col = parseInt(da_t[2]) +" "+parttern_label[da_t[1]] + " "+(parseInt(da_t[0])+543)
-          
+
           // Returns a td for a year select.
           if((parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
             $('#pump_bodyT').append(`
@@ -2600,7 +2604,7 @@ function makeTable(){
         let data_val = Object.values(storage_data)
         let n = 0
         let text = getTextRange()
-        
+
         // Returns a displayable version of the dump body.
         $('#wq_bodyT').empty()
         $('#wq_bodyT').append(`
@@ -2640,7 +2644,7 @@ function makeTable(){
       // Renders a table to be used in a row.
       $('#rain_group_make_table').empty()
       $('#rain_group_make_table').append("<table id='rain_bodyT'></table>")
-      
+
       // Returns a n - dimensional let data value
       let data_val = Object.values(storage_data)
       let n = 0
@@ -2656,14 +2660,14 @@ function makeTable(){
             <th>วันที่</th><th>ปริมาณน้ำฝน</th>
         </tr>
       `)
-      
+
       Object.keys(storage_data).forEach(head => {
         // Parse a comma - separated list of values.
         let data_filter = Object.values(data_val[n])
         let da_t = head.split(' ')
         da_t = da_t[0].split(',')
         da_t = da_t[0].split('-')
-         
+
         // Returns a tr for a year select
         if(parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && (document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
           $('#rain_bodyT').append(`
@@ -2699,7 +2703,7 @@ function makeTable(){
             da_t = da_t[0].split(',')
             da_t = da_t[0].split('-')
             let date_col = parseInt(da_t[2]) +" "+parttern_label[da_t[1]] + " "+(parseInt(da_t[0])+543) +" " + data_filter[0].split(' ')[1] + ":" + data_filter[0].split(' ')[2]
-            
+
             if(parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && (document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
               // Returns a tele_bodyT formatted string.
               $('#tele_bodyT').append(`
@@ -2714,11 +2718,10 @@ function makeTable(){
         })
     }
   }
-  plot_data_list() 
+  plot_data_list()
 }
 
 // Plot chnage data
 function chnage_plot(){
   plot_data_list()
 }
-
