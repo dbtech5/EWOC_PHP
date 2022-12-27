@@ -24,7 +24,7 @@ $('#Province').change(function () {
         ilayer = this.name;
         choose_active([this.name])
         ilayerfile = './json/basicinfo/province.json';
-        ifont = 'Bold 18px Sriracha,sans-serif';
+        ifont = '18px Sriracha,sans-serif';
         itextfillcolor = 'rgba(0, 0, 0, 1)';
         itextstrokecolor = 'rgba(255, 255, 255)';
         itextstrokewidth = 4
@@ -34,7 +34,7 @@ $('#Province').change(function () {
         ilinedash = '10, 0, 10';
         ilabel = 'PROV_NAM_T';
         topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash, ilabel);
-        
+
     } else {
         del_active([this.name])
         removeLayer(layers[this.name],this.name)
@@ -76,7 +76,7 @@ $('#SubDistrict').change(function () {
         ilabel = 'TAM_NAM_T'
         choose_active([ilayer])
         geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, istrokewidth, ilinedash,ilabel);
-        
+
     } else {
         del_active([this.name])
         removeLayer(layers[this.name],this.name)
@@ -223,7 +223,7 @@ $('#Reservoir_Reserv').change(function () {
         ilayerfile = './json/waternetwork/reservoir_reserv.geojson';
         iconfile = './img/diversion_dam.png';
         iconscale = 20 / 85;
-        ilabel = 'Reservoir_Reserv' 
+        ilabel = 'Reservoir_Reserv'
         let check = document.getElementById('text-Reservoir_Reserv').checked
         let isize = document.getElementById('size-Reservoir_Reserv').innerHTML/10.5
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'Reservoir_Name_T',check,isize);
@@ -394,7 +394,7 @@ $('#Pump_Main').change(function () {
         iconfile = './img/pump.png';
         iconscale = 20 / 24;
         choose_active(['Pump_Main'])
-        ilabel = 'name' 
+        ilabel = 'name'
         let check = document.getElementById('text-Pump_Main').checked
         let isize = document.getElementById('size-Pump_Main').innerHTML/10.5
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'name',check,isize);
@@ -409,10 +409,10 @@ $('#Pump_Main').change(function () {
             offset: [0, -20]
         });
         map.addOverlay(popup);
-        
+
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-                
+
                 if (feature.get('name') == 'Pump_Main') {
                     return feature;
                 };
@@ -459,11 +459,11 @@ $('#Customer').change(function () {
         iconfile = './img/customer.png';
         iconscale = 4 / 100;
         choose_active([ilayer])
-        ilabel = 'customer_text' 
+        ilabel = 'customer_text'
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'name');
         // display popup on hover
         var element = document.getElementById("hover-Weather_Station");
-        
+
         var popup = new ol.Overlay({
             element: element,
             positioning: "bottom-center",
@@ -504,7 +504,7 @@ $('#Customer').change(function () {
         removeLayer(layers[this.name],this.name)
         if (markerName)
             removefeatureInfo(this.name)
-        
+
     }
 })
 
@@ -732,7 +732,7 @@ $('#Level_Station').change(function () {
                     map.getTargetElement().style.cursor = 'pointer';
                     $(element).popover("show");
                 }
-                
+
             } else {
                 $(element).popover("dispose");
                 map.getTargetElement().style.cursor = '';
@@ -792,7 +792,7 @@ $('#Waterquality_Station').change(function () {
                     map.getTargetElement().style.cursor = 'pointer';
                     $(element).popover("show");
                 }
-                
+
             } else {
                 $(element).popover("dispose");
                 map.getTargetElement().style.cursor = '';
@@ -852,7 +852,7 @@ $('#Tide_Station').change(function () {
                     map.getTargetElement().style.cursor = 'pointer';
                     $(element).popover("show");
                 }
-                
+
             } else {
                 $(element).popover("dispose");
                 map.getTargetElement().style.cursor = '';
@@ -878,11 +878,11 @@ $('#Isohyet').change(function () {
         istrokecolor = '';
         istrokewidth = undefined;
         izIndex = 2;
-        
+
         choose_active([this.name])
         geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, istrokewidth, izIndex);
         /*
-        
+
         ilayer = this.name;
         ilayerfile = './json/supportinfo/Isohyet.json';
         ilayerobject = ilayer;
@@ -907,7 +907,7 @@ $('#Pump_PWA').change(function () {
         iconfile = './img/pump2.png';
         iconscale = 20 / 24;
         choose_active([ilayer])
-        ilabel = 'กปภ_' 
+        ilabel = 'กปภ_'
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel);
         // display popup on hover
         var element = document.getElementById("hover-pump_pwa");
@@ -967,7 +967,7 @@ $('#Pump_Minor').change(function () {
         iconfile = './img/pump6.png';
         iconscale = 20 / 24;
         choose_active([ilayer])
-        ilabel = 'pump_name' 
+        ilabel = 'pump_name'
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel);
         // display popup on hover
         var element = document.getElementById("hover-pump_name");
@@ -1027,7 +1027,7 @@ $('#Trans_Station').change(function () {
         iconfile = './img/transtation.png';
         iconscale = 8 / 24;
         choose_active([ilayer])
-        ilabel = 'Name' 
+        ilabel = 'Name'
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel);
         // display popup on hover
         var element = document.getElementById("hover-Weather_Station");
@@ -1318,7 +1318,7 @@ $("#StudyArea").change(function () {
         istrokewidth = 1.5;
         ilinedash = '0, 0, 0';
         topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash);
-        
+
     } else {
         //del_active([this.name])
         removeLayer(layers[this.name],this.name)
