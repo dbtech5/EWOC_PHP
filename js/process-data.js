@@ -1166,7 +1166,7 @@ function plot_data_list(){
     // Parse the year_select_start and year_filter.
 
     let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-    let color_list = ["#7D3C98","#2980B9","#16A085","#F4D03F","#F1948A","#EB984E"]
+    let color_list = ["#7D3C98","#5DADE2","#16A085","#F4D03F","#DF42CA","#EB984E"]
     let index = 0
     // Parse the year_select and year_exam elements.
     for(let i=1;i<tmp_year_filter.length;i++){
