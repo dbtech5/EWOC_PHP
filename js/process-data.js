@@ -627,7 +627,7 @@ function select_data(type){
         evt.initEvent("change", false, true);
         document.getElementById('year_select_start').dispatchEvent(evt);
         makeTable()
-      }, 200)
+      }, 1000)
 
     },300)
   }
@@ -1166,7 +1166,8 @@ function plot_data_list(){
     // Parse the year_select_start and year_filter.
 
     let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-
+    let color_list = ["#7D3C98","#2980B9","#16A085","#F4D03F","#F1948A","#EB984E"]
+    let index = 0
     // Parse the year_select and year_exam elements.
     for(let i=1;i<tmp_year_filter.length;i++){
       let year_exam = parseInt(tmp_year_filter[i])
@@ -1174,20 +1175,22 @@ function plot_data_list(){
       if(year_exam == year_ref && document.getElementById('year_select_end').value == 'เลือกปี' || year_exam >= year_ref && year_exam <= (year_ref_end) || year_exam == document.getElementById('year_select').value){
         outflow_process.push({
           name: year_exam,
-          data: outflow_set[year_exam]
+          data: outflow_set[year_exam],
+          color: color_list[index]
         })
         inflow_process.push({
           name: year_exam,
-          data: inflow_set[year_exam]
+          data: inflow_set[year_exam],
+          color: color_list[index]
         })
+        index += 1
       }
     }
 
 
     document.getElementById('alert_reservoir').innerHTML = getTextRange()
 
-    let color_list = ['#254690','#254889','#234689','#255689','#254669']
-    let index = 0
+    index = 0
     Object.entries(storage_data_viow).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
