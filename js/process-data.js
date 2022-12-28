@@ -629,7 +629,7 @@ function select_data(type){
         makeTable()
       }, 1000)
 
-    },300)
+    },1000)
   }
 
   // Display a container box select.
@@ -1244,7 +1244,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'อ่างเก็บน้ำ'+name_reservoir
+        text: $("#val_data :selected").text()
       },
       xAxis: {
         categories: key_label,
@@ -1410,7 +1410,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'สถานีสูบน้ำ'
+        text: $("#val_data :selected").text()
       },
       xAxis: {
         categories:key_label,
@@ -1495,7 +1495,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'ระดับน้ำ'
+        text: $("#val_data :selected").text()
       },
       xAxis: {
         categories:Object.values(year_name)[0],
@@ -1663,7 +1663,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'ปริมาณการใช้น้ำลูกค้า'
+        text: $("#val_data :selected").text()
       },
       xAxis: {
         categories:key_label,
@@ -2154,7 +2154,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'ปริมาตรน้ำฝน'
+        text: $("#val_data :selected").text()
       },
       xAxis: {
         categories:key_label,
