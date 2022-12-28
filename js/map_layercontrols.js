@@ -45,7 +45,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
         units: 'tile-pixels'
     });
 
-    //topojson data which is converted to geojson 
+    //topojson data which is converted to geojson
     var url = ilayerfile;
     fetch(url).then(function (response) {
         return response.json();
@@ -63,8 +63,8 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
             console.log(ilayerobject)
         }
         console.log(json, json.objects[ilayerobject],ilayerobject)
-        
-        
+
+
         geojson = topojson.feature(json, json.objects[ilayerobject]);
         //converts geojson data into vector tiles on the fly
         // change #2 geojson -> json
@@ -80,7 +80,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
             format: new ol.format.GeoJSON(),
             // add #3 tileGrid & tilePixelRatio
             // tileGrid: ol.tilegrid.createXYZ(),
-            // tilePixelRatio: 16,                
+            // tilePixelRatio: 16,
             tileLoadFunction: function (tile) {
                 //Preparation of tile data
                 var format = tile.getFormat();
@@ -88,7 +88,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
                 // console.log(tileCoord)
                 var data = tileIndex.getTile(tileCoord[0], tileCoord[1], -tileCoord[2] - 1);
 
-                //Facilitates the slicing of Geojson data 
+                //Facilitates the slicing of Geojson data
                 //Preparation of Geojson data
                 var features = format.readFeatures(
                     JSON.stringify({
@@ -230,7 +230,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
         } else if (ilayer == 'Railway') {
             let icheck = document.getElementById('text-'+ilayer).checked
             let isize = document.getElementById('size-'+ilayer).innerHTML/10.5
-            
+
             var style = new ol.style.Style({
                 stroke: new ol.style.Stroke({
                     color: 'rgba(0, 0, 0, 1)',
@@ -258,7 +258,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
                     return style;
                 })
             }
-            
+
 
         } else if (ilayer == 'Pipe_Main') {
             let icheck = document.getElementById('text-'+ilayer).checked
@@ -428,14 +428,14 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
             }catch(err){
 
             }
-            
+
             var style = new ol.style.Style({
                 stroke: new ol.style.Stroke({
                     color: 'rgba(64, 64, 64, 1)',
                     width: 0.8,
                 }),
                 text: new ol.style.Text({
-                    
+
                     scale: isize,
                     fill: new ol.style.Fill({
                     color: '#000000'
@@ -467,7 +467,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
 // parameter 10 ตัว
 function topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash, ilabel, displayText=true,iscale = 12, maxres) {
     console.log(ilayer)
-    
+
     let display = true
     let scale = 12/10.5
     try{
@@ -517,7 +517,7 @@ function topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokeco
 
         style: function (feature) {
             var geometry = feature.getGeometry();
-            
+
             if (geometry.getType() == 'MultiPolygon') {
                 // Only render label for the widest polygon of a multipolygon
                 var polygons = geometry.getPolygons();
@@ -550,7 +550,7 @@ function topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokeco
             }
 
             labelStyle.setGeometry(geometry);
-            
+
             if(display){
                 labelStyle.getText().setText(feature.get(ilabel));
                 labelStyle.getText().setTextAlign(textAlign);
@@ -570,16 +570,25 @@ function topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokeco
 function point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel) {
 
     //var layerPoint = ilayer+'Point';
-    //layerPoint = {}; 
-    
+    //layerPoint = {};
+
     console.log('text-'+ilayer)
-    let icheck = document.getElementById('text-'+ilayer).checked
-    let isize = document.getElementById('size-'+ilayer).innerHTML/10.5
+    let icheck = true
+    let isize = 12/10.5
+    console.log(ilayer)
+    if(ilayer == 'Reservoir_Main' || ilayer == 'Reservoir_Reserv'){
+      icheck = document.getElementById('text-reservoir').checked
+      isize = document.getElementById('size-reservoir').innerHTML/10.5
+    }else{
+      icheck = document.getElementById('text-'+ilayer).checked
+      isize = document.getElementById('size-'+ilayer).innerHTML/10.5
+    }
+
     $.getJSON(ilayerfile, function (result) {
         var iconFeatures = []
         $.each(result['features'], function (i, data) {
             //VillagePoint[data.properties.Village_Name_T] = data
-            
+
             var iconGeometry = ol.proj.fromLonLat([data.geometry.coordinates[0], data.geometry.coordinates[1]])
             //console.log(new ol.geom.Point(iconGeometry).flatCoordinates)
             var iconFeature = new ol.Feature({

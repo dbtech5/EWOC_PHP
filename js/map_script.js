@@ -162,7 +162,7 @@ var name_json = {
     'District':'อำเภอ',
     'Pump_PWA':'สถานีสูบน้ำ กปภ.',
     'Province':'จังหวัด',
-    'Reservoir_Main':'อ่างเก็บน้ำ',
+    'reservoir':'อ่างเก็บน้ำ',
     'pump6':'สถานีสูบน้ำ กปภ.',
     'TAM_NAM_T,AMPHOE_T,PROV_NAM_T':'ตำบล',
     'res_name':'อ่างเก็บน้ำ',

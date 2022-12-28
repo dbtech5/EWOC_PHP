@@ -1251,6 +1251,9 @@ function plot_data_list(){
         labels: {
           formatter: function() {
             return this.value;
+          },
+          style: {
+            fontSize: '18px',
           }
         },
         accessibility: {
@@ -1267,6 +1270,9 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
+            },
+            style: {
+              fontSize: '18px',
             }
           }
       },
@@ -1311,6 +1317,9 @@ function plot_data_list(){
         labels: {
           formatter: function () {
             return this.value;
+          },
+          style: {
+            fontSize: '18px',
           }
         }
       },
@@ -1353,6 +1362,9 @@ function plot_data_list(){
         labels: {
           formatter: function () {
             return this.value;
+          },
+          style: {
+            fontSize: '18px',
           }
         }
       },
@@ -1428,6 +1440,9 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
+            },
+            style: {
+              fontSize: '18px',
             }
           }
       },
@@ -1513,6 +1528,9 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
+            },
+            style: {
+              fontSize: '18px',
             }
           }
       },
@@ -1594,6 +1612,9 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
+            },
+            style: {
+              fontSize: '18px',
             }
           }
       },
@@ -1681,6 +1702,9 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
+            },
+            style: {
+              fontSize: '18px',
             }
           }
       },
@@ -1764,7 +1788,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -1833,7 +1860,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -1902,7 +1932,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -1971,7 +2004,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -2040,7 +2076,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -2110,7 +2149,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -2169,7 +2211,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {
@@ -2244,7 +2289,10 @@ function plot_data_list(){
           labels: {
             formatter: function () {
               return this.value;
-            }
+            },
+            style: {
+      				fontSize: '18px',
+      			}
           }
       },
       tooltip: {

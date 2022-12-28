@@ -154,7 +154,7 @@ $('#Railway').change(function () {
 // reservoir (main)
 $('#reservoir').change(function () {
     if (this.checked) {
-        choose_active(['Reservoir_Main'])
+        choose_active(['reservoir'])
         markerName = $(this).attr('marker-id')
         ilayer = 'Reservoir_Main';
         ilayerfile = './json/waternetwork/reservoir_main.geojson';
@@ -212,9 +212,7 @@ $('#reservoir').change(function () {
         iconfile = './img/diversion_dam.png';
         iconscale = 20 / 85;
         ilabel = 'Reservoir_Reserv'
-        let check = document.getElementById('text-Reservoir_Reserv').checked
-        let isize = document.getElementById('size-Reservoir_Reserv').innerHTML/10.5
-        point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'Reservoir_Name_T',check,isize);
+        point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'Reservoir_Name_T');
 
         // display popup on hover
         var element = document.getElementById("hover-Reservoir");
@@ -258,7 +256,7 @@ $('#reservoir').change(function () {
         removeLayer(layers['Reservoir_Main'],'Reservoir_Main')
         if (markerName)
             removefeatureInfo('Reservoir_Main')
-        del_active(['Reservoir_Main'])
+        del_active(['reservoir'])
 
         removeLayer(layers['Reservoir_Reserv'],'Reservoir_Reserv')
         if (markerName)
