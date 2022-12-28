@@ -206,7 +206,6 @@ $('#reservoir').change(function () {
             }
         })
 
-        choose_active(['Reservoir_Reserv'])
         markerName = $(this).attr('marker-id')
         ilayer = 'Reservoir_Reserv';
         ilayerfile = './json/waternetwork/reservoir_reserv.geojson';
@@ -264,7 +263,6 @@ $('#reservoir').change(function () {
         removeLayer(layers['Reservoir_Reserv'],'Reservoir_Reserv')
         if (markerName)
             removefeatureInfo('Reservoir_Reserv')
-        del_active(['Reservoir_Reserv'])
     }
 })
 

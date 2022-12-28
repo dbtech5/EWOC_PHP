@@ -28,7 +28,7 @@ function initWmtsLayer(url, layer, options = undefined) {
     var titeSize = [256, 256];
     var bboxExtent = [-180.0, -90.0, 180.0, 90.0];
     var gridsetName = 'EPSG:4326';
-    
+
     var resolutions = [
         0.703125,
         0.3515625,
@@ -121,7 +121,7 @@ function removeLayer(layer) {
     if (layer){
         del_active([layer])
         map.removeLayer(layer);
-    }  
+    }
 }
 
 // Toggle a layer with checkbox
@@ -162,7 +162,7 @@ var name_json = {
     'District':'อำเภอ',
     'Pump_PWA':'สถานีสูบน้ำ กปภ.',
     'Province':'จังหวัด',
-    'Reservoir_Main':'อ่างเก็บน้ำ (หลัก)',
+    'Reservoir_Main':'อ่างเก็บน้ำ',
     'pump6':'สถานีสูบน้ำ กปภ.',
     'TAM_NAM_T,AMPHOE_T,PROV_NAM_T':'ตำบล',
     'res_name':'อ่างเก็บน้ำ',
@@ -223,7 +223,7 @@ function choose_active(text){
         </div>
         `)
     }
-    
+
     $('#container-layer').prepend(`
         <div class="element-layer" onclick="active_layer([${text_format.substring(0,text_format.length-1)}])">${(name_json[text])?name_json[text]:text}<div>
     `)
@@ -283,7 +283,7 @@ function active_layer(name){
             n++
         }
         if(temp_lit.length == layer_active[i].length){
-            
+
         }else{
             copy_layer.push(layer_active[i])
             let text_format = ""
@@ -361,10 +361,10 @@ function showDialog(text){
 function displayFeatureInfo(pixel, coordinate) {
     var features = []
     //var container = document.getElementById('popup')
-    map.forEachFeatureAtPixel(pixel, function (feature, layer) {    
+    map.forEachFeatureAtPixel(pixel, function (feature, layer) {
         features.push(feature)
     })
-    
+
     //console.log('displayFeatureInfo', features)
     if (features.length > 0) {
         var info = []
@@ -372,7 +372,7 @@ function displayFeatureInfo(pixel, coordinate) {
         for (var i = 0, ii = features.length; i < ii; ++i) {
             //info.push(features[i].get('name'))
             try{
-                
+
                 let code = features[i]['values_']['data']['properties']['res_code']
                 console.log(features[i],features[i]['values_']['name'])
                 console.log(features[i]['values_']['data']['properties'])
@@ -406,7 +406,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[5].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+" "+values[2]+" "+values[3]+"</a><br>"
@@ -417,7 +417,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>ปริมาณน้ำ: </b><a>"+values[7]+" ลบ.ม./วินาที</a><br>"
                         text += "<a href='data.php?type=1&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
@@ -430,7 +430,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+" "+values[1]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[2]+" "+values[3]+"</a><br>"
@@ -438,7 +438,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>ปริมาณน้ำฝน: </b><a>"+values[5]+" ลบ.ม./วินาที</a><br>"
                         text += "<a href='data.php?type=3&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
@@ -451,7 +451,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+" ("+values[1]+")</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[2]+" "+values[3]+"</a><br>"
@@ -465,7 +465,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>อุณหภูมิ: </b><a>"+values[12]+" องศา</a><br>"
                         text += "<a href='data.php?type=5&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
@@ -478,7 +478,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานีโทรมาตรวัดละหารไร่</b><a></a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[0]+" "+values[1]+" "+values[2]+"</a><br>"
@@ -488,7 +488,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>ปริมาณน้ำฝน: </b><a>"+values[6]+" มม.</a><br>"
                         text += "<a href='data.php?type=6&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
@@ -501,7 +501,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[2].replace(' ','').split('-')
                         text += "<b style='color:#000'>"+values[0]+"</b><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+"</a><br>"
@@ -509,7 +509,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>ปริมาณการใช้น้ำ: </b><a>"+values[3]+" ม.รทก.</a><br>"
                         text += "<a href='data.php?type=4&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
@@ -522,7 +522,7 @@ function displayFeatureInfo(pixel, coordinate) {
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
-                        
+
                         let temp_date = values[2].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+"</a><br>"
@@ -530,13 +530,13 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>ปริมาณการสูบ: </b><a>"+values[3]+" ลบ.ม./วินาที</a><br>"
                         text += "<a href='data.php?type=2&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
-                        
+
                     }).fail(function() {
                         // if posting your form failed
                         alert("Posting failed.");
                     });
                 }
-				
+
                 /*
 				$.ajax({
                     type: 'POST',
@@ -565,7 +565,7 @@ positionMouse = []
 document.addEventListener('mousemove',(e)=>{
     positionMouse[0] = (e.clientY)
     positionMouse[1] = (e.clientX)
-    
+
     corX = e.clientX
     corY = e.clientY
 })
@@ -602,7 +602,7 @@ function getTemplateForMarker(markerType, data) {
         return str
     } else if (markerType == 'Reservoir') {
         var str = data.properties.res_name + '<br />' +
-            'จ.' + data.properties.province + '<br />' + 
+            'จ.' + data.properties.province + '<br />' +
             'ความจุ ' + data.properties.vol_mcm + ' ล้าน ลบ.ม.'
         return str
     } else if (markerType == 'Irr_Project') {
@@ -624,7 +624,7 @@ function getTemplateForMarker(markerType, data) {
         return str
     } else if (markerType == 'Weather_Station') {
         var str = 'สถานี: ' + data.properties.Weather_station_Name_T
-        return str  
+        return str
     } else if (markerType == 'Rain_Station') {
         var str = 'สถานีวัดน้ำฝน: ' + data.properties.Rain_Station_Code
         return str
@@ -665,12 +665,12 @@ function getTemplateForMarker(markerType, data) {
         var imgName1 = data.properties.Xsection_No + "-1.jpg";
         var imgName2 = data.properties.Xsection_No + "-2.jpg";
         //var imgWidth = data.properties.Node_Km;
-        
+
         // ใช้รูปตัวอย่าง
         // var imgName1 = 'XS-sample-1.jpg';
         // var imgName2 = 'XS-sample-2.jpg';
         var imgWidth = '40vw';
-        
+
         // check file exists
         var checkfile = imgPath + imgName1
         var http = new XMLHttpRequest();
@@ -690,12 +690,12 @@ function getTemplateForMarker(markerType, data) {
         const imgPath = './survey/mapct/';
         var imgName1 = data.properties.mapct + "-1.jpg";
         var imgName2 = data.properties.mapct + "-2.jpg";
-        
+
         // ใช้รูปตัวอย่าง
         // var imgName1 = 'GPS-sample-1.jpg';
         // var imgName2 = 'GPS-sample-2.jpg';
         // Portrait 25vw, Landscape 40vw
-        var imgWidth = "25vw";      
+        var imgWidth = "25vw";
 
         // check file exists
         var checkfile = imgPath + imgName1
@@ -717,11 +717,11 @@ function getTemplateForMarker(markerType, data) {
     } else if (markerType == 'Waterdepth') {
         const imgPath = './survey/waterdepth/';
         var imgName1 = data.properties.no + ".jpg";
-        
+
         // ใช้รูปตัวอย่าง
         // var imgName1 = 'waterdepth-1.jpg';
         // Portrait 25vw, Landscape 40vw
-        var imgWidth = "25vw";      
+        var imgWidth = "25vw";
 
         // check file exists
         var checkfile = imgPath + imgName1
@@ -740,11 +740,11 @@ function getTemplateForMarker(markerType, data) {
     } else if (markerType == 'Floodmark') {
         const imgPath = './survey/floodmark/';
         var imgName1 = data.properties.no + ".jpg";
-        
+
         // ใช้รูปตัวอย่าง
         // var imgName1 = 'floodmark-1.jpg';
         // Portrait 25vw, Landscape 40vw
-        var imgWidth = "25vw";      
+        var imgWidth = "25vw";
 
         // check file exists
         var checkfile = imgPath + imgName1
@@ -760,7 +760,7 @@ function getTemplateForMarker(markerType, data) {
         var str = '<div><img src="' + imgPath + imgName1 + '" style="width:' + imgWidth + '" /></div>';
         return str;
 
-    }   
+    }
 
 }
 
