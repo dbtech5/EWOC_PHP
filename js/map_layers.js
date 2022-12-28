@@ -154,10 +154,10 @@ $('#Railway').change(function () {
 // reservoir (main)
 $('#reservoir').change(function () {
     if (this.checked) {
-        choose_active([this.name])
+        choose_active(['Reservoir_Main'])
         markerName = $(this).attr('marker-id')
-        ilayer = this.name;
-        ilayerfile = './json/waternetwork/reservoir.geojson';
+        ilayer = 'Reservoir_Main';
+        ilayerfile = './json/waternetwork/reservoir_main.geojson';
         iconfile = './img/reservoir.png';
         iconscale = 24 / 60;
         ilabel = 'IRR_Name_T'
@@ -206,20 +206,9 @@ $('#reservoir').change(function () {
             }
         })
 
-    } else {
-        removeLayer(layers[this.name],this.name)
-        if (markerName)
-            removefeatureInfo(this.name)
-        del_active([this.name])
-    }
-})
-
-// reservoir (Reserv)
-$('#Reservoir_Reserv').change(function () {
-    if (this.checked) {
-        choose_active([this.name])
+        choose_active(['Reservoir_Reserv'])
         markerName = $(this).attr('marker-id')
-        ilayer = this.name;
+        ilayer = 'Reservoir_Reserv';
         ilayerfile = './json/waternetwork/reservoir_reserv.geojson';
         iconfile = './img/diversion_dam.png';
         iconscale = 20 / 85;
@@ -238,10 +227,6 @@ $('#Reservoir_Reserv').change(function () {
             offset: [0, -20]
         });
         map.addOverlay(popup);
-        let element_in_layer = document.getElementsByClassName('property-'+ilabel)
-        for(let i=0;i<element_in_layer.length;i++){
-            element_in_layer[i].style.display = "block"
-        }
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
 
@@ -270,14 +255,20 @@ $('#Reservoir_Reserv').change(function () {
                 map.getTargetElement().style.cursor = '';
             }
         })
-
     } else {
-        removeLayer(layers[this.name],this.name)
+        removeLayer(layers['Reservoir_Main'],'Reservoir_Main')
         if (markerName)
-            removefeatureInfo(this.name)
-        del_active([this.name])
+            removefeatureInfo('Reservoir_Main')
+        del_active(['Reservoir_Main'])
+
+        removeLayer(layers['Reservoir_Reserv'],'Reservoir_Reserv')
+        if (markerName)
+            removefeatureInfo('Reservoir_Reserv')
+        del_active(['Reservoir_Reserv'])
     }
 })
+
+
 
 // pipe
 // ท่อ East Water ปัจจุบัน
