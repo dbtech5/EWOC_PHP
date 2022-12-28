@@ -131,8 +131,8 @@ $(document).ready(function () {
     $('#Water_group').prop('checked', true)
     $("#Water_group").trigger("change")
 
-    $('#Reservoir_Main').prop('checked', true)
-    $("#Reservoir_Main").trigger("change")
+    $('#reservoir').prop('checked', true)
+    $("#reservoir").trigger("change")
 
     $('#Watersource_group').prop('checked', true)
     $("#Watersource_group").trigger("change")

@@ -257,6 +257,9 @@
                 </div>
               </div>
 
+
+
+
               <div id="content">
   							<!-- Page Content  -->
   							<!-- tooltip style -->
@@ -444,6 +447,23 @@
 						<a href="index.php?type=tele">โทรมาตร</a>
 					</div>
 					-->
+          <script>
+            var parttern_label = {
+                '01':'มกราคม',
+                '02':'กุมภาพันธ์',
+                '03':'มีนาคม',
+                '04':'เมษายน',
+                '05':'พฤกษาคม',
+                '06':'มิถุนายน',
+                '07':'กรกฏาคม',
+                '08':'สิงหาคม',
+                '09':'กันยายน',
+                '10':'ตุลาคม',
+                '11':'พฤศจิกายน',
+                '12':'ธันวาคม',
+                }
+          </script>
+
 					<div id="reservoir-canvas">
 
 					<?php
@@ -461,6 +481,30 @@
 							if($_GET['type']=='reservoir'){
 								$sql_s = "SELECT * FROM `reservoir_info` ORDER BY `no`";
 							?>
+              <script>
+							<?php
+								$result_s = $conn->query($sql_s);
+								$r = 0;
+								$k = 1;
+								if ($result_s->num_rows > 0) {
+									while($row = $result_s->fetch_assoc()) {
+										$sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' ORDER BY `date` DESC, `date` ASC LIMIT 1";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) {
+											while($row_s = $result->fetch_assoc()) {
+												if($k==1){
+													$k = 0;
+													$f_d = explode('-',$row_s['date']);
+													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์น้ำข้อมูลอ่างเก็บน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+												}
+												$r += 1;
+
+											}
+										}
+									}
+								}
+							?>
+							</script>
 								<table>
 									<tr>
 										<td>ลำดับ</td>
@@ -737,6 +781,30 @@
 						}else{
 							$sql_s = "SELECT * FROM `reservoir_info` ORDER BY `no`";
 						?>
+              <script>
+              <?php
+                $result_s = $conn->query($sql_s);
+                $r = 0;
+                $k = 1;
+                if ($result_s->num_rows > 0) {
+                  while($row = $result_s->fetch_assoc()) {
+                    $sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' ORDER BY `date` DESC, `date` ASC LIMIT 1";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      while($row_s = $result->fetch_assoc()) {
+                        if($k==1){
+                          $k = 0;
+                          $f_d = explode('-',$row_s['date']);
+                          echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์น้ำข้อมูลอ่างเก็บน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+                        }
+                        $r += 1;
+
+                      }
+                    }
+                  }
+                }
+              ?>
+              </script>
 							<table>
 								<tr>
 									<td>ลำดับ</td>
