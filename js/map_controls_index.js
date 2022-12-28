@@ -13,24 +13,24 @@ var zoomDisplay = false
 // popups
 var popups = {};
 var popupTypes = [
-    'Village', 
-    'Trans_Station', 
+    'Village',
+    'Trans_Station',
     'River_Distance',
     'Reservoir',
-    'Irr_Project', 
-    'Irr_Pump', 
-    'Well', 
-    'Weather_Station', 
-    'Rain_Station', 
-    'Level_Station', 
-    'Bridge', 
+    'Irr_Project',
+    'Irr_Pump',
+    'Well',
+    'Weather_Station',
+    'Rain_Station',
+    'Level_Station',
+    'Bridge',
     'Diversion_Dam',
     'Weir',
     'Regulator',
     'Levee',
     'Polder',
     'Culvert',
-    'Cross_Section', 
+    'Cross_Section',
     'MapControl',
     'Waterdepth',
     'Floodmark',
@@ -67,7 +67,7 @@ $.each(popupTypes, function (i, data) {
 
 // start
 $(document).ready(function () {
-    
+
 
 });
 
@@ -147,7 +147,7 @@ var vector = new ol.layer.Vector({
 });
 
 var pointerMoveHandler = function (evt) {
-    
+
     if (!drawing) {
         return;
     }
@@ -231,10 +231,10 @@ function createMeasureTooltip() {
 
 function addInteraction() {
     //var type = 'Polygon' //(typeSelect.value == 'area' ? 'Polygon' : 'LineString');
-    
+
     if (draw !== undefined)
         map.removeInteraction(draw);
-        
+
     if(!zoomDisplay){
         draw = new ol.interaction.Draw({
             source: source,
@@ -267,12 +267,12 @@ function addInteraction() {
             source: source,
             type: value,
             geometryFunction: geometryFunction,
-        });    
+        });
     }
-    
-    
+
+
     map.addInteraction(draw);
-    
+
     createMeasureTooltip();
     createHelpTooltip();
     let endPoint = 0
@@ -311,10 +311,10 @@ function addInteraction() {
         measureTooltipElement = null;
         createMeasureTooltip();
         ol.Observable.unByKey(listener);
-        
+
         if(zoomDisplay == 2 || zoomDisplay == 1){
             setTimeout(()=>{
-                zoomDisplay = false    
+                zoomDisplay = false
                 let maxLat = 0
                 let maxLong = 0
                 let minLat = 9999
@@ -339,7 +339,7 @@ function addInteraction() {
                 /*
                 minLat = startPoint[0][1]
                 minLong = startPoint[0][0]
-                
+
                 maxLat = startPoint[startPoint.length-1][1]
                 maxLong = startPoint[startPoint.length-1][0]
                 */
@@ -347,27 +347,27 @@ function addInteraction() {
                 var lat_lng = [((maxLong+minLong)/2),((maxLat+minLat)/2)]
                 console.log(lat_lng)
                 console.log(minLat,minLong,maxLat,maxLong)
-                
+
                 //extent: ol.proj.transformExtent([100.5, 12, 106.6, 18.5],'EPSG:4326', 'EPSG:3857')
-                
+
                 map.getView().fit(
                     ol.proj.transformExtent([minLong,minLat,maxLong,maxLat].reverse(),'EPSG:4326','EPSG:3857'),
                     map.getSize()
                 )
-                
+
                 map.getView().animate({
                     center: ol.proj.fromLonLat(lat_lng.reverse()),
                     duration: 0,
                     zoom: map.getView().getZoom()+0.5
                 });
-                
+
                 setTimeout(function(){
                     stopInterAction()
                 },10)
                 startPoint = []
             },0)
         }
-        
+
     }, this);
 }
 
@@ -395,21 +395,21 @@ function startInterAction(type) {
 var formatMousePosition = function (dgts) {
     return (
         function (coord1) {
-            
-            
+
+
             var coord2 = [coord1[1], coord1[0]];
             var utm = new UTMLatLng();
             //var utmData = ol.proj.transform(coord1, 'EPSG:4326','EPSG:900913')
             var utm2 = utm.convertLatLngToUtm(coord1[1], coord1[0], 0.1)
-            
+
             //console.log('utmData', utmData, utm2)
             latlng_hist = ol.coordinate.toStringXY(coord2, dgts).split(",")
             if(zoomDisplay == 2){
                 startPoint.push([parseFloat(latlng_hist[1]),parseFloat(latlng_hist[0])])
                 console.log([parseFloat(latlng_hist[1]),parseFloat(latlng_hist[0])])
-                
+
             }
-            
+
             //console.log(ol.coordinate.toStringXY(coord2, dgts),corX,corY)
             return ol.coordinate.toStringXY(coord2, dgts) + '<br> UTM : ' + utm2.Easting + ',' + utm2.Northing
         });
@@ -577,27 +577,6 @@ function change_img(number){
     set[number-1].click()
 }
 
-// Add the mouseover event to the display.
-document.getElementsByClassName('panel')[0].addEventListener('mouseover',()=>{
-    document.getElementsByClassName('panel')[0].style.display='block'
-})
-
-// Add the mouseeleave event to the panel.
-document.getElementsByClassName('panel')[0].addEventListener('mouseleave',()=>{
-    document.getElementsByClassName('panel')[0].style.display='none'
-    toggle_fab = false
-})
-
-// Rotate north.
-var RotateNorthControl = new ol.control.Control({
-    element: element
-});
-
-map.addControl(RotateNorthControl);
-
-// Add a scale line to the map.
-var scaleLine = new ol.control.ScaleLine()
-map.addControl(scaleLine);
 
 // popup ของ button group
 $.each(popupTypes, function (i, data) {
