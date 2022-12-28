@@ -152,12 +152,17 @@ $('#Railway').change(function () {
 // โครงข่ายระบบแหล่งน้ำ (WaterNetworkSubmenu)
 
 // reservoir (main)
-$('#Reservoir_Main').change(function () {
+$('#reservoir').change(function () {
     if (this.checked) {
         choose_active(['Reservoir_Main'])
         markerName = $(this).attr('marker-id')
+<<<<<<< HEAD
         ilayer = 'Reservoir_Main';
         ilayerfile = './json/waternetwork/reservoir_main.geojson';
+=======
+        ilayer = this.name;
+        ilayerfile = './json/waternetwork/reservoir.geojson';
+>>>>>>> 95dac714ce4b3d75c3d6bbd9a716e14cc99c76b8
         iconfile = './img/reservoir.png';
         iconscale = 24 / 60;
         ilabel = 'IRR_Name_T'
@@ -180,7 +185,7 @@ $('#Reservoir_Main').change(function () {
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
                 console.log(feature)
-                if (feature.get('name') == 'Reservoir_Main') {
+                if (feature.get('name') == 'reservoir') {
                     return feature;
                 };
             });

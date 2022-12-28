@@ -405,7 +405,7 @@
 																	<label for="Reservoir_Main"></label>
 																</div>
 															</div>
-															<div class="sub-filter-text col-lg-10">อ่างเก็บน้ำ (หลัก)</div>
+															<div class="sub-filter-text col-lg-10">อ่างเก็บน้ำ</div>
 														</li>
 
 													</ul>
