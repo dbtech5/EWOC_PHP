@@ -396,30 +396,17 @@
 												<div class="filter_info">
 													<ul class="sub-filter list-unstyled">
 
-														<!-- อ่างเก็บน้ำ (หลัก) -->
+														<!-- อ่างเก็บน้ำ  -->
 														<li class="row">
 															<div class="col-lg-2" style="padding-top:4px;">
 																<div class="round">
-																	<input type="checkbox" id="Reservoir_Main" name="Reservoir_Main"
-																		class="watersource_checkbox layer-Reservoir_Main" />
-																	<label for="Reservoir_Main"></label>
+																	<input type="checkbox" id="reservoir" name="reservoir"
+																		class="watersource_checkbox layer-reservoir" />
+																	<label for="reservoir"></label>
 																</div>
 															</div>
-															<div class="sub-filter-text col-lg-10">อ่างเก็บน้ำ (หลัก)</div>
+															<div class="sub-filter-text col-lg-10">อ่างเก็บน้ำ</div>
 														</li>
-
-														<!-- อ่างเก็บน้ำ (รอง) -->
-														<li class="row">
-															<div class="col-lg-2" style="padding-top:4px;">
-																<div class="round">
-																	<input type="checkbox" id="Reservoir_Reserv" name="Reservoir_Reserv"
-																		class="watersource_checkbox layer-Reservoir_Reserv" />
-																	<label for="Reservoir_Reserv"></label>
-																</div>
-															</div>
-															<div class="sub-filter-text col-lg-10">อ่างเก็บน้ำ (รอง)</div>
-														</li>
-
 													</ul>
 												</div>
 											</li>
