@@ -366,7 +366,6 @@
 									<tr>
 										<td>ลำดับ</td>
 										<td>อ่างเก็บน้ำ</td>
-										<td>อำเภอ</td>
 										<td>จังหวัด</td>
 										<td>ปริมาณน้ำสูงสุด<br>(ล้าน ลบ.ม.)</td>
 										<td>ปริมาณน้ำเก็บกัก<br>(ล้าน ลบ.ม.)</td>
@@ -387,7 +386,6 @@
 														echo "<tr>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['res_name']."</td>";
-														echo "<td>".$row['district']."</td>";
 														echo "<td>".$row['province']."</td>";
 														echo "<td>".$row['maxvol']."</td>";
 														echo "<td>".$row['nhvol']."</td>";
@@ -437,7 +435,6 @@
 										<td>รหัสสถานี</td>
 										<td>แม่น้ำ</td>
 										<td>ที่ตั้ง</td>
-										<td>อำเภอ</td>
 										<td>จังหวัด</td>
 										<td>พื้นที่รับน้ำ<br>(ตร.กม.)</td>
 										<td>ความจุลำน้ำ<br>(ลบ.ม./วินาที)</td>
@@ -454,10 +451,9 @@
 													while($row_s = $result->fetch_assoc()) {
 														echo "<tr>";
 														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['sta_id']."</td>";
+														echo "<td>".$row['sta_code']."</td>";
 														echo "<td>".$row['river']."</td>";
 														echo "<td>".$row['site']."</td>";
-														echo "<td>".$row['district']."</td>";
 														echo "<td>".$row['province']."</td>";
 														echo "<td>".$row['da_km2']."</td>";
 														echo "<td>372</td>";
@@ -1011,8 +1007,8 @@
   ?>
 
   <script>
-    ilayer = 'Pump_PWA';
-    ilayerfile = './json/data_index/pump_pwa.geojson';
+    ilayer = 'pump_station';
+    ilayerfile = './json/data_index/pump_station.geojson';
     iconfile = './img/pump2.png';
     iconscale = 20 / 24;
     choose_active([ilayer])
