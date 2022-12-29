@@ -1002,7 +1002,7 @@
     iconfile = './img/pump2.png';
     iconscale = 20 / 24;
     choose_active([ilayer])
-    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'กปภ_');
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Name');
   </script>
   <?php
   }else if($_GET['type']=='customer'){
