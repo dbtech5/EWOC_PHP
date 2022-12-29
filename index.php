@@ -1014,7 +1014,7 @@
     iconfile = './img/customer.png';
     iconscale = 4 / 100;
     choose_active([ilayer])
-    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'customer_text');
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'name');
   </script>
   <?php
   }else if($_GET['type']=='tele'){
