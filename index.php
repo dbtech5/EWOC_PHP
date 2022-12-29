@@ -51,34 +51,54 @@
 		}
 		table {
 			font-family: 'Prompt', sans-serif;
-			width: 1000px;
+			width: 98%;
 
 		}
-		tr:nth-child(1) {
-			border-radius: 25px;
-			color: #FFF;
-			background-color: #0B2B4C !important;
-		}
+    tr:nth-child(odd) {
+      background-color: #DDD !important;
+    }
+    tr:nth-child(even) {
+      background-color: #FFF !important;
+    }
+
 		td {
 			padding: 5px 8px;
 			text-align: center;
 			font-size: 10px;
 			border:1px solid #ddd;
 		}
+    td:nth-child(2),td:nth-child(3),td:nth-child(4) {
+      text-align: left;
+    }
+
+    tr:nth-child(1) {
+			border-radius: 25px;
+			color: #FFF;
+			background-color: #0B2B4C !important;
+		}
+
+    tr:nth-child(1) > td:nth-child(2),tr:nth-child(1) > td:nth-child(3),tr:nth-child(1) > td:nth-child(4) {
+      text-align: center !important;
+    }
+
 		.sub-menu {
 			margin-bottom: 20px;
-			width: 1010px;
+			width: 100%;
 
 		}
 		.sub-menu > a {
-			width: 200px;
+			width: 14.2%;
 			background-color: #0B2B4C;
 			padding: 10px 25px;
 			color: #FFF;
 			font-size: 12px;
 			border-radius: 15px;
 			font-family: 'Prompt', sans-serif;
+      cursor: pointer;
 		}
+  	.sub-menu > a:hover {
+      background-color: #000;
+    }
 		canvas {
 			margin-bottom: 10px;
 		}
@@ -238,28 +258,6 @@
 			<div class="Spilt-Screen">
 					<div>
             <h3 class="header-content">รายงานสถาการณ์น้ำ</h3>
-						<!-- content left-->
-            <div class="Split-Inner">
-              <div class="">
-                <div class="">
-                  <button type="button" name="button" class="nav-btn-left">
-                    อ่างเก็บน้ำ
-                  </button>
-                  <button type="button" name="button" class="nav-btn-left">
-                    อ่างเก็บน้ำ
-                  </button>
-                  <button type="button" name="button" class="nav-btn-left">
-                    อ่างเก็บน้ำ
-                  </button>
-                  <button type="button" name="button" class="nav-btn-left">
-                    อ่างเก็บน้ำ
-                  </button>
-                </div>
-              </div>
-
-
-
-
               <div id="content">
   							<!-- Page Content  -->
   							<!-- tooltip style -->
@@ -289,164 +287,14 @@
   							</style>
 
 
-  							<!-- province -->
-  							<div id="popup-Province" class="ol-popup">
-  								<a href="#" id="popup-closer-Province" class="ol-popup-closer"></a>
-  								<div id="popup-content-Province"></div>
-  							</div>
-
-  							<!-- village -->
-  							<div id="popup-Village" class="ol-popup">
-  								<a href="#" id="popup-closer-Village" class="ol-popup-closer"></a>
-  								<div id="popup-content-Village"></div>
-  							</div>
-
-  							<!-- Trans_Station -->
-  							<div id="popup-Trans_Station" class="ol-popup">
-  								<a href="#" id="popup-closer-Trans_Station" class="ol-popup-closer"></a>
-  								<div id="popup-content-Trans_Station"></div>
-  							</div>
-
-  							<!-- Wetland -->
-  							<div id="popup-Wetland" class="ol-popup">
-  								<a href="#" id="popup-closer-Wetland" class="ol-popup-closer"></a>
-  								<div id="popup-content-Wetland"></div>
-  							</div>
-
-  							<!-- River_Distance -->
-  							<div id="popup-River_Distance" class="ol-popup">
-  								<a href="#" id="popup-closer-River_Distance" class="ol-popup-closer"></a>
-  								<div id="popup-content-River_Distance"></div>
-  							</div>
-
-  							<!-- Reservoir -->
-  							<div id="popup-Reservoir" class="ol-popup">
-  								<a href="#" id="popup-closer-Reservoir" class="ol-popup-closer"></a>
-  								<div id="popup-content-Reservoir"></div>
-  							</div>
-
-  							<!-- Irr_Project -->
-  							<div id="popup-Irr_Project" class="ol-popup">
-  								<a href="#" id="popup-closer-Irr_Project" class="ol-popup-closer"></a>
-  								<div id="popup-content-Irr_Project"></div>
-  							</div>
-
-  							<!-- Irr_Pump -->
-  							<div id="popup-Irr_Pump" class="ol-popup">
-  								<a href="#" id="popup-closer-Irr_Pump" class="ol-popup-closer"></a>
-  								<div id="popup-content-Irr_Pump"></div>
-  							</div>
-
-  							<!-- Well -->
-  							<div id="popup-Well" class="ol-popup">
-  								<a href="#" id="popup-closer-Well" class="ol-popup-closer"></a>
-  								<div id="popup-content-Well"></div>
-  							</div>
-
-  							<!-- Weather_Station -->
-  							<div id="popup-Weather_Station" class="ol-popup">
-  								<a href="#" id="popup-closer-Weather_Station" class="ol-popup-closer"></a>
-  								<div id="popup-content-Weather_Station"></div>
-  							</div>
-
-  							<!-- Rain_Station -->
-  							<div id="popup-Rain_Station" class="ol-popup">
-  								<a href="#" id="popup-closer-Rain_Station" class="ol-popup-closer"></a>
-  								<div id="popup-content-Rain_Station"></div>
-  							</div>
-
-  							<!-- Level_Station -->
-  							<div id="popup-Level_Station" class="ol-popup">
-  								<a href="#" id="popup-closer-Level_Station" class="ol-popup-closer"></a>
-  								<div id="popup-content-Level_Station"></div>
-  							</div>
-
-  							<!-- Obstruction -->
-  							<!-- Bridge -->
-  							<div id="popup-Bridge" class="ol-popup">
-  								<a href="#" id="popup-closer-Bridge" class="ol-popup-closer"></a>
-  								<div id="popup-content-Bridge"></div>
-  							</div>
-  							<!-- Diversion_Dam -->
-  							<div id="popup-Diversion_Dam" class="ol-popup">
-  								<a href="#" id="popup-closer-Diversion_Dam" class="ol-popup-closer"></a>
-  								<div id="popup-content-Diversion_Dam"></div>
-  							</div>
-  							<!-- Weir -->
-  							<div id="popup-Weir" class="ol-popup">
-  								<a href="#" id="popup-closer-Weir" class="ol-popup-closer"></a>
-  								<div id="popup-content-Weir"></div>
-  							</div>
-  							<!-- Regulator -->
-  							<div id="popup-Regulator" class="ol-popup">
-  								<a href="#" id="popup-closer-Regulator" class="ol-popup-closer"></a>
-  								<div id="popup-content-Regulator"></div>
-  							</div>
-  							<!-- Levee -->
-  							<div id="popup-Levee" class="ol-popup">
-  								<a href="#" id="popup-closer-Levee" class="ol-popup-closer"></a>
-  								<div id="popup-content-Levee"></div>
-  							</div>
-  							<!-- Polder -->
-  							<div id="popup-Polder" class="ol-popup">
-  								<a href="#" id="popup-closer-Polder" class="ol-popup-closer"></a>
-  								<div id="popup-content-Polder"></div>
-  							</div>
-  							<!-- Culvert -->
-  							<div id="popup-Culvert" class="ol-popup">
-  								<a href="#" id="popup-closer-Culvert" class="ol-popup-closer"></a>
-  								<div id="popup-content-Culvert"></div>
-  							</div>
-
-  							<!-- Cross_Section -->
-  							<div id="popup-Cross_Section" class="ol-popup">
-  								<a href="#" id="popup-closer-Cross_Section" class="ol-popup-closer"></a>
-  								<div id="popup-content-Cross_Section"></div>
-  							</div>
-
-  							<!-- MapControl -->
-  							<div id="popup-MapControl" class="ol-popup">
-  								<a href="#" id="popup-closer-MapControl" class="ol-popup-closer"></a>
-  								<div id="popup-content-MapControl"></div>
-  							</div>
-  							<!-- Waterdepth -->
-  							<div id="popup-Waterdepth" class="ol-popup">
-  								<a href="#" id="popup-closer-Waterdepth" class="ol-popup-closer"></a>
-  								<div id="popup-content-Waterdepth"></div>
-  							</div>
-
-  							<!-- Floodmark -->
-  							<div id="popup-Floodmark" class="ol-popup">
-  								<a href="#" id="popup-closer-Floodmark" class="ol-popup-closer"></a>
-  								<div id="popup-content-Floodmark"></div>
-  							</div>
-
-  							<!-- Factory -->
-  							<div id="popup-Factory" class="ol-popup">
-  								<a href="#" id="popup-closer-Factory" class="ol-popup-closer"></a>
-  								<div id="popup-content-Factory"></div>
-  							</div>
-
   							<div id="mouse-position" class="text-right" ></div>
   						</div>
             </div>
 
-					</div>
-
 					<div>
 					<center>
 
-						<!--   p noon sss wwww mmmmm
-					<div class='sub-menu'>
-						<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
-						<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
-						<a href="index.php?type=rain">ปริมาณน้ำฝน</a>
-						<a href="index.php?type=wq">คุณภาพน้ำ</a>
-						<a href="index.php?type=pump">สถานีสูบน้ำ</a>
-						<a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
-						<a href="index.php?type=tele">โทรมาตร</a>
-					</div>
-					-->
+
           <script>
             var parttern_label = {
                 '01':'มกราคม',
@@ -465,7 +313,15 @@
           </script>
 
 					<div id="reservoir-canvas">
-
+            <div class='sub-menu'>
+              <a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
+              <a href="index.php?type=flow">ปริมาณน้ำท่า</a>
+              <a href="index.php?type=rain">ปริมาณน้ำฝน</a>
+              <a href="index.php?type=wq">คุณภาพน้ำ</a>
+              <a href="index.php?type=pump">สถานีสูบน้ำ</a>
+              <a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
+              <a href="index.php?type=tele">โทรมาตร</a>
+            </div>
 					<?php
 						include 'connect.php';
 
@@ -481,6 +337,7 @@
 							if($_GET['type']=='reservoir'){
 								$sql_s = "SELECT * FROM `reservoir_info` ORDER BY `no`";
 							?>
+
               <script>
 							<?php
 								$result_s = $conn->query($sql_s);
@@ -551,7 +408,29 @@
 						}else if($_GET['type']=='flow'){
 								$sql_s = "SELECT * FROM `flow_info` ORDER BY `no`";
 							?>
-
+                <script>
+                <?php
+									$result_s = $conn->query($sql_s);
+									$k = 1;
+									$r = 0;
+									if ($result_s->num_rows > 0) {
+										while($row = $result_s->fetch_assoc()) {
+											$sql = "SELECT * FROM `flow_data` WHERE sta_id ='".$row['sta_id']."' LIMIT 1";
+											$result = $conn->query($sql);
+											if ($result->num_rows > 0) {
+												while($row_s = $result->fetch_assoc()) {
+                          if($k==1){
+														$k = 0;
+														$f_d = explode('-',$row_s['date']);
+														echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์ข้อมูลน้ำท่าวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+													}
+													$r += 1;
+												}
+											}
+										}
+									}
+								?>
+								</script>
 								<table>
 									<tr>
 										<td>ลำดับ</td>
@@ -596,6 +475,29 @@
 							}else if($_GET['type']=='rain'){
 								$sql_s = "SELECT * FROM `rain_info`";
 							?>
+                <script>
+                <?php
+  								$result_s = $conn->query($sql_s);
+  								$k = 1;
+  								$r = 0;
+  								if ($result_s->num_rows > 0) {
+  									while($row = $result_s->fetch_assoc()) {
+  										$sql = "SELECT * FROM `rain_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
+  										$result = $conn->query($sql);
+  										if ($result->num_rows > 0) {
+  											while($row_s = $result->fetch_assoc()) {
+                          if($k==1){
+  													$k = 0;
+  													$f_d = explode('-',$row_s['date']);
+  													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์สถานีน้ำฝนวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+  												}
+  												$r += 1;
+  											}
+  										}
+  									}
+  								}
+  							?>
+  							</script>
 
 								<table>
 									<tr>
@@ -631,6 +533,29 @@
 							}else if($_GET['type']=='wq'){
 								$sql_s = "SELECT * FROM `wq_info` ORDER BY `no`";
 							?>
+                <script>
+                <?php
+  								$result_s = $conn->query($sql_s);
+  								$k = 1;
+  								$r = 0;
+  								if ($result_s->num_rows > 0) {
+  									while($row = $result_s->fetch_assoc()) {
+  										$sql = "SELECT * FROM `wq_data` WHERE sta_code ='".$row['sta_code']."' AND ec != '' LIMIT 1";
+  										$result = $conn->query($sql);
+  										if ($result->num_rows > 0) {
+  											while($row_s = $result->fetch_assoc()) {
+                          if($k==1){
+  													$k = 0;
+  													$f_d = explode('-',explode(' ',$row_s['date_time'])[0]);
+  													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์คุณภาพน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+  												}
+  												$r += 1;
+  											}
+  										}
+  									}
+  								}
+  							?>
+  							</script>
 								<table>
 									<tr>
 										<td>ลำดับ</td>
@@ -673,6 +598,32 @@
 							}else if($_GET['type']=='pump'){
 								$sql_s = "SELECT * FROM `pump_info` ORDER BY `no`";
 							?>
+                <script>
+                <?php
+  								$result_s = $conn->query($sql_s);
+  								$k = 1;
+  								$r = 0;
+  								if ($result_s->num_rows > 0) {
+  									while($row = $result_s->fetch_assoc()) {
+  										$sql = "SELECT * FROM `pump_data` WHERE pump_code ='".$row['pump_code']."' LIMIT 1";
+  										$result = $conn->query($sql);
+  										if ($result->num_rows > 0) {
+  											while($row_s = $result->fetch_assoc()) {
+
+  												echo 'console.log("'.$row['pump_name'].'");';
+  												echo 'context.fillText("'.$row_s['flow'].'", position_text['.$r.'][0][0], position_text['.$r.'][0][1]);';
+  												if($k==1){
+  													$k = 0;
+  													$f_d = explode('-',$row_s['date']);
+  													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์สถานีสูบน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+  												}
+  												$r += 1;
+  											}
+  										}
+  									}
+  								}
+  							?>
+  							</script>
 								<table>
 									<tr>
 										<td>ลำดับที่</td>
@@ -705,6 +656,38 @@
 							}else if($_GET['type']=='customer'){
 								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no`";
 							?>
+                <script>
+                <?php
+  								$result_s = $conn->query($sql_s);
+  								$page = 0;
+  								$key_page = 0;
+  								echo 'value_name.push([])';
+  								$r = 0;
+  								if ($result_s->num_rows > 0) {
+  									while($row = $result_s->fetch_assoc()) {
+  										$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' AND wateruse != '' LIMIT 1";
+  										$result = $conn->query($sql);
+  										if ($result->num_rows > 0) {
+  											while($row_s = $result->fetch_assoc()) {
+  												/*
+  												echo 'console.log("'.$row['customer_name'].'");';
+  												echo "<br>";
+  												//echo 'context.fillText("'.$row_s['wateruse'].'", position_text[page]['.$r.'][0][0], position_text[page]['.$r.'][0][1]);';
+  												if($page >= 10){
+  													$page = 0;
+  													$key_page += 1;
+  													echo 'value_name.push([])';
+  												}else{
+  													$page += 1;
+  													echo 'value_name['.$key_page.'].push("'.$row_s['wateruse'].'")';
+  												}
+  												$r += 1;*/
+  											}
+  										}
+  									}
+  								}
+  							?>
+  							</script>
 								<table>
 									<tr>
 										<td>ลำดับลูกค้า</td>
@@ -741,6 +724,29 @@
 							}else if($_GET['type']=='tele'){
 								$sql_s = "SELECT * FROM `tele_info`";
 							?>
+              <script>
+              <?php
+								$result_s = $conn->query($sql_s);
+								$k = 1;
+								$r = 0;
+								if ($result_s->num_rows > 0) {
+									while($row = $result_s->fetch_assoc()) {
+										$sql = "SELECT * FROM `tele_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) {
+											while($row_s = $result->fetch_assoc()) {
+                        if($k==1){
+													$k = 0;
+													$f_d = explode('-',explode(' ',$row_s['date_time'])[0]);
+													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์สถานีโทรมาตรวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+												}
+												$r += 1;
+											}
+										}
+									}
+								}
+							?>
+							</script>
 								<table>
 									<tr>
 										<td>ลำดับ</td>
@@ -908,8 +914,162 @@
 	<script type="text/javascript" src="./js/map_script.js"></script>
 	<script type="text/javascript" src="./js/map_layers.js"></script>
 	<script type="text/javascript" src="./js/map_controls_index.js"></script>
-	<script type="text/javascript" src="./js/map_layercontrols.js"></script>
+	<script type="text/javascript" src="./js/map_layercontrols_index.js"></script>
 	<script type="text/javascript" src="./js/slidbar.js"></script>
+  <script>
+    //ท่อส่ง
+    ilayer = 'Pipe_Main';
+    ilayerfile = './json/waternetwork/pipe_main.json';
+    ilayerobject = ilayer;
+    ifillcolor = '';
+    istrokecolor = 'rgba(219, 137, 103, 1)';
+    istrokewidth = 2.5;
+    izIndex = 2;
+    ilinedash = '0, 0, 0';
+    ilabel = ''
+    choose_active([ilayer])
+    geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, istrokewidth, ilinedash,ilabel,izIndex,);
+
+    //พื้นที่ศึกษา
+    ilayer = 'StudyArea';
+    ilayerfile = './json/studyarea/' + ilayer + '.json';
+    ifont = 'Bold 18px Sriracha,sans-serif';
+    itextfillcolor = 'rgba(0, 0, 0, 1)';
+    itextstrokecolor = 'rgba(255, 255, 255)';
+    itextstrokewidth = 4
+    ifillcolor = 'rgba(0, 0, 0, 0)';
+    istrokecolor = 'rgba(255, 0, 0, 1)';
+    istrokewidth = 1.5;
+    ilinedash = '0, 0, 0';
+    topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash);
+
+
+  </script>
+  <?php
+  if($_GET['type']){
+    if($_GET['type']=='reservoir'){
+    ?>
+
+    <script>
+    //อ่างเก็บน้ำหลัก
+    choose_active(['resorvoir'])
+    ilayer = 'Reservoir_Main';
+    ilayerfile = './json/waternetwork/reservoir_main.geojson';
+    iconfile = './img/reservoir.png';
+    iconscale = 24 / 60;
+    ilabel = 'Reservoir_Name_T'
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+
+    //อ่างเก็บน้ำรอง
+    ilayer = 'Reservoir_Reserv';
+    ilayerfile = './json/waternetwork/reservoir_reserv.geojson';
+    iconfile = './img/diversion_dam.png';
+    iconscale = 20 / 85;
+    ilabel = 'Reservoir_Reserv'
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+
+
+    </script>
+  <?php
+  }else if($_GET['type']=='flow'){
+  ?>
+
+  <script>
+    ilayer = 'Level_Station';
+    ilayerfile = './json/data_index/flow_station.geojson';
+    iconfile = './img/Level_Station.png';
+    iconscale = 14 / 12;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Level_Station_Code');
+  </script>
+  <?php
+  }else if($_GET['type']=='rain'){
+  ?>
+
+  <script>
+    ilayer = 'Rain_Station';
+    ilayerfile = './json/data_index/rain_station.geojson';
+    iconfile = './img/Rain_Station.png';
+    iconscale = 12 / 12;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'sta_code');
+  </script>
+  <?php
+  }else if($_GET['type']=='wq'){
+  ?>
+
+  <script>
+    ilayer = 'Waterquality_Station';
+    ilayerfile = './json/data_index/wq_station.geojson';
+    iconfile = './img/wq_station.png';
+    iconscale = 28 / 29;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Waterquality_Station_Code');
+  </script>
+  <?php
+  }else if($_GET['type']=='pump'){
+  ?>
+
+  <script>
+    ilayer = 'Pump_PWA';
+    ilayerfile = './json/data_index/pump_pwa.geojson';
+    iconfile = './img/pump2.png';
+    iconscale = 20 / 24;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'กปภ_');
+  </script>
+  <?php
+  }else if($_GET['type']=='customer'){
+  ?>
+
+  <script>
+    ilayer = 'Customer';
+    ilayerfile = './json/data_index/customer.geojson';
+    iconfile = './img/customer.png';
+    iconscale = 4 / 100;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'customer_text');
+  </script>
+  <?php
+  }else if($_GET['type']=='tele'){
+  ?>
+
+  <script>
+    ilayer = 'Tele_Station';
+    ilayerfile = './json/data_index/tele_station.geojson';
+    iconfile = './img/tele_station.png';
+    iconscale = 10 / 200;
+    choose_active([ilayer])
+    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'sta_code');
+  </script>
+  <?php
+  }
+}else{
+  ?>
+  <script>
+  //อ่างเก็บน้ำหลัก
+  choose_active(['resorvoir'])
+  ilayer = 'Reservoir_Main';
+  ilayerfile = './json/waternetwork/reservoir_main.geojson';
+  iconfile = './img/reservoir.png';
+  iconscale = 24 / 60;
+  ilabel = 'Reservoir_Name_T'
+  point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+
+  //อ่างเก็บน้ำรอง
+  ilayer = 'Reservoir_Reserv';
+  ilayerfile = './json/waternetwork/reservoir_reserv.geojson';
+  iconfile = './img/diversion_dam.png';
+  iconscale = 20 / 85;
+  ilabel = 'Reservoir_Reserv'
+  point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+
+
+  </script>
+
+  <?php
+}
+  ?>
 
 
 

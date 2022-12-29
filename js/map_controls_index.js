@@ -38,33 +38,6 @@ var popupTypes = [
     'Factory'
 ]
 
-$.each(popupTypes, function (i, data) {
-    var popupContainer = document.getElementById('popup-' + data)
-    var popupCloser = document.getElementById('popup-closer-' + data)
-    var popupContent = document.getElementById('popup-content-' + data)
-    popups[data] = {
-        popup: new ol.Overlay({
-            element: popupContainer,
-            autoPan: true,
-            autoPanAnimation: {
-                duration: 250
-            }
-        }),
-        container: popupContainer,
-        content: popupContent,
-        closer: popupCloser
-    }
-
-    popups[data].popup.setOffset([0, -20]);
-    popupCloser.onclick = function () {
-        popups[data].popup.setPosition(undefined)
-        this.blur()
-        return false
-    }
-})
-
-
-
 // start
 $(document).ready(function () {
 
@@ -578,10 +551,7 @@ function change_img(number){
 }
 
 
-// popup ของ button group
-$.each(popupTypes, function (i, data) {
-    map.addOverlay(popups[String(data)].popup)
-})
+
 
 // Shows a feature info for a given coordinate.
 map.on('click', function (evt) {

@@ -1292,7 +1292,6 @@ $("#RainPrediction").change(function () {
 $("#StudyArea").change(function () {
     if (this.checked) {
         ilayer = this.name;
-        //choose_active([this.name])
         ilayerfile = './json/studyarea/' + ilayer + '.json';
         ifont = 'Bold 18px Sriracha,sans-serif';
         itextfillcolor = 'rgba(0, 0, 0, 1)';
