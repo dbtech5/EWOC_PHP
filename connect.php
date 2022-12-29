@@ -1,7 +1,7 @@
 <?php
 
     /*  Debug kaoqqq */
-		/*
+    /*
 		$servername = "localhost";
     $username = "root";
     $password = "";
@@ -10,7 +10,7 @@
 
     // Create a mysqli connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-		*/
+    */
     /*  Cloud */
 
 
@@ -25,5 +25,5 @@
 
 	// set credentials over SSL
 	$conn->real_connect($servername, $username, $password, $dbname, '3306', NULL, MYSQLI_CLIENT_SSL)
-
+  
 ?>
