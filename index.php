@@ -605,10 +605,7 @@
   										$result = $conn->query($sql);
   										if ($result->num_rows > 0) {
   											while($row_s = $result->fetch_assoc()) {
-
-  												echo 'console.log("'.$row['pump_name'].'");';
-  												echo 'context.fillText("'.$row_s['flow'].'", position_text['.$r.'][0][0], position_text['.$r.'][0][1]);';
-  												if($k==1){
+                          if($k==1){
   													$k = 0;
   													$f_d = explode('-',$row_s['date']);
   													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์สถานีสูบน้ำวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
@@ -650,34 +647,27 @@
 								</table>
 							<?php
 							}else if($_GET['type']=='customer'){
-								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no`";
+								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no` LIMIT 1";
 							?>
                 <script>
                 <?php
   								$result_s = $conn->query($sql_s);
   								$page = 0;
   								$key_page = 0;
-  								echo 'value_name.push([])';
   								$r = 0;
   								if ($result_s->num_rows > 0) {
   									while($row = $result_s->fetch_assoc()) {
+                      echo 'console.log("'+$row['customer_code']+'")';
   										$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' AND wateruse != '' LIMIT 1";
   										$result = $conn->query($sql);
   										if ($result->num_rows > 0) {
   											while($row_s = $result->fetch_assoc()) {
-  												/*
-  												echo 'console.log("'.$row['customer_name'].'");';
-  												echo "<br>";
-  												//echo 'context.fillText("'.$row_s['wateruse'].'", position_text[page]['.$r.'][0][0], position_text[page]['.$r.'][0][1]);';
-  												if($page >= 10){
-  													$page = 0;
-  													$key_page += 1;
-  													echo 'value_name.push([])';
-  												}else{
-  													$page += 1;
-  													echo 'value_name['.$key_page.'].push("'.$row_s['wateruse'].'")';
+                          if($k==1){
+  													$k = 0;
+  													$f_d = explode('-',$row_s['date']);
+  													echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานการน้ำลูกค้าวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
   												}
-  												$r += 1;*/
+  												$r += 1;
   											}
   										}
   									}
