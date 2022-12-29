@@ -647,7 +647,8 @@
 								</table>
 							<?php
 							}else if($_GET['type']=='customer'){
-								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no` LIMIT 1";
+								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no`";
+                echo $sql_s;
 							?>
                 <script>
                 <?php
