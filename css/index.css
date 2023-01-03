@@ -8,11 +8,7 @@ body {
 .ol-zoom {
   display: none !important;
 }
-h5 {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: bold;
-}
+
 
 .panel {
   width: 80%;

@@ -14,12 +14,14 @@
   }
 
 body {
-    font-family: 'Prompt', sans-serif; 
+    font-family: 'Prompt', sans-serif;
     /*font-family: 'Sriracha', sans-serif;*/
     background: #edf3f8;
 }
 
-
+.list-menu-hide > div {
+  padding: 0px !important;
+}
 
 select > option {
     text-align: left;
@@ -113,9 +115,9 @@ table {
 }
 
 #group_make_table ,
-#flow_group_make_table, 
-#customer_group_make_table , 
-#pump_group_make_table, 
+#flow_group_make_table,
+#customer_group_make_table ,
+#pump_group_make_table,
 #wq_group_make_table,
 #rain_group_make_table,
 #tele_group_make_table{
@@ -125,7 +127,7 @@ table {
     height: 300px;
     overflow-y: scroll;
 }
- 
+
 .wq_group_make_header{
     margin-left: 10%;
     margin-right: 10%;
@@ -315,7 +317,7 @@ select:nth-child(2) {
     background-color: rgba(0,0,0,0.9);
 }
 .highcharts-title {
-    font-family: 'Prompt', sans-serif; 
+    font-family: 'Prompt', sans-serif;
     font-size: 14px;
 }
 .highcharts-figure{
@@ -330,7 +332,7 @@ select:nth-child(2) {
     display: block;
 }
 
-figure { 
+figure {
     width: 80%;
     margin-left: 10%;
 }
@@ -338,7 +340,7 @@ figure {
 .tool-bar {
     width: 80%;
     height: 30px;
-    
+
     margin-bottom: 15px;
     margin-left: 10%;
 }
@@ -427,7 +429,7 @@ figure {
         margin-left: 0px;
         display: flex;
         grid-template-columns: 50% 50%;
-        
+
     }
 
     ::-webkit-scrollbar {
@@ -441,7 +443,7 @@ figure {
     }
 
     .box-group > p {
-        font-family: 'Prompt', sans-serif; 
+        font-family: 'Prompt', sans-serif;
     }
 
     .group-element > div > div{
@@ -449,7 +451,7 @@ figure {
         margin-top: 0px;
         display: block;
         margin-bottom: 10px;
-        
+
     }
 
     .group-element {
