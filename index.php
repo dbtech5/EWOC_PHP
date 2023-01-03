@@ -647,7 +647,7 @@
 								</table>
 							<?php
 							}else if($_GET['type']=='customer'){
-								$sql_s = "SELECT * FROM `customer_info` ORDER BY `no`";
+								$sql_s = "SELECT * FROM `customer_info`";
 							?>
 
 								<table>
@@ -664,10 +664,10 @@
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
 												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' LIMIT 1";
-												$result = $conn->query($sql);
+                        $result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+                            echo "<tr>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['customer_name']."</td>";
 														echo "<td>".$row['customer_code']."</td>";
