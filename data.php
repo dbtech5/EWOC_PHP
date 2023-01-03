@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	<link rel="stylesheet" type="text/css" href="./css/lightbox.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/data.css">
+  <link rel="stylesheet" href="./css/data.css">
 </head>
 
 <body>
@@ -55,7 +55,7 @@
 
 		<div style="display: flex;">
 			<!-- Menu Left -->
-            <div class="MenuLeft">
+      <div class="MenuLeft">
 				<div class="list-menu-hide">
 					<div>
 						<a href="index.php" class="tooltip-nav">
@@ -120,7 +120,7 @@
 						</div>
 					</a>
 				</div>
-		   	</div>
+		   </div>
 
             <div class="Main-container" style="overflow: scroll;">
 

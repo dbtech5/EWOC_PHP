@@ -21,144 +21,16 @@
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	<link rel="stylesheet" type="text/css" href="./css/lightbox.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-		@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-		@import url('https://fonts.googleapis.com/css?family=Prompt');
-
-		body {
-			font-family: 'Prompt', sans-serif;
-		}
-
-		.ol-zoom {
-			display: none !important;
-		}
-		h5 {
-			display: inline-block;
-			font-size: 14px;
-			font-weight: bold;
-		}
-
-		.panel {
-			width: 80%;
-			text-align:left;
-		}
-
-		select {
-			padding: 10px 25px;
-			font-size: 12px;
-			width: 16%;
-			margin-right: 20px;
-		}
-		table {
-			font-family: 'Prompt', sans-serif;
-			width: 98%;
-
-		}
-    tr:nth-child(odd) {
-      background-color: #DDD !important;
-    }
-    tr:nth-child(even) {
-      background-color: #FFF !important;
-    }
-
-		td {
-			padding: 5px 8px;
-			text-align: center;
-			font-size: 10px;
-			border:1px solid #ddd;
-		}
-    td:nth-child(2),td:nth-child(3),td:nth-child(4) {
-      text-align: left;
-    }
-
-    tr:nth-child(1) {
-			border-radius: 25px;
-			color: #FFF;
-			background-color: #0B2B4C !important;
-		}
-
-    tr:nth-child(1) > td:nth-child(2),tr:nth-child(1) > td:nth-child(3),tr:nth-child(1) > td:nth-child(4) {
-      text-align: center !important;
-    }
-
-		.sub-menu {
-			margin-bottom: 20px;
-			width: 100%;
-
-		}
-		.sub-menu > a {
-			width: 14.2%;
-			background-color: #0B2B4C;
-			padding: 10px 25px;
-			color: #FFF;
-			font-size: 12px;
-			border-radius: 15px;
-			font-family: 'Prompt', sans-serif;
-      cursor: pointer;
-		}
-  	.sub-menu > a:hover {
-      background-color: #000;
-    }
-		canvas {
-			margin-bottom: 10px;
-		}
-
-		.reservoir-canvas {
-			height: 80vh;
-			width: 80%;
-			overflow-y:scroll;
-		}
-
-		.pad-Main {
-			padding: 0px 0px;
-		}
-		@media only screen and (max-width: 600px) {
-			.pad-Main {
-				padding: 20px 0px;
-			}
-
-			::-webkit-scrollbar {
-				width: 0px;
-        		height: 0px;
-			}
-
-			canvas {
-				width: 100%;
-			}
-
-			#reservoir-canvas {
-				height: 80vh;
-				width: 95%;
-				margin-left: 0%;
-				overflow-y:scroll;
-				overflow-x: hidden;
-			}
-			#date-info {
-				font-size: 12px !important;
-				width: 100%;
-				text-align: center;
-			}
-			.panel {
-				width: 100%;
-			}
-			#canvas-pick {
-				width: 100%;
-				margin-bottom: 20px;
-				margin-top: 20px;
-				width: 95%;
-				margin-left: 2.5%;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-	<div id="dialog_table">
+  <div id="dialog_table">
 
 	</div>
 	<div id="dialog_temp">
 		<i class="fa fa-times dialog_temp_fa"></i>
-		<p id="text-dialog">none</p>
+		<p id="text-dialog">ss</p>
 	</div>
 	<div id="container" class="w-100 h-100">
 		<!-- Header -->
@@ -186,7 +58,7 @@
 
 		<div style="display: flex;">
 			<!-- Menu Left -->
-			<div class="MenuLeft">
+      <div class="MenuLeft">
 				<div class="list-menu-hide">
 					<div>
 						<a href="index.php" class="tooltip-nav">
@@ -251,7 +123,7 @@
 						</div>
 					</a>
 				</div>
-		   	</div>
+		   </div>
 
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
@@ -292,7 +164,7 @@
             </div>
 
 					<div>
-					<center>
+
 
 
           <script>
@@ -312,16 +184,17 @@
                 }
           </script>
 
+          <div class='sub-menu'>
+            <a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
+            <a href="index.php?type=flow">ปริมาณน้ำท่า</a>
+            <a href="index.php?type=rain">ปริมาณน้ำฝน</a>
+            <a href="index.php?type=wq">คุณภาพน้ำ</a>
+            <a href="index.php?type=pump">สถานีสูบน้ำ</a>
+            <a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
+            <a href="index.php?type=tele">โทรมาตร</a>
+          </div>
 					<div id="reservoir-canvas">
-            <div class='sub-menu'>
-              <a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
-              <a href="index.php?type=flow">ปริมาณน้ำท่า</a>
-              <a href="index.php?type=rain">ปริมาณน้ำฝน</a>
-              <a href="index.php?type=wq">คุณภาพน้ำ</a>
-              <a href="index.php?type=pump">สถานีสูบน้ำ</a>
-              <a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
-              <a href="index.php?type=tele">โทรมาตร</a>
-            </div>
+
 					<?php
 						include 'connect.php';
 
@@ -842,7 +715,6 @@
 						<?php
 					}
 					?>
-					</center>
 					</div>
 				</div>
 
