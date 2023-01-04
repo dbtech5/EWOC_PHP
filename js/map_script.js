@@ -365,7 +365,7 @@ function displayFeatureInfo(pixel, coordinate) {
         features.push(feature)
     })
 
-    //console.log('displayFeatureInfo', features)
+    console.log(features)
     if (features.length > 0) {
         var info = []
         var not = false

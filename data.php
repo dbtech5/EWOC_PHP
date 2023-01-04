@@ -126,7 +126,6 @@
 
     <!-- Option element for load data-->
     <div class="header">
-        <center>
         <div class="group-element">
             <div style="width: 100%;">
                 <div style="width: 100%;padding:0;">
@@ -217,7 +216,6 @@
                 </div>
             </div>
         </div>
-        </center>
     </div>
 
     <!-- container select image-->

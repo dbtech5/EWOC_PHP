@@ -260,13 +260,13 @@
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['res_name']."</td>";
 														echo "<td>".$row['province']."</td>";
-														echo "<td>".$row['maxvol']."</td>";
-														echo "<td>".$row['nhvol']."</td>";
-														echo "<td>".$row['minvol']."</td>";
-														echo "<td>".$row_s['volume']."</td>";
-														echo "<td>".floorp($row_s['volume']*100/$row['nhvol'],2)."</td>";
-														echo "<td>".$row_s['inflow']."</td>";
-														echo "<td>".$row_s['outflow']."</td>";
+														echo "<td>".number_format((float)$row['maxvol'], 2, '.', '')."</td>";
+														echo "<td>".number_format((float)$row['nhvol'], 2, '.', '')."</td>";
+														echo "<td>".number_format((float)$row['minvol'], 2, '.', '')."</td>";
+														echo "<td>".number_format((float)$row['volume'], 2, '.', '')."</td>";
+														echo "<td>".number_format($row_s['volume']*100/$row['nhvol'],2)."</td>";
+														echo "<td>".number_format((float)$row['inflow'],2)."</td>";
+														echo "<td>".number_format((float)$row['outflow'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -328,10 +328,10 @@
 														echo "<td>".$row['river']."</td>";
 														echo "<td>".$row['site']."</td>";
 														echo "<td>".$row['province']."</td>";
-														echo "<td>".$row['da_km2']."</td>";
+														echo "<td>".number_format((float)$row['da_km2'],2)."</td>";
 														echo "<td>372</td>";
-														echo "<td>".$row_s['wl']."</td>";
-														echo "<td>".$row_s['discharge']."</td>";
+														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -389,7 +389,7 @@
 														echo "<td>".$row['name']."</td>";
 														echo "<td>".$row['tambon']."</td>";
 														echo "<td>".$row['province']."</td>";
-														echo "<td>".$row_s['rain_mm']."</td>";
+														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -449,12 +449,12 @@
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['station']."</td>";
 														echo "<td>".$row['seadist_km']."</td>";
-														echo "<td>".$row_s['salinity']."</td>";
-														echo "<td>".$row_s['ec']."</td>";
-														echo "<td>".$row_s['do']."</td>";
-														echo "<td>".$row_s['ph']."</td>";
-														echo "<td>".$row_s['tds']."</td>";
-														echo "<td>".$row_s['temp']."</td>";
+														echo "<td>".number_format((float)$row_s['salinity'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['ec'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['do'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['ph'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['tds'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['temp'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -509,7 +509,7 @@
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['pump_code']."</td>";
 														echo "<td>".$row['pump_name']."</td>";
-														echo "<td>".$row_s['flow']."</td>";
+														echo "<td>".number_format((float)$row_s['flow'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -544,9 +544,9 @@
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['customer_name']."</td>";
 														echo "<td>".$row['customer_code']."</td>";
-														echo "<td>".$row['area']."</td>";
-														echo "<td>".$row['meter']."</td>";
-														echo "<td>".$row_s['wateruse']."</td>";
+														echo "<td>".number_format((float)$row['area'],2)."</td>";
+														echo "<td>".number_format((float)$row['meter'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['wateruse'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -629,9 +629,9 @@
 														echo "<td>".$row['tambon']."</td>";
 														echo "<td>".$row['district']."</td>";
 														echo "<td>".$row['province']."</td>";
-														echo "<td>".$row_s['wl']."</td>";
-														echo "<td>".$row_s['discharge']."</td>";
-														echo "<td>".$row_s['rain_mm']."</td>";
+														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
+														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
 														echo "</tr>";
 													}
 												}
@@ -697,13 +697,13 @@
 													echo "<td>".$row['res_name']."</td>";
 													echo "<td>".$row['district']."</td>";
 													echo "<td>".$row['province']."</td>";
-													echo "<td>".$row['maxvol']."</td>";
-													echo "<td>".$row['nhvol']."</td>";
-													echo "<td>".$row['minvol']."</td>";
-													echo "<td>".$row_s['volume']."</td>";
-													echo "<td>".floorp($row_s['volume']*100/$row['nhvol'],2)."</td>";
-													echo "<td>".$row_s['inflow']."</td>";
-													echo "<td>".$row_s['outflow']."</td>";
+													echo "<td>".number_format((float)$row['maxvol'],2)."</td>";
+													echo "<td>".number_format((float)$row['nhvol'],2)."</td>";
+													echo "<td>".number_format((float)$row['minvol'],2)."</td>";
+													echo "<td>".number_format((float)$row_s['volume'],2)."</td>";
+													echo "<td>".number_format((float)$row_s['volume']*100/$row['nhvol'],2)."</td>";
+													echo "<td>".number_format((float)$row_s['inflow'],2)."</td>";
+													echo "<td>".number_format((float)$row_s['outflow'],2)."</td>";
 													echo "</tr>";
 												}
 											}
