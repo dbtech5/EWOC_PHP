@@ -457,6 +457,7 @@ function geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, 
                 })
             }
         }
+        console.log(layers,ilayer,layers[ilayer])
         addLayer(layers[ilayer]);
     });
 }
@@ -575,6 +576,7 @@ function point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel)
     console.log('text-'+ilayer)
     let icheck = true
     let isize = 12/10.5
+    console.log(ilayer)
 
     $.getJSON(ilayerfile, function (result) {
         var iconFeatures = []

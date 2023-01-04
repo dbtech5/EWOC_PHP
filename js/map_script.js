@@ -111,7 +111,7 @@ function addLayer(layer, layername = undefined, zIndex = undefined) {
         //layer.setOpacity(0.9)
         if (zIndex)
             layer.setZIndex(zIndex)
-
+        console.log(layer)
         map.addLayer(layer)
     }
 }
@@ -361,6 +361,7 @@ function showDialog(text){
 function displayFeatureInfo(pixel, coordinate) {
     var features = []
     //var container = document.getElementById('popup')
+    console.log(map.getLayers())
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {
         features.push(feature)
     })
@@ -371,14 +372,25 @@ function displayFeatureInfo(pixel, coordinate) {
         var not = false
         for (var i = 0, ii = features.length; i < ii; ++i) {
             //info.push(features[i].get('name'))
-            try{
 
-                let code = features[i]['values_']['data']['properties']['res_code']
+                console.log(features[i]['values_'])
+                let code = ""
+                try {
+                  code = features[i]['values_']['data']['properties']['res_code']
+                } catch (e) {
+
+                } 
                 console.log(features[i],features[i]['values_']['name'])
-                console.log(features[i]['values_']['data']['properties'])
                 let data_body = { 'res_code' : 'dk'}
                 text = ""
-                let keys_check = Object.keys(features[i]['values_']['data']['properties'])
+                let keys_check = []
+                try{
+
+                  keys_check = Object.keys(features[i]['values_']['data']['properties'])
+                }catch(err){
+
+                }
+                console.log(keys_check)
                 if(keys_check.includes("Reservoir_Name_T")){
                     $.ajax({
                         url: 'info_dam.php?res_code='+code+"&type=reservoir",
@@ -443,7 +455,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         // if posting your form failed
                         alert("Posting failed.");
                     });
-                }else if(features[i]['values_']['name']=='Waterquality_Station'){
+                }else if(features[i]['values_']['name']=='Waterquality_Station' || keys_check.includes('Waterquality_Station_Code')){
                     code = features[i]['values_']['data']['properties']['Waterquality_Station_Code']
                     console.log('info_dam.php?res_code='+code+"&type=Waterquality_Station")
                     $.ajax({
@@ -470,7 +482,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         // if posting your form failed
                         alert("Posting failed.");
                     });
-                }else if(features[i]['values_']['name']=='Tele_Station'){
+                }else if(features[i]['values_']['name']=='Tele_Station' || keys_check.includes('sta_code')){
                     code = features[i]['values_']['data']['properties']['sta_code']
                     console.log('info_dam.php?res_code='+code+"&type=Tele_Station")
                     $.ajax({
@@ -493,7 +505,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         // if posting your form failed
                         alert("Posting failed.");
                     });
-                }else if(features[i]['values_']['name']=='Customer'){
+                }else if(features[i]['values_']['name']=='Customer' || keys_check.includes('customer_code')){
                     code = features[i]['values_']['data']['properties']['customer_code']
                     console.log('info_dam.php?res_code='+code+"&type=Customer")
                     $.ajax({
@@ -514,7 +526,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         // if posting your form failed
                         alert("Posting failed.");
                     });
-                }else if(keys_check.includes("pump_name")){
+                }else if(keys_check.includes("pump_name") || keys_check.includes('pump_code')){
                     code = features[i]['values_']['data']['properties']['pump_code']
                     console.log('info_dam.php?res_code='+code+"&type=Pump")
                     $.ajax({
@@ -553,9 +565,6 @@ function displayFeatureInfo(pixel, coordinate) {
                 });
                 */
 
-            }catch(err){
-
-            }
         }
     }
 }

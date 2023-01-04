@@ -159,6 +159,187 @@
   							</style>
 
 
+                <div id="filter_icon" style=" padding:4px; position:absolute; left:10px; z-index:99;
+  													/* top:64px; border-radius:1px; border: 1px solid #42ACA8; */">
+  								<!-- <i class="fa fa-align-justify fa-1.5x"></i> -->
+  								<div class="tooltip_menu">
+  									<img src=./img/OpenLayers_logo.svg style="width:42px;">
+  									<span class="tooltiptext">รายการข้อมูล</span>
+  								</div>
+  							</div>
+
+  							<!-- tooltip -->
+  							<div id="tooltip" class="ol-popup">
+  								<div id="tooltip-content"></div>
+  							</div>
+
+  							<!-- Hover -->
+  							<div id="hover-Cross_Section"></div>
+  							<div id="hover-MapControl"></div>
+  							<div id="hover-Trans_Station"></div>
+  							<div id="hover-River_Distance"></div>
+  							<div id="hover-Reservoir"></div>
+  							<div id="hover-Irr_Project"></div>
+  							<div id="hover-Irr_Pump"></div>
+  							<div id="hover-Weather_Station"></div>
+  							<div id="hover-Rain_Station"></div>
+  							<div id="hover-Level_Station"></div>
+  							<div id="hover-Bridge"></div>
+  							<div id="hover-Diversion_Dam"></div>
+  							<div id="hover-Regulator"></div>
+  							<div id="hover-Weir"></div>
+  							<div id="hover-Levee"></div>
+  							<div id="hover-Polder"></div>
+  							<div id="hover-Culvert"></div>
+  							<div id="hover-Factory"></div>
+  							<div id="hover-Waterdepth"></div>
+  							<div id="hover-Floodmark"></div>
+  							<div id="hover-Wetland"></div>
+
+  							<!-- popup -->
+  							<!-- <div id="popup" class="ol-popup">
+  								<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+  								<div id="popup-content"></div>
+  							</div> -->
+
+  							<!-- province -->
+  							<div id="popup-Province" class="ol-popup">
+  								<a href="#" id="popup-closer-Province" class="ol-popup-closer"></a>
+  								<div id="popup-content-Province"></div>
+  							</div>
+
+  							<!-- village -->
+  							<div id="popup-Village" class="ol-popup">
+  								<a href="#" id="popup-closer-Village" class="ol-popup-closer"></a>
+  								<div id="popup-content-Village"></div>
+  							</div>
+
+  							<!-- Trans_Station -->
+  							<div id="popup-Trans_Station" class="ol-popup">
+  								<a href="#" id="popup-closer-Trans_Station" class="ol-popup-closer"></a>
+  								<div id="popup-content-Trans_Station"></div>
+  							</div>
+
+  							<!-- Wetland -->
+  							<div id="popup-Wetland" class="ol-popup">
+  								<a href="#" id="popup-closer-Wetland" class="ol-popup-closer"></a>
+  								<div id="popup-content-Wetland"></div>
+  							</div>
+
+  							<!-- River_Distance -->
+  							<div id="popup-River_Distance" class="ol-popup">
+  								<a href="#" id="popup-closer-River_Distance" class="ol-popup-closer"></a>
+  								<div id="popup-content-River_Distance"></div>
+  							</div>
+
+  							<!-- Reservoir -->
+  							<div id="popup-Reservoir" class="ol-popup">
+  								<a href="#" id="popup-closer-Reservoir" class="ol-popup-closer"></a>
+  								<div id="popup-content-Reservoir"></div>
+  							</div>
+
+  							<!-- Irr_Project -->
+  							<div id="popup-Irr_Project" class="ol-popup">
+  								<a href="#" id="popup-closer-Irr_Project" class="ol-popup-closer"></a>
+  								<div id="popup-content-Irr_Project"></div>
+  							</div>
+
+  							<!-- Irr_Pump -->
+  							<div id="popup-Irr_Pump" class="ol-popup">
+  								<a href="#" id="popup-closer-Irr_Pump" class="ol-popup-closer"></a>
+  								<div id="popup-content-Irr_Pump"></div>
+  							</div>
+
+  							<!-- Well -->
+  							<div id="popup-Well" class="ol-popup">
+  								<a href="#" id="popup-closer-Well" class="ol-popup-closer"></a>
+  								<div id="popup-content-Well"></div>
+  							</div>
+
+  							<!-- Weather_Station -->
+  							<div id="popup-Weather_Station" class="ol-popup">
+  								<a href="#" id="popup-closer-Weather_Station" class="ol-popup-closer"></a>
+  								<div id="popup-content-Weather_Station"></div>
+  							</div>
+
+  							<!-- Rain_Station -->
+  							<div id="popup-Rain_Station" class="ol-popup">
+  								<a href="#" id="popup-closer-Rain_Station" class="ol-popup-closer"></a>
+  								<div id="popup-content-Rain_Station"></div>
+  							</div>
+
+  							<!-- Level_Station -->
+  							<div id="popup-Level_Station" class="ol-popup">
+  								<a href="#" id="popup-closer-Level_Station" class="ol-popup-closer"></a>
+  								<div id="popup-content-Level_Station"></div>
+  							</div>
+
+  							<!-- Obstruction -->
+  							<!-- Bridge -->
+  							<div id="popup-Bridge" class="ol-popup">
+  								<a href="#" id="popup-closer-Bridge" class="ol-popup-closer"></a>
+  								<div id="popup-content-Bridge"></div>
+  							</div>
+  							<!-- Diversion_Dam -->
+  							<div id="popup-Diversion_Dam" class="ol-popup">
+  								<a href="#" id="popup-closer-Diversion_Dam" class="ol-popup-closer"></a>
+  								<div id="popup-content-Diversion_Dam"></div>
+  							</div>
+  							<!-- Weir -->
+  							<div id="popup-Weir" class="ol-popup">
+  								<a href="#" id="popup-closer-Weir" class="ol-popup-closer"></a>
+  								<div id="popup-content-Weir"></div>
+  							</div>
+  							<!-- Regulator -->
+  							<div id="popup-Regulator" class="ol-popup">
+  								<a href="#" id="popup-closer-Regulator" class="ol-popup-closer"></a>
+  								<div id="popup-content-Regulator"></div>
+  							</div>
+  							<!-- Levee -->
+  							<div id="popup-Levee" class="ol-popup">
+  								<a href="#" id="popup-closer-Levee" class="ol-popup-closer"></a>
+  								<div id="popup-content-Levee"></div>
+  							</div>
+  							<!-- Polder -->
+  							<div id="popup-Polder" class="ol-popup">
+  								<a href="#" id="popup-closer-Polder" class="ol-popup-closer"></a>
+  								<div id="popup-content-Polder"></div>
+  							</div>
+  							<!-- Culvert -->
+  							<div id="popup-Culvert" class="ol-popup">
+  								<a href="#" id="popup-closer-Culvert" class="ol-popup-closer"></a>
+  								<div id="popup-content-Culvert"></div>
+  							</div>
+
+  							<!-- Cross_Section -->
+  							<div id="popup-Cross_Section" class="ol-popup">
+  								<a href="#" id="popup-closer-Cross_Section" class="ol-popup-closer"></a>
+  								<div id="popup-content-Cross_Section"></div>
+  							</div>
+
+  							<!-- MapControl -->
+  							<div id="popup-MapControl" class="ol-popup">
+  								<a href="#" id="popup-closer-MapControl" class="ol-popup-closer"></a>
+  								<div id="popup-content-MapControl"></div>
+  							</div>
+  							<!-- Waterdepth -->
+  							<div id="popup-Waterdepth" class="ol-popup">
+  								<a href="#" id="popup-closer-Waterdepth" class="ol-popup-closer"></a>
+  								<div id="popup-content-Waterdepth"></div>
+  							</div>
+
+  							<!-- Floodmark -->
+  							<div id="popup-Floodmark" class="ol-popup">
+  								<a href="#" id="popup-closer-Floodmark" class="ol-popup-closer"></a>
+  								<div id="popup-content-Floodmark"></div>
+  							</div>
+
+  							<!-- Factory -->
+  							<div id="popup-Factory" class="ol-popup">
+  								<a href="#" id="popup-closer-Factory" class="ol-popup-closer"></a>
+  								<div id="popup-content-Factory"></div>
+  							</div>
+
   							<div id="mouse-position" class="text-right" ></div>
   						</div>
             </div>
@@ -816,7 +997,7 @@
     iconfile = './img/reservoir.png';
     iconscale = 24 / 60;
     ilabel = 'Reservoir_Name_T'
-    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+    point_label(ilayer, ilayerfile, iconfile, 'Reservoir_Main', iconscale,'Reservoir_Name_T');
 
     //อ่างเก็บน้ำรอง
     ilayer = 'Reservoir_Reserv';
@@ -824,7 +1005,7 @@
     iconfile = './img/diversion_dam.png';
     iconscale = 20 / 85;
     ilabel = 'Reservoir_Reserv'
-    point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale,'Reservoir_Name_T');
+    point_label(ilayer, ilayerfile, iconfile, 'Reservoir_Reserv', iconscale,'Reservoir_Name_T');
 
 
     </script>

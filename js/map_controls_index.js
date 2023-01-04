@@ -38,8 +38,123 @@ var popupTypes = [
     'Factory'
 ]
 
+$.each(popupTypes, function (i, data) {
+    var popupContainer = document.getElementById('popup-' + data)
+    var popupCloser = document.getElementById('popup-closer-' + data)
+    var popupContent = document.getElementById('popup-content-' + data)
+    popups[data] = {
+        popup: new ol.Overlay({
+            element: popupContainer,
+            autoPan: true,
+            autoPanAnimation: {
+                duration: 250
+            }
+        }),
+        container: popupContainer,
+        content: popupContent,
+        closer: popupCloser
+    }
+
+    popups[data].popup.setOffset([0, -20]);
+    popupCloser.onclick = function () {
+        popups[data].popup.setPosition(undefined)
+        this.blur()
+        return false
+    }
+})
+
+var toggle_header_action = false
+
+// Gets the element nav and margin top
+try{
+    document.getElementsByClassName('element-nav')[0].style.top = "0px"
+    document.getElementsByClassName('ol-viewport')[0].style.top = "0px"
+    document.getElementById('sidebar').style.top = "121px"
+    document.getElementById('control-fab').style.marginTop = "20px"
+    document.getElementsByClassName('tooltip_menu')[0].style.top = "0px"
+    document.getElementsByClassName('fa-chevron-down')[0].style.display = "none"
+    document.getElementsByClassName('fa-chevron-up')[0].style.display = "inline-block"
+    document.getElementsByClassName('tooltip_menu')[0].style.display = 'none'
+}catch(err){
+
+}
+
+
+// Toggle the header of the tooltip
+function toggleHeader(){
+    let top = document.getElementsByClassName('element-nav')[0].style.top
+    toggle_header_action = !toggle_header_action
+    console.log(toggle_header_action)
+    if(toggle_header_action){
+        document.getElementsByClassName('element-nav')[0].style.top = "-100px"
+        document.getElementsByClassName('ol-viewport')[0].style.top = "-100px"
+        document.getElementById('sidebar').style.top = "30px"
+        document.getElementById('control-fab').style.marginTop = "-80px"
+        document.getElementsByClassName('tooltip_menu')[0].style.top = "-100px"
+        document.getElementsByClassName('fa-chevron-down')[0].style.display = "inline-block"
+        document.getElementsByClassName('fa-chevron-up')[0].style.display = "none"
+        document.getElementsByClassName('tooltip_menu')[0].style.display = 'none'
+    }else{
+        document.getElementsByClassName('tooltip_menu')[0].style.display = 'none'
+        document.getElementsByClassName('element-nav')[0].style.top = "0px"
+        document.getElementsByClassName('ol-viewport')[0].style.top = "0px"
+        document.getElementById('sidebar').style.top = "130px"
+        document.getElementById('control-fab').style.marginTop = "20px"
+        document.getElementsByClassName('tooltip_menu')[0].style.top = "0px"
+        document.getElementsByClassName('fa-chevron-down')[0].style.display = "none"
+        document.getElementsByClassName('fa-chevron-up')[0].style.display = "inline-block"
+    }
+}
+
+
 // start
 $(document).ready(function () {
+    $('#map_filters').trigger("reset");
+    $('.scrollbar-inner').scrollbar();
+
+
+    $('#closebtn').on('click', function () {
+        $('#sidebar').css("left","-800px")
+        document.getElementsByClassName('tooltip_menu')[0].style.display = 'block'
+    });
+
+    $('#filter_icon').on('click', function () {
+        $('#sidebar').css("left","64px")
+        document.getElementsByClassName('tooltip_menu')[0].style.display = 'none'
+    });
+
+    // start layer
+    $("#WaterNetworkSubmenu").addClass('show')
+    $("#BasicInfoSubmenu").addClass('show')
+
+    $('#Water_group').prop('checked', true)
+    $("#Water_group").trigger("change")
+
+    $('#reservoir').prop('checked', true)
+    $("#reservoir").trigger("change")
+
+    $('#Watersource_group').prop('checked', true)
+    $("#Watersource_group").trigger("change")
+
+    $('#Pipe_group').prop('checked', false)
+    $("#Pipe_group").trigger("change")
+
+    $('#Pipe_Main').prop('checked', true)
+    $("#Pipe_Main").trigger("change")
+/*
+    $('#Pipe_Main').prop('checked', true)
+    $("#Pipe_Main").trigger("change")
+    $('#Pipe_Klongluang').prop('checked', true)
+    $("#Pipe_Klongluang").trigger("change")
+*/
+
+    $('#Pipe_group').prop('checked', true)
+    $("#Pipe_group").trigger("change")
+
+    $('#StudyArea').prop('checked', true)
+    $("#StudyArea").trigger("change")
+
+
 
 
 });
@@ -524,6 +639,85 @@ function toggleDialog(close = -1){
     }
 }
 
+// layer
+
+var Layer = document.createElement('button');
+Layer.innerHTML = '<a href="#" data-toggle="tooltip" title="Setting"><i class="fa fa-gear" /></a>';
+Layer.addEventListener('click', function () {
+    toggleDialog()
+});
+
+// Home
+var button = document.createElement('button');
+button.innerHTML = '<a href="#" data-toggle="tooltip" title="Home"><i class="fa fa-home" /></a>';
+button.addEventListener('click', function () {
+    // setCenter(15.1600, 103.4651, 8)
+
+    map.getView().animate({
+        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        duration: 2500,
+        zoom: 9.7
+    });
+});
+
+// Draw Line
+var buttonLine = document.createElement('button');
+buttonLine.innerHTML = '<a href="#" data-toggle="tooltip" title="Line"><i class="fas fa-slash"></i></a>';
+buttonLine.addEventListener("click", function () {
+    zoomDisplay = false
+    startInterAction('LineString')
+});
+
+// Draw Polygon
+var buttonPolygon = document.createElement('button');
+buttonPolygon.innerHTML = '<a href="#" data-toggle="tooltip" title="Polygon"<i class="fas fa-draw-polygon"></i></a>';
+buttonPolygon.addEventListener("click", function () {
+    zoomDisplay = false
+    startInterAction('Polygon')
+});
+
+
+// Remove Draw
+var buttonRemoveInterAction = document.createElement('button');
+buttonRemoveInterAction.innerHTML = '<a href="#" data-toggle="tooltip" title="Clear drawing"><i class="fas fa-times"></i></a>';
+buttonRemoveInterAction.addEventListener("click", function () {
+    stopInterAction()
+});
+
+var buttonBoxzoom = document.createElement('button');
+buttonBoxzoom.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom box"><i class="fas fa-object-group"></i></a>';
+buttonBoxzoom.addEventListener("click", function () {
+    zoomDisplay = 1
+    startInterAction('Polygon')
+});
+
+var buttonWithoutzoom = document.createElement('button');
+buttonWithoutzoom.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom WithOut"><i class="fa fa-expand"></i></a>';
+buttonWithoutzoom.addEventListener("click", function () {
+    document.getElementsByClassName('ol-full-screen-false')[0].click()
+});
+
+
+// Home
+var button_map = document.createElement('button');
+button_map.innerHTML = '<a onclick="map_display()" data-toggle="tooltip" title="Base map"><i class="fa fa-map" /></a>';
+
+// button group set
+
+// Adds the ol - zoom element to the zoom control.
+var zoomControl = document.getElementsByClassName('ol-zoom')[0];
+zoomControl.appendChild(buttonBoxzoom);
+zoomControl.appendChild(buttonWithoutzoom);
+
+// Add a Layer Switcher to the map.
+var layerSwitcher = new ol.control.LayerSwitcher({
+    // Optional label for button
+    tipLabel: 'Satellite'
+});
+map.addControl(layerSwitcher);
+
+
+
 var toggle_fab = false
 // map display.
 function map_display(close = -1){
@@ -550,8 +744,21 @@ function change_img(number){
     set[number-1].click()
 }
 
+// Add the mouseover event to the display.
+document.getElementsByClassName('panel')[0].addEventListener('mouseover',()=>{
+    document.getElementsByClassName('panel')[0].style.display='block'
+})
 
+// Add the mouseeleave event to the panel.
+document.getElementsByClassName('panel')[0].addEventListener('mouseleave',()=>{
+    document.getElementsByClassName('panel')[0].style.display='none'
+    toggle_fab = false
+})
 
+// popup ของ button group
+$.each(popupTypes, function (i, data) {
+    map.addOverlay(popups[String(data)].popup)
+})
 
 // Shows a feature info for a given coordinate.
 map.on('click', function (evt) {
@@ -572,4 +779,15 @@ map.getViewport().addEventListener('mouseout', function () {
     };
 });
 
+// Displays the sub - district.
+var zoom_display = [
+    'SubDistrict',
+]
+
 var lst = map.getView().getZoom()
+// Check if a sub - district is active and if so remove it.
+map.on('moveend', function(e) {
+    var newZoom = map.getView().getZoom();
+
+    lst = map.getView().getZoom()
+});
