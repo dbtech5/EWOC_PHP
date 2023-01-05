@@ -173,6 +173,11 @@
   								<div id="tooltip-content"></div>
   							</div>
 
+
+                <!-- Dialog Map -->
+                <div id="dialog_map">
+
+                </div>
   							<!-- Hover -->
   							<div id="hover-Cross_Section"></div>
   							<div id="hover-MapControl"></div>
@@ -363,6 +368,9 @@
                 '11':'พฤศจิกายน',
                 '12':'ธันวาคม',
                 }
+              var position_label = {}
+
+
           </script>
 
           <div class='sub-menu'>
@@ -399,6 +407,7 @@
 								$k = 1;
 								if ($result_s->num_rows > 0) {
 									while($row = $result_s->fetch_assoc()) {
+                    echo 'position_label["'.$row['res_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
 										$sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' ORDER BY `date` DESC, `date` ASC LIMIT 1";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
@@ -437,7 +446,7 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row['inflow'],2).",".number_format((float)$row['outflow'],2)."])'>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['res_name']."</td>";
 														echo "<td>".$row['province']."</td>";
@@ -467,6 +476,7 @@
 									$r = 0;
 									if ($result_s->num_rows > 0) {
 										while($row = $result_s->fetch_assoc()) {
+                      echo 'position_label["'.$row['sta_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
 											$sql = "SELECT * FROM `flow_data` WHERE sta_id ='".$row['sta_id']."' LIMIT 1";
 											$result = $conn->query($sql);
 											if ($result->num_rows > 0) {
@@ -503,7 +513,7 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"flow\",[\"".$row['sta_code']."\",".number_format((float)$row_s['wl'],2).",".number_format((float)$row_s['discharge'],2)."])' >";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['sta_code']."</td>";
 														echo "<td>".$row['river']."</td>";
@@ -532,7 +542,8 @@
   								$r = 0;
   								if ($result_s->num_rows > 0) {
   									while($row = $result_s->fetch_assoc()) {
-  										$sql = "SELECT * FROM `rain_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
+                      echo 'position_label["'.$row['sta_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
+                      $sql = "SELECT * FROM `rain_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
   										$result = $conn->query($sql);
   										if ($result->num_rows > 0) {
   											while($row_s = $result->fetch_assoc()) {
@@ -565,7 +576,7 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"rain\",[\"".$row['sta_code']." (".$row['name'].")\",".number_format((float)$row_s['rain_mm'],2)."])'>";
 														echo "<td>".$row['sta_code']."</td>";
 														echo "<td>".$row['name']."</td>";
 														echo "<td>".$row['tambon']."</td>";
@@ -590,6 +601,7 @@
   								$r = 0;
   								if ($result_s->num_rows > 0) {
   									while($row = $result_s->fetch_assoc()) {
+                      echo 'position_label["'.$row['sta_code'].'"] = ['.(((float)$row['lon'])).','.(((float)$row['lat'])+0.03).'];';
   										$sql = "SELECT * FROM `wq_data` WHERE sta_code ='".$row['sta_code']."' AND ec != '' LIMIT 1";
   										$result = $conn->query($sql);
   										if ($result->num_rows > 0) {
@@ -626,7 +638,16 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"wq\",[\"".
+                                  $row['station'].
+                                  " (".$row['sta_code'].")\",".
+                                  number_format((float)$row_s['salinity'],2).",".
+                                  number_format((float)$row_s['ec'],2).",".
+                                  number_format((float)$row_s['do'],2).",".
+                                  number_format((float)$row_s['ph'],2).",".
+                                  number_format((float)$row_s['tds'],2).",".
+                                  number_format((float)$row_s['temp'],2).",".
+                                  "])'>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['station']."</td>";
 														echo "<td>".$row['seadist_km']."</td>";
@@ -655,6 +676,7 @@
   								$r = 0;
   								if ($result_s->num_rows > 0) {
   									while($row = $result_s->fetch_assoc()) {
+                      echo 'position_label["'.$row['pump_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
   										$sql = "SELECT * FROM `pump_data` WHERE pump_code ='".$row['pump_code']."' LIMIT 1";
   										$result = $conn->query($sql);
   										if ($result->num_rows > 0) {
@@ -686,7 +708,7 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['pump_code']."\",\"pump\",[\"".$row['pump_name']."\",".number_format((float)$row_s['flow'],2)."])'>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['pump_code']."</td>";
 														echo "<td>".$row['pump_name']."</td>";
@@ -721,7 +743,7 @@
                         $result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-                            echo "<tr>";
+                            echo "<tr onclick='GoToPosition(\"".$row['customer_code']."\",\"customer\",[\"".$row['customer_name']."\",".number_format((float)$row_s['wateruse'],2)."])'>";
 														echo "<td>".$row['no']."</td>";
 														echo "<td>".$row['customer_name']."</td>";
 														echo "<td>".$row['customer_code']."</td>";
@@ -744,6 +766,7 @@
                   $r = 0;
                   if ($result_s->num_rows > 0) {
                     while($row = $result_s->fetch_assoc()) {
+                      echo 'position_label["'.$row['customer_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
                       $sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' LIMIT 1";
                       $result = $conn->query($sql);
                       if ($result->num_rows > 0) {
@@ -771,6 +794,7 @@
 								$r = 0;
 								if ($result_s->num_rows > 0) {
 									while($row = $result_s->fetch_assoc()) {
+                    echo 'position_label["'.$row['sta_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
 										$sql = "SELECT * FROM `tele_data` WHERE sta_code ='".$row['sta_code']."' LIMIT 1";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
@@ -805,7 +829,7 @@
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row_s = $result->fetch_assoc()) {
-														echo "<tr>";
+														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"tele\",[\"สรุปสถานการณ์น้ำโทรมาตรวัดละหารไร่\",".number_format((float)$row_s['wl'],2).",".number_format((float)$row_s['discharge'],2).",".number_format((float)$row_s['rain_mm'],2)."])'>";
 														echo "<td>1</td>";
 														echo "<td>".$row['tambon']."</td>";
 														echo "<td>".$row['district']."</td>";
@@ -834,6 +858,7 @@
                 $k = 1;
                 if ($result_s->num_rows > 0) {
                   while($row = $result_s->fetch_assoc()) {
+                    echo 'position_label["'.$row['res_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
                     $sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' ORDER BY `date` DESC, `date` ASC LIMIT 1";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
@@ -873,7 +898,7 @@
 											$result = $conn->query($sql);
 											if ($result->num_rows > 0) {
 												while($row_s = $result->fetch_assoc()) {
-													echo "<tr>";
+													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row['inflow'],2).",".number_format((float)$row['outflow'],2)."])'>";
 													echo "<td>".$row['no']."</td>";
 													echo "<td>".$row['res_name']."</td>";
 													echo "<td>".$row['district']."</td>";
@@ -982,6 +1007,81 @@
     ilinedash = '0, 0, 0';
     topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash);
 
+    function GoToPosition(name,type = 'reservoir',data = []){
+      map.getView().animate({
+          center: ol.proj.transform([parseFloat(position_label[name][0]), parseFloat(position_label[name][1])], 'EPSG:4326', 'EPSG:3857'),
+          duration: 1000,
+          zoom: 12
+      });
+      if(type == 'reservoir') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำอ่างเก็บน้ำ "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ปริมาตรน้ำในอ่าง : "+data[1]+" ล้าน ลบ.ม.</p>";
+        txt += "<p>ร้อยละ : "+data[2]+" %</p>";
+        txt += "<p>ปริมาณน้ำไหลเข้า : "+data[3]+" ล้าน ลบ.ม.</p>";
+        txt += "<p>ปริมาณน้ำระบาย : "+data[4]+" ล้าน ลบ.ม.</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'flow') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำปริมาณน้ำท่าสถานี "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ระดับน้ำ  : "+data[1]+" ม.รทก.</p>";
+        txt += "<p>ปริมาณน้ำ : "+data[2]+" ลบ.ม./วินาที</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'rain') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำปริมาณน้ำฝนสถานี "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ปริมาณน้ำฝน : "+data[1]+" มม.</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'wq') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำคุณภาพน้ำสถานี "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ความเค็ม : "+data[1]+" ก./ล.</p>";
+        txt += "<p>ค่าการนำไฟฟ้า : "+data[2]+" ไมโครซีเมนส์/เซนติเมตร</p>";
+        txt += "<p>ออกซิเจนในน้ำ : "+data[3]+" ก./ล.</p>";
+        txt += "<p>กรด-ด่าง : "+data[4]+" pH</p>";
+        txt += "<p>ของแข็งละลายน้ำ : "+data[5]+" ก./ล.</p>";
+        txt += "<p>อุณหภูมิ : "+data[6]+" องศา</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'pump') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำสถานีสูบน้ำ "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ปริมาณการสูบ : "+data[1]+" ลบ.ม.</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'customer') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>สรุปสถานการณ์น้ำการใช้น้ำลูกค้าเขต "+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ปริมาณการใช้น้ำ : "+data[1]+" ลบ.ม.</p>";
+        $('#dialog_map').append(txt)
+      }else if(type == 'tele') {
+        $('#dialog_map').empty();
+        $('#dialog_map').css('display','block');
+        let txt = "";
+        txt += "<h4>"+data[0]+"</h4>";
+        txt += "<hr>";
+        txt += "<p>ระดับน้ำ : "+data[1]+" ลบ.ม.</p>";
+        txt += "<p>ปริมาณน้ำ : "+data[2]+" ลบ.ม./วินาที</p>";
+        txt += "<p>ปริมาณน้ำฝน : "+data[3]+" มม.</p>";
+        $('#dialog_map').append(txt)
+      }
+    }
 
   </script>
   <?php

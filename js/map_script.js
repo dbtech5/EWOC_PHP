@@ -379,8 +379,8 @@ function displayFeatureInfo(pixel, coordinate) {
                   code = features[i]['values_']['data']['properties']['res_code']
                 } catch (e) {
 
-                } 
-                console.log(features[i],features[i]['values_']['name'])
+                }
+                console.log(features[i],features[i]['values_'])
                 let data_body = { 'res_code' : 'dk'}
                 text = ""
                 let keys_check = []
