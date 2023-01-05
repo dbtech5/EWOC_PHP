@@ -447,9 +447,9 @@
 												if ($result->num_rows > 0) {
                           while($row_s = $result->fetch_assoc()) {
   													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row_s['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row_s['inflow'],2).",".number_format((float)$row_s['outflow'],2)."])'>";
-  													echo "<td>".$row['no']."</td>";
-  													echo "<td>".$row['res_name']."</td>";
-  													echo "<td>".$row['province']."</td>";
+  													echo "<td class='left_txt'>".$row['no']."</td>";
+  													echo "<td class='left_txt'>".$row['res_name']."</td>";
+  													echo "<td class='left_txt'>".$row['province']."</td>";
   													echo "<td>".number_format((float)$row['maxvol'],2)."</td>";
   													echo "<td>".number_format((float)$row['nhvol'],2)."</td>";
   													echo "<td>".number_format((float)$row['minvol'],2)."</td>";
@@ -514,10 +514,10 @@
 													while($row_s = $result->fetch_assoc()) {
 														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"flow\",[\"".$row['sta_code']."\",".number_format((float)$row_s['wl'],2).",".number_format((float)$row_s['discharge'],2)."])' >";
 														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['sta_code']."</td>";
-														echo "<td>".$row['river']."</td>";
-														echo "<td>".$row['site']."</td>";
-														echo "<td>".$row['province']."</td>";
+														echo "<td class='left_txt'>".$row['sta_code']."</td>";
+														echo "<td class='left_txt'>".$row['river']."</td>";
+														echo "<td class='left_txt'>".$row['site']."</td>";
+														echo "<td class='left_txt'>".$row['province']."</td>";
 														echo "<td>".number_format((float)$row['da_km2'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
@@ -576,9 +576,9 @@
 													while($row_s = $result->fetch_assoc()) {
 														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"rain\",[\"".$row['sta_code']." (".$row['name'].")\",".number_format((float)$row_s['rain_mm'],2)."])'>";
 														echo "<td>".$row['sta_code']."</td>";
-														echo "<td>".$row['name']."</td>";
-														echo "<td>".$row['tambon']."</td>";
-														echo "<td>".$row['province']."</td>";
+														echo "<td class='left_txt'>".$row['name']."</td>";
+														echo "<td class='left_txt'>".$row['tambon']."</td>";
+														echo "<td class='left_txt'>".$row['province']."</td>";
 														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
 														echo "</tr>";
 													}
@@ -647,7 +647,7 @@
                                   number_format((float)$row_s['temp'],2).",".
                                   "])'>";
 														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['station']."</td>";
+														echo "<td class='left_txt'>".$row['station']."</td>";
 														echo "<td>".$row['seadist_km']."</td>";
 														echo "<td>".number_format((float)$row_s['salinity'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['ec'],2)."</td>";
@@ -708,8 +708,8 @@
 													while($row_s = $result->fetch_assoc()) {
 														echo "<tr onclick='GoToPosition(\"".$row['pump_code']."\",\"pump\",[\"".$row['pump_name']."\",".number_format((float)$row_s['flow'],2)."])'>";
 														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['pump_code']."</td>";
-														echo "<td>".$row['pump_name']."</td>";
+														echo "<td class='left_txt'>".$row['pump_code']."</td>";
+														echo "<td class='left_txt'>".$row['pump_name']."</td>";
 														echo "<td>".number_format((float)$row_s['flow'],2)."</td>";
 														echo "</tr>";
 													}
@@ -744,8 +744,8 @@
 													while($row_s = $result->fetch_assoc()) {
                             echo "<tr onclick='GoToPosition(\"".$row['customer_code']."\",\"customer\",[\"".$row['customer_name']."\",".number_format((float)$row_s['wateruse'],2)."])'>";
 														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['customer_name']."</td>";
-														echo "<td>".$row['customer_code']."</td>";
+														echo "<td class='left_txt'>".$row['customer_name']."</td>";
+														echo "<td class='left_txt'>".$row['customer_code']."</td>";
 														echo "<td>".number_format((float)$row['area'],2)."</td>";
 														echo "<td>".number_format((float)$row['meter'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['wateruse'],2)."</td>";
@@ -830,9 +830,9 @@
 													while($row_s = $result->fetch_assoc()) {
 														echo "<tr onclick='GoToPosition(\"".$row['sta_code']."\",\"tele\",[\"สรุปสถานการณ์น้ำโทรมาตรวัดละหารไร่\",".number_format((float)$row_s['wl'],2).",".number_format((float)$row_s['discharge'],2).",".number_format((float)$row_s['rain_mm'],2)."])'>";
 														echo "<td>1</td>";
-														echo "<td>".$row['tambon']."</td>";
-														echo "<td>".$row['district']."</td>";
-														echo "<td>".$row['province']."</td>";
+														echo "<td class='left_txt'>".$row['tambon']."</td>";
+														echo "<td class='left_txt'>".$row['district']."</td>";
+														echo "<td class='left_txt'>".$row['province']."</td>";
 														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
@@ -898,8 +898,8 @@
 												while($row_s = $result->fetch_assoc()) {
 													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row_s['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row_s['inflow'],2).",".number_format((float)$row_s['outflow'],2)."])'>";
 													echo "<td>".$row['no']."</td>";
-													echo "<td>".$row['res_name']."</td>";
-													echo "<td>".$row['province']."</td>";
+													echo "<td class='left_txt'>".$row['res_name']."</td>";
+													echo "<td class='left_txt'>".$row['province']."</td>";
 													echo "<td>".number_format((float)$row['maxvol'],2)."</td>";
 													echo "<td>".number_format((float)$row['nhvol'],2)."</td>";
 													echo "<td>".number_format((float)$row['minvol'],2)."</td>";
