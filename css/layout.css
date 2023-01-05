@@ -775,12 +775,6 @@ a.article:hover {
     line-height: 65px;
 }
 /*---------------------------------------------------*/
-.header-content {
-    margin-left: 5%;
-    font-size: 14px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
 
 .Split-Inner {
   display: flex;

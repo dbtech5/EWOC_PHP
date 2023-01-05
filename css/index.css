@@ -10,6 +10,7 @@ body {
 }
 
 #dialog_map {
+  transform: scale(0);
   user-select: none;
   font-size: 12px;
   transition: all 0.5s ease;
@@ -19,7 +20,7 @@ body {
   border-radius: 5px;
   position: absolute;
   z-index: 9999;
-  width: 30%;
+  min-width: 100px;
   margin-left: 2%;
   margin-top: 2%;
   min-height: 100px;
@@ -30,6 +31,13 @@ body {
   font-size: 13px;
   font-weight: bold;
 }
+
+#dialog_map > p {
+  color: #000;
+  font-size: 13px;
+  font-family: 'Prompt', sans-serif;
+}
+
 .panel {
   width: 80%;
   text-align:left;
@@ -64,7 +72,7 @@ tr:hover > td{
 td {
   padding: 5px 8px;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   border:1px solid #ddd;
 }
 td:nth-child(2),td:nth-child(3),td:nth-child(4) {
@@ -79,6 +87,15 @@ tr:nth-child(1) {
 
 tr:nth-child(1) > td:nth-child(2),tr:nth-child(1) > td:nth-child(3),tr:nth-child(1) > td:nth-child(4) {
   text-align: center !important;
+}
+
+
+.header-content {
+    margin-left: 2%;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .sub-menu {

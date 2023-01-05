@@ -1251,16 +1251,16 @@ function plot_data_list(){
         labels: {
           formatter: function() {
             return this.value;
-          },
-          style: {
-            fontSize: '18px',
           }
         },
         accessibility: {
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1272,7 +1272,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-              fontSize: '18px',
+              fontSize: '14px',
             }
           }
       },
@@ -1307,7 +1307,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1319,7 +1322,7 @@ function plot_data_list(){
             return this.value;
           },
           style: {
-            fontSize: '18px',
+            fontSize: '14px',
           }
         }
       },
@@ -1364,7 +1367,7 @@ function plot_data_list(){
             return this.value;
           },
           style: {
-            fontSize: '18px',
+            fontSize: '14px',
           }
         }
       },
@@ -1430,7 +1433,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1442,7 +1448,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-              fontSize: '18px',
+              fontSize: '14px',
             }
           }
       },
@@ -1518,7 +1524,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1530,7 +1539,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-              fontSize: '18px',
+              fontSize: '14px',
             }
           }
       },
@@ -1602,7 +1611,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1614,7 +1626,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-              fontSize: '18px',
+              fontSize: '14px',
             }
           }
       },
@@ -1704,7 +1716,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-              fontSize: '18px',
+              fontSize: '14px',
             }
           }
       },
@@ -1778,7 +1790,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1790,7 +1805,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -1850,7 +1865,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1862,7 +1880,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -1922,7 +1940,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -1934,7 +1955,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -1994,7 +2015,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2006,7 +2030,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -2066,7 +2090,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2078,7 +2105,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -2139,7 +2166,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2151,7 +2181,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -2213,7 +2243,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -2279,7 +2309,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2291,7 +2324,7 @@ function plot_data_list(){
               return this.value;
             },
             style: {
-      				fontSize: '18px',
+      				fontSize: '14px',
       			}
           }
       },
@@ -2341,7 +2374,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2400,7 +2436,10 @@ function plot_data_list(){
           description: 'Months of the year'
         },
         labels: {
-            step: 31
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {

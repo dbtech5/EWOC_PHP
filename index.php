@@ -129,7 +129,7 @@
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
 			<div class="Spilt-Screen">
 					<div>
-            <h3 class="header-content">รายงานสถาการณ์น้ำ</h3>
+            <h2 class="header-content">รายงานสถาการณ์น้ำ</h2>
               <div id="content">
   							<!-- Page Content  -->
   							<!-- tooltip style -->
@@ -434,7 +434,7 @@
 										<td>ปริมาณน้ำเก็บกัก<br>(ล้าน ลบ.ม.)</td>
 										<td>ปริมาณน้ำต่ำสุด<br>(ล้าน ลบ.ม.)</td>
 										<td>ปริมาณน้ำ<br>(ล้าน ลบ.ม.)</td>
-										<td>ร้อยละ<br>(ล้าน ลบ.ม.)</td>
+										<td>ร้อยละ<br>( % )</td>
 										<td>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</td>
 										<td>น้ำระบาย<br>(ล้าน ลบ.ม.)</td>
 									</tr>
@@ -501,7 +501,6 @@
 										<td>ที่ตั้ง</td>
 										<td>จังหวัด</td>
 										<td>พื้นที่รับน้ำ<br>(ตร.กม.)</td>
-										<td>ความจุลำน้ำ<br>(ลบ.ม./วินาที)</td>
 										<td>ระดับน้ำ<br>(ม.รทก.)</td>
 										<td>ปริมาณน้ำ<br>(ลบ.ม./วินาที)</td>
 									</tr>
@@ -520,7 +519,6 @@
 														echo "<td>".$row['site']."</td>";
 														echo "<td>".$row['province']."</td>";
 														echo "<td>".number_format((float)$row['da_km2'],2)."</td>";
-														echo "<td>372</td>";
 														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
 														echo "</tr>";
@@ -739,6 +737,7 @@
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while($row = $result_s->fetch_assoc()) {
+
 												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' LIMIT 1";
                         $result = $conn->query($sql);
 												if ($result->num_rows > 0) {
@@ -886,7 +885,7 @@
 									<td>ปริมาณน้ำเก็บกัก<br>(ล้าน ลบ.ม.)</td>
 									<td>ปริมาณน้ำต่ำสุด<br>(ล้าน ลบ.ม.)</td>
 									<td>ปริมาณน้ำ<br>(ล้าน ลบ.ม.)</td>
-									<td>ร้อยละ<br>(ล้าน ลบ.ม.)</td>
+									<td>ร้อยละ<br>( % )</td>
 									<td>น้ำไหลเข้าอ่าง<br>(ล้าน ลบ.ม.)</td>
 									<td>น้ำระบาย<br>(ล้าน ลบ.ม.)</td>
 								</tr>
@@ -1016,6 +1015,7 @@
       if(type == 'reservoir') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำอ่างเก็บน้ำ "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1027,6 +1027,7 @@
       }else if(type == 'flow') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำปริมาณน้ำท่าสถานี "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1036,6 +1037,7 @@
       }else if(type == 'rain') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำปริมาณน้ำฝนสถานี "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1044,6 +1046,7 @@
       }else if(type == 'wq') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำคุณภาพน้ำสถานี "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1057,6 +1060,7 @@
       }else if(type == 'pump') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำสถานีสูบน้ำ "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1065,6 +1069,7 @@
       }else if(type == 'customer') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>สรุปสถานการณ์น้ำการใช้น้ำลูกค้าเขต "+data[0]+"</h4>";
         txt += "<hr>";
@@ -1073,6 +1078,7 @@
       }else if(type == 'tele') {
         $('#dialog_map').empty();
         $('#dialog_map').css('display','block');
+        $('#dialog_map').css('transform','scale(1)');
         let txt = "";
         txt += "<h4>"+data[0]+"</h4>";
         txt += "<hr>";
