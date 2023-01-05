@@ -445,20 +445,20 @@
 												$sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$row['res_code']."' LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
-													while($row_s = $result->fetch_assoc()) {
-														echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row['inflow'],2).",".number_format((float)$row['outflow'],2)."])'>";
-														echo "<td>".$row['no']."</td>";
-														echo "<td>".$row['res_name']."</td>";
-														echo "<td>".$row['province']."</td>";
-														echo "<td>".number_format((float)$row['maxvol'], 2, '.', '')."</td>";
-														echo "<td>".number_format((float)$row['nhvol'], 2, '.', '')."</td>";
-														echo "<td>".number_format((float)$row['minvol'], 2, '.', '')."</td>";
-														echo "<td>".number_format((float)$row['volume'], 2, '.', '')."</td>";
-														echo "<td>".number_format($row_s['volume']*100/$row['nhvol'],2)."</td>";
-														echo "<td>".number_format((float)$row['inflow'],2)."</td>";
-														echo "<td>".number_format((float)$row['outflow'],2)."</td>";
-														echo "</tr>";
-													}
+                          while($row_s = $result->fetch_assoc()) {
+  													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row_s['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row_s['inflow'],2).",".number_format((float)$row_s['outflow'],2)."])'>";
+  													echo "<td>".$row['no']."</td>";
+  													echo "<td>".$row['res_name']."</td>";
+  													echo "<td>".$row['province']."</td>";
+  													echo "<td>".number_format((float)$row['maxvol'],2)."</td>";
+  													echo "<td>".number_format((float)$row['nhvol'],2)."</td>";
+  													echo "<td>".number_format((float)$row['minvol'],2)."</td>";
+  													echo "<td>".number_format((float)$row_s['volume'],2)."</td>";
+  													echo "<td>".number_format((float)$row_s['volume']*100/$row['nhvol'],2)."</td>";
+  													echo "<td>".number_format((float)$row_s['inflow'],2)."</td>";
+  													echo "<td>".number_format((float)$row_s['outflow'],2)."</td>";
+  													echo "</tr>";
+  												}
 												}
 											}
 										}
@@ -897,10 +897,9 @@
 											$result = $conn->query($sql);
 											if ($result->num_rows > 0) {
 												while($row_s = $result->fetch_assoc()) {
-													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row['inflow'],2).",".number_format((float)$row['outflow'],2)."])'>";
+													echo "<tr onclick='GoToPosition(\"".$row['res_code']."\",\"reservoir\",[\"".$row['res_name']."\",".number_format((float)$row_s['volume'], 2, '.', '').",".number_format($row_s['volume']*100/$row['nhvol'],2).",".number_format((float)$row_s['inflow'],2).",".number_format((float)$row_s['outflow'],2)."])'>";
 													echo "<td>".$row['no']."</td>";
 													echo "<td>".$row['res_name']."</td>";
-													echo "<td>".$row['district']."</td>";
 													echo "<td>".$row['province']."</td>";
 													echo "<td>".number_format((float)$row['maxvol'],2)."</td>";
 													echo "<td>".number_format((float)$row['nhvol'],2)."</td>";
