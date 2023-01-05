@@ -1069,7 +1069,7 @@
         $('#dialog_map').css('display','block');
         $('#dialog_map').css('transform','scale(1)');
         let txt = "";
-        txt += "<h4>สรุปสถานการณ์น้ำการใช้น้ำลูกค้าเขต "+data[0]+"</h4>";
+        txt += "<h4>สรุปสถานการณ์น้ำการใช้น้ำลูกค้า "+data[0]+"</h4>";
         txt += "<hr>";
         txt += "<p>ปริมาณการใช้น้ำ : "+data[1]+" ลบ.ม.</p>";
         $('#dialog_map').append(txt)
