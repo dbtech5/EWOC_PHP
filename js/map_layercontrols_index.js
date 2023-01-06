@@ -595,7 +595,7 @@ function point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel)
             if(ilabel && icheck){
                 iconStyle = new ol.style.Style({
                     image: new ol.style.Icon(({
-                        anchor: [0.5+1, 1],
+                        anchor: [0.5, 2],
                         opacity: 0.8,
                         src: iconfile,
                         // mapsize/imagesize
@@ -616,7 +616,7 @@ function point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel)
             }else{
                 iconStyle = new ol.style.Style({
                     image: new ol.style.Icon(({
-                        anchor: [0.5, 1],
+                        anchor: [0.5, 2],
                         opacity: 0.8,
                         src: iconfile,
                         // mapsize/imagesize
