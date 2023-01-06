@@ -112,6 +112,7 @@ $(document).ready(function () {
     $('#map_filters').trigger("reset");
     $('.scrollbar-inner').scrollbar();
 
+    document.getElementsByClassName('tooltip_menu')[0].style.display = 'none'
 
     $('#closebtn').on('click', function () {
         $('#sidebar').css("left","-800px")
@@ -703,11 +704,21 @@ var button_map = document.createElement('button');
 button_map.innerHTML = '<a onclick="map_display()" data-toggle="tooltip" title="Base map"><i class="fa fa-map" /></a>';
 
 // button group set
+var element = document.createElement('div');
+element.className = 'rotate-north ol-unselectable ol-control';
+element.appendChild(button);
+element.appendChild(buttonLine);
+element.appendChild(buttonPolygon);
+element.appendChild(Layer);
+element.appendChild(button_map);
+
+element.appendChild(buttonRemoveInterAction);
 
 // Adds the ol - zoom element to the zoom control.
 var zoomControl = document.getElementsByClassName('ol-zoom')[0];
 zoomControl.appendChild(buttonBoxzoom);
 zoomControl.appendChild(buttonWithoutzoom);
+element.appendChild(buttonRemoveInterAction);
 
 // Add a Layer Switcher to the map.
 var layerSwitcher = new ol.control.LayerSwitcher({
@@ -755,6 +766,17 @@ document.getElementsByClassName('panel')[0].addEventListener('mouseleave',()=>{
     toggle_fab = false
 })
 
+// Rotate north.
+var RotateNorthControl = new ol.control.Control({
+    element: element
+});
+
+map.addControl(RotateNorthControl);
+
+// Add a scale line to the map.
+var scaleLine = new ol.control.ScaleLine()
+map.addControl(scaleLine);
+
 // popup ของ button group
 $.each(popupTypes, function (i, data) {
     map.addOverlay(popups[String(data)].popup)
@@ -783,11 +805,3 @@ map.getViewport().addEventListener('mouseout', function () {
 var zoom_display = [
     'SubDistrict',
 ]
-
-var lst = map.getView().getZoom()
-// Check if a sub - district is active and if so remove it.
-map.on('moveend', function(e) {
-    var newZoom = map.getView().getZoom();
-
-    lst = map.getView().getZoom()
-});
