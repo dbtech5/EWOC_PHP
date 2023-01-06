@@ -76,6 +76,12 @@ td {
   border:1px solid #ddd;
 }
 
+
+.rotate-north {
+    top: 1vh !important;
+    right: 1vw;
+}
+
 .left_txt {
   text-align: left;
 }

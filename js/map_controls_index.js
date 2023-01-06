@@ -703,22 +703,39 @@ buttonWithoutzoom.addEventListener("click", function () {
 var button_map = document.createElement('button');
 button_map.innerHTML = '<a onclick="map_display()" data-toggle="tooltip" title="Base map"><i class="fa fa-map" /></a>';
 
+
+var buttonZoomIn = document.createElement('button');
+buttonZoomIn.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom WithOut"><i class="fa fa-plus"></i></a>';
+buttonZoomIn.addEventListener("click", function () {
+    map.getView().animate({
+        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        duration: 500,
+        zoom: map.getView().getZoom()+0.5
+    });
+});
+
+var buttonZoomOut = document.createElement('button');
+buttonZoomOut.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom WithOut"><i class="fa fa-minus"></i></a>';
+buttonZoomOut.addEventListener("click", function () {
+    map.getView().animate({
+        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        duration: 500,
+        zoom: map.getView().getZoom()-0.5
+    });
+});
+
 // button group set
 var element = document.createElement('div');
 element.className = 'rotate-north ol-unselectable ol-control';
 element.appendChild(button);
-element.appendChild(buttonLine);
-element.appendChild(buttonPolygon);
-element.appendChild(Layer);
-element.appendChild(button_map);
+element.appendChild(buttonZoomIn);
+element.appendChild(buttonZoomOut);
 
-element.appendChild(buttonRemoveInterAction);
 
 // Adds the ol - zoom element to the zoom control.
 var zoomControl = document.getElementsByClassName('ol-zoom')[0];
 zoomControl.appendChild(buttonBoxzoom);
 zoomControl.appendChild(buttonWithoutzoom);
-element.appendChild(buttonRemoveInterAction);
 
 // Add a Layer Switcher to the map.
 var layerSwitcher = new ol.control.LayerSwitcher({
