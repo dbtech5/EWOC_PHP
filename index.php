@@ -1004,6 +1004,25 @@
     ilinedash = '0, 0, 0';
     topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash);
 
+
+    Object.entries(position_label).forEach((k,v)=>{
+      measureTooltipElement = document.createElement('div');
+      let txt = document.createElement('p');
+      measureTooltipElement.className = 'tooltip-info';
+      txt.innerHTML = k[0]
+      console.log(k[0])
+      measureTooltipElement.appendChild(txt)
+      measureTooltip = new ol.Overlay({
+          element: measureTooltipElement,
+          offset: [0, -15],
+          positioning: 'bottom-center'
+      });
+      let d = k[1]
+      measureTooltip.setPosition(ol.proj.fromLonLat([d[0]-0.0,(d[1]+0.1)]))
+      map.addOverlay(measureTooltip);
+    })
+
+
     function GoToPosition(name,type = 'reservoir',data = []){
       map.getView().animate({
           center: ol.proj.transform([parseFloat(position_label[name][0]), parseFloat(position_label[name][1])], 'EPSG:4326', 'EPSG:3857'),
@@ -1110,7 +1129,6 @@
     iconscale = 20 / 85;
     ilabel = 'Reservoir_Reserv'
     point_label(ilayer, ilayerfile, iconfile, 'Reservoir_Reserv', iconscale,'Reservoir_Name_T');
-
 
     </script>
   <?php

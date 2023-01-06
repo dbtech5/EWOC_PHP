@@ -29,7 +29,7 @@
     right: 1vw;
 }
 
-/* 
+/*
 .ol-control button {
     background-color: #32AA95 !important;
 } */
@@ -78,6 +78,16 @@
 .tooltip-measure {
     opacity: 1;
     font-weight: bold;
+}
+
+.tooltip-info {
+  position: relative;
+  background: #FFF;
+  border-radius: 4px;
+  color: #000 !important;
+  font-size: 12px;
+  padding: 4px 8px;
+  white-space: nowrap;
 }
 
 .tooltip-static {
@@ -230,7 +240,7 @@
 }
 
 .element-nav{
-    text-align:left; 
+    text-align:left;
     /*background-color:#0B2B4C;*/
     background: rgb(15,14,70);
     background: linear-gradient(229deg, rgba(15,14,70,1) 0%, rgba(11,43,76,1) 100%);
