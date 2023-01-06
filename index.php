@@ -1014,7 +1014,7 @@
       measureTooltipElement.appendChild(txt)
       measureTooltip = new ol.Overlay({
           element: measureTooltipElement,
-          offset: [0, -15],
+          offset: [0, 0],
           positioning: 'bottom-center'
       });
       let d = k[1]
