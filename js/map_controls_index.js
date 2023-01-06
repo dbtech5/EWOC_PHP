@@ -163,8 +163,8 @@ $(document).ready(function () {
 var view = new ol.View({
     minZoom: 8,
     maxZoom: 20,
-    center: ol.proj.fromLonLat([101.3485, 13.2003]),
-    zoom: 9.7,
+    center: ol.proj.fromLonLat([101.3035, 13.2971]),
+    zoom: 10.2,
     //extent: ol.proj.transformExtent([101.2, 14, 105.6, 16.5],'EPSG:4326', 'EPSG:3857')
     extent: ol.proj.transformExtent([100.5, 12, 106.6, 18.5],'EPSG:4326', 'EPSG:3857')
 })
@@ -655,9 +655,10 @@ button.addEventListener('click', function () {
     // setCenter(15.1600, 103.4651, 8)
 
     map.getView().animate({
-        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        center: ol.proj.fromLonLat([101.3035, 13.2971]),
         duration: 2500,
-        zoom: 9.7
+        zoom: 10.2
+
     });
 });
 
@@ -708,7 +709,7 @@ var buttonZoomIn = document.createElement('button');
 buttonZoomIn.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom WithOut"><i class="fa fa-plus"></i></a>';
 buttonZoomIn.addEventListener("click", function () {
     map.getView().animate({
-        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        center: ol.proj.fromLonLat([101.3035, 13.2971]),
         duration: 500,
         zoom: map.getView().getZoom()+0.5
     });
@@ -718,7 +719,7 @@ var buttonZoomOut = document.createElement('button');
 buttonZoomOut.innerHTML = '<a href="#" data-toggle="tooltip" title="Zoom WithOut"><i class="fa fa-minus"></i></a>';
 buttonZoomOut.addEventListener("click", function () {
     map.getView().animate({
-        center: ol.proj.fromLonLat([101.3485, 13.2003]),
+        center: ol.proj.fromLonLat([101.3035, 13.2971]),
         duration: 500,
         zoom: map.getView().getZoom()-0.5
     });
