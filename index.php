@@ -458,6 +458,11 @@
   													echo "<td>".number_format((float)$row_s['inflow'],2)."</td>";
   													echo "<td>".number_format((float)$row_s['outflow'],2)."</td>";
   													echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['res_code'].'"].push("'.$row['res_name'].'");';
+                            echo 'position_label["'.$row['res_code'].'"].push('.number_format((float)$row_s['volume'],2).');';
+                            echo 'position_label["'.$row['res_code'].'"].push('.number_format((float)$row_s['volume']*100/$row['nhvol'],2).');';
+                            echo "</script>";
   												}
 												}
 											}
@@ -522,6 +527,11 @@
 														echo "<td>".number_format((float)$row_s['wl'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['sta_code'].'"].push("'.$row['sta_code'].'");';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['wl'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['discharge'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -581,6 +591,10 @@
 														echo "<td class='left_txt'>".$row['province']."</td>";
 														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['sta_code'].'"].push("'.$row['sta_code'].'");';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['rain_mm'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -656,6 +670,15 @@
 														echo "<td>".number_format((float)$row_s['tds'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['temp'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['sta_code'].'"].push("'.$row['station'].'");';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['salinity'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['ec'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['do'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['ph'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['tds'],2).');';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['temp'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -712,6 +735,10 @@
 														echo "<td class='left_txt'>".$row['pump_name']."</td>";
 														echo "<td>".number_format((float)$row_s['flow'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['pump_code'].'"].push("'.$row['pump_name'].'");';
+                            echo 'position_label["'.$row['pump_code'].'"].push('.number_format((float)$row_s['flow'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -750,6 +777,10 @@
 														echo "<td>".number_format((float)$row['meter'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['wateruse'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['customer_code'].'"].push("'.$row['customer_name'].'");';
+                            echo 'position_label["'.$row['customer_code'].'"].push('.number_format((float)$row_s['wateruse'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -837,6 +868,10 @@
 														echo "<td>".number_format((float)$row_s['discharge'],2)."</td>";
 														echo "<td>".number_format((float)$row_s['rain_mm'],2)."</td>";
 														echo "</tr>";
+                            echo "<script>";
+                            echo 'position_label["'.$row['sta_code'].'"].push("'.$row['pump_name'].'");';
+                            echo 'position_label["'.$row['sta_code'].'"].push('.number_format((float)$row_s['rain_mm'],2).');';
+                            echo "</script>";
 													}
 												}
 											}
@@ -1009,7 +1044,60 @@
       measureTooltipElement = document.createElement('div');
       let txt = document.createElement('p');
       measureTooltipElement.className = 'tooltip-info';
-      txt.innerHTML = k[0]
+      <?php
+      if($_GET['type']){
+        if($_GET['type']=='reservoir'){
+        ?>
+          let txts = ""
+          txts += "ปริมาณน้ำ : " + k[1][3] + " ล้าน ลบ.ม.<br>"
+          txts += "ร้อยละ : " + k[1][4] + " %<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='flow'){
+        ?>
+          let txts = ""
+          txts += "ระดับน้ำ : " + k[1][3] + " ม.รทก.<br>"
+          txts += "ปริมาณน้ำ : " + k[1][4] + " ลบ.ม./วินาที<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='rain'){
+        ?>
+          let txts = ""
+          txts += "ปริมาณฝน : " + k[1][3] + " ม.รทก.<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='wq'){
+        ?>
+          let txts = ""
+          txts += "ความเค็ม : " + k[1][3] + " g/l<br>"
+          txts += "ค่าการนำไฟฟ้า : " + k[1][4] + " µS/cm<br>"
+          txts += "ออกซิเจนในน้ำ : " + k[1][5] + " mg/l<br>"
+          txts += "กรด-ด่าง : " + k[1][6] + " pH<br>"
+          txts += "ของแข็งละลายน้ํา : " + k[1][7] + " mg/l<br>"
+          txts += "อุณหภูมิ : " + k[1][8] + " °C<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='pump'){
+        ?>
+          let txts = ""
+          txts += "ปริมาณการสูบน้ำ : " + k[1][3] + " ลบ.ม.<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='tele'){
+        ?>
+          let txts = ""
+          txts += "ปริมาณฝน : " + k[1][3] + " มม.<br>"
+          txt.innerHTML = txts;
+        <?php
+      }else if($_GET['type']=='customer'){
+        ?>
+          let txts = ""
+          txts += "ข้อมูลการใช้น้ำลูกค้า  : " + k[1][3] + " ลบ.ม<br>"
+          txt.innerHTML = txts;
+        <?php
+      }
+    }
+      ?>
       console.log(k[0])
       measureTooltipElement.appendChild(txt)
       measureTooltip = new ol.Overlay({
