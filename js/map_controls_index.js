@@ -823,3 +823,19 @@ map.getViewport().addEventListener('mouseout', function () {
 var zoom_display = [
     'SubDistrict',
 ]
+
+map.on('moveend', function(e) {
+
+    let el = document.getElementsByClassName('tooltip-info')
+    for(let i = 0;i< el.length; i++){
+      if(map.getView().getZoom() >= 10){
+        el[i].style.display = 'block'
+        console.log('block')
+      }else{
+        el[i].style.display = 'none'
+        console.log('none')
+      }
+    }
+
+});
+//

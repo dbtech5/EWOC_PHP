@@ -750,7 +750,30 @@
 							}else if($_GET['type']=='customer'){
 								$sql_s = "SELECT * FROM `customer_info`";
 							?>
-
+              <script>
+              <?php
+                $result_s = $conn->query($sql_s);
+                $k = 1;
+                $r = 0;
+                if ($result_s->num_rows > 0) {
+                  while($row = $result_s->fetch_assoc()) {
+                    echo 'position_label["'.$row['customer_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
+                    $sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' LIMIT 1";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      while($row_s = $result->fetch_assoc()) {
+                        if($k==1){
+                          $k = 0;
+                          $f_d = explode('-',$row_s['date']);
+                          echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์การใช้น้ำลูกค้าวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
+                        }
+                        $r += 1;
+                      }
+                    }
+                  }
+                }
+              ?>
+              </script>
 								<table>
 									<tr>
 										<td>ลำดับลูกค้า</td>
@@ -788,31 +811,7 @@
 
 									?>
 								</table>
-                <script>
-                <?php
-                  $sql_s = "SELECT * FROM `customer_info` ORDER BY `no`";
-                  $result_s = $conn->query($sql_s);
-                  $k = 1;
-                  $r = 0;
-                  if ($result_s->num_rows > 0) {
-                    while($row = $result_s->fetch_assoc()) {
-                      echo 'position_label["'.$row['customer_code'].'"] = ['.$row['long'].','.$row['lat'].'];';
-                      $sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$row['customer_code']."' LIMIT 1";
-                      $result = $conn->query($sql);
-                      if ($result->num_rows > 0) {
-                        while($row_s = $result->fetch_assoc()) {
-                          if($k==1){
-                            $k = 0;
-                            $f_d = explode('-',$row_s['date']);
-                            echo 'document.getElementsByClassName("header-content")[0].innerHTML="รายงานสถานการณ์การใช้น้ำลูกค้าวันที่ '.$f_d[2].' "+parttern_label["'.$f_d[1].'"]+" '.((int)$f_d[0]+543).'";';
-                          }
-                          $r += 1;
-                        }
-                      }
-                    }
-                  }
-                ?>
-                </script>
+
 							<?php
 							}else if($_GET['type']=='tele'){
 								$sql_s = "SELECT * FROM `tele_info`";
@@ -1091,6 +1090,7 @@
         <?php
       }else if($_GET['type']=='customer'){
         ?>
+          console.log(k)
           let txts = ""
           txts += "ข้อมูลการใช้น้ำลูกค้า  : " + k[1][3] + " ลบ.ม<br>"
           txt.innerHTML = txts;
@@ -1112,6 +1112,7 @@
 
 
     function GoToPosition(name,type = 'reservoir',data = []){
+      /*
       map.getView().animate({
           center: ol.proj.transform([parseFloat(position_label[name][0]), parseFloat(position_label[name][1])], 'EPSG:4326', 'EPSG:3857'),
           duration: 1000,
@@ -1192,6 +1193,8 @@
         txt += "<p>ปริมาณน้ำฝน : "+data[3]+" มม.</p>";
         $('#dialog_map').append(txt)
       }
+      */
+      console.error('disabled function')
     }
 
   </script>
