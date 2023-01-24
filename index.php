@@ -1048,51 +1048,51 @@
         if($_GET['type']=='reservoir'){
         ?>
           let txts = ""
-          txts += "ปริมาณน้ำ : " + k[1][3] + " ล้าน ลบ.ม.<br>"
-          txts += "ร้อยละ : " + k[1][4] + " %<br>"
+          txts += "V : " + k[1][3] + " m³<br>"
+          txts += "% : " + k[1][4] + "<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='flow'){
         ?>
           let txts = ""
-          txts += "ระดับน้ำ : " + k[1][3] + " ม.รทก.<br>"
-          txts += "ปริมาณน้ำ : " + k[1][4] + " ลบ.ม./วินาที<br>"
+          txts += "wl : " + k[1][3] + " MSL<br>"
+          txts += "discharge : " + k[1][4] + " m³/s<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='rain'){
         ?>
           let txts = ""
-          txts += "ปริมาณฝน : " + k[1][3] + " ม.รทก.<br>"
+          txts += "rain : " + k[1][3] + " mm<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='wq'){
         ?>
           let txts = ""
-          txts += "ความเค็ม : " + k[1][3] + " g/l<br>"
-          txts += "ค่าการนำไฟฟ้า : " + k[1][4] + " µS/cm<br>"
-          txts += "ออกซิเจนในน้ำ : " + k[1][5] + " mg/l<br>"
-          txts += "กรด-ด่าง : " + k[1][6] + " pH<br>"
-          txts += "ของแข็งละลายน้ํา : " + k[1][7] + " mg/l<br>"
-          txts += "อุณหภูมิ : " + k[1][8] + " °C<br>"
+          txts += "Sal : " + k[1][3] + " g/l<br>"
+          txts += "ec : " + k[1][4] + " µS/cm<br>"
+          txts += "do : " + k[1][5] + " mg/l<br>"
+          txts += "pH : " + k[1][6] + " pH<br>"
+          txts += "tds : " + k[1][7] + " mg/l<br>"
+          txts += "temp : " + k[1][8] + " °C<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='pump'){
         ?>
           let txts = ""
-          txts += "ปริมาณการสูบน้ำ : " + k[1][3] + " ลบ.ม.<br>"
+          txts += "flow : " + k[1][3] + " m³<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='tele'){
         ?>
           let txts = ""
-          txts += "ปริมาณฝน : " + k[1][3] + " มม.<br>"
+          txts += "rain : " + k[1][3] + " mm<br>"
           txt.innerHTML = txts;
         <?php
       }else if($_GET['type']=='customer'){
         ?>
           console.log(k)
           let txts = ""
-          txts += "ข้อมูลการใช้น้ำลูกค้า  : " + k[1][3] + " ลบ.ม<br>"
+          txts += "wateruse  : " + k[1][3] + " m³<br>"
           txt.innerHTML = txts;
         <?php
       }
