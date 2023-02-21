@@ -17,7 +17,7 @@
             $result_info = $conn->query($sql_info);
             if ($result_info->num_rows > 0) {
                 while($row_info = $result_info->fetch_assoc()) {
-                  echo $row_info['res_name'].",".$row['date'].",".$row['volume'].",".$row['inflow'].",".$row['outflow']."&n";
+                  echo $row_info['res_names'].",".$row['date'].",".$row['volume'].",".$row['inflow'].",".$row['outflow']."&n";
                 }
             }
     ?>

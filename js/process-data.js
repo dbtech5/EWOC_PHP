@@ -2286,6 +2286,7 @@ function plot_data_list(){
 
     // Creates a label for each item in the storage data.
     Object.entries(storage_data).forEach(([key, value]) => {
+      console.log(value)
       item_lit.push(value['wl']==undefined?0:value['wl'])
       key_label.push(parttern_label[value['date'].split('-')[1]])
     })
@@ -2353,6 +2354,7 @@ function plot_data_list(){
     Object.entries(storage_data).forEach(([key, value]) => {
       item_lit.push(value['discharge']==undefined?0:value['discharge'])
       key_label.push(parttern_label[value['date'].split('-')[1]])
+      console.log(value['date'].split('-')[1])
     })
 
     dataset_series.push({
@@ -2363,7 +2365,7 @@ function plot_data_list(){
     // Creates a spline plot
     Highcharts.chart('highcharts-tele-discharge', {
       chart: {
-        type: 'spline'
+        type: 'column'
       },
       title: {
         text: 'Discharge'
@@ -2799,9 +2801,9 @@ function makeTable(){
               $('#tele_bodyT').append(`
                 <tr>
                     <td>${(date_col)}</td>
-                    <td>${number_add_comma((data_filter[2] && data_filter[2] != "" && data_filter[2] != '#N/A')?data_filter[2].toFixed(2):"0.00")}</td>
-                    <td>${number_add_comma((data_filter[3] && data_filter[2] != "" && data_filter[3] != '#N/A')?data_filter[3].toFixed(2):"0.00")}</td>
                     <td>${number_add_comma((data_filter[4] && data_filter[2] != "" && data_filter[4] != '#N/A')?data_filter[4].toFixed(2):"0.00")}</td>
+                    <td>${number_add_comma((data_filter[3] && data_filter[2] != "" && data_filter[3] != '#N/A')?data_filter[3].toFixed(2):"0.00")}</td>
+                    <td>${number_add_comma((data_filter[2] && data_filter[2] != "" && data_filter[2] != '#N/A')?data_filter[2].toFixed(2):"0.00")}</td>
                 </tr>`)
             }
             n++
