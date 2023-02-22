@@ -307,10 +307,10 @@ function load_csv_totable(){
         console.log(tmp_key)
         if(tmp_key != ""){
           tmp_json['date'] = tmp_key
-          tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[4].split(',')[0]))
-          tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
-          tmp_json['rain'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
-
+          tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
+          tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[6].split(',')[0]))
+          tmp_json['rain'] = parseFloat(filter_charecter(tmp_split[7].split(',')[0]))
+          console.log(tmp_split)
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
@@ -2798,10 +2798,11 @@ function makeTable(){
 
             if(parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && (document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
               // Returns a tele_bodyT formatted string.
+              console.log(data_filter)
               $('#tele_bodyT').append(`
                 <tr>
                     <td>${(date_col)}</td>
-                    <td>${number_add_comma((data_filter[4] && data_filter[2] != "" && data_filter[4] != '#N/A')?data_filter[4].toFixed(2):"0.00")}</td>
+                    <td>${number_add_comma((data_filter[1] && data_filter[2] != "" && data_filter[1] != '#N/A')?data_filter[1].toFixed(2):"0.00")}</td>
                     <td>${number_add_comma((data_filter[3] && data_filter[2] != "" && data_filter[3] != '#N/A')?data_filter[3].toFixed(2):"0.00")}</td>
                     <td>${number_add_comma((data_filter[2] && data_filter[2] != "" && data_filter[2] != '#N/A')?data_filter[2].toFixed(2):"0.00")}</td>
                 </tr>`)

@@ -525,8 +525,8 @@
         <div style="display:flex;">
             <div style="width:30%;padding-left:10%">
                 <div>
-                    <img src="./img/reservoir/bp_img01.jpg" width="100%" height="200px" style="margin-bottom: 20px;">
-                    <img src="./img/reservoir/bp_map01.jpg" width="100%" height="200px">
+                    <img src="./img/tele/tele_sta.jpg" width="100%" height="200px" style="margin-bottom: 20px;">
+                    <img src="./img/tele/EAST_20230222_0845.jpg" width="100%" height="200px">
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
