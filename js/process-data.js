@@ -2365,7 +2365,7 @@ function plot_data_list(){
     // Creates a spline plot
     Highcharts.chart('highcharts-tele-discharge', {
       chart: {
-        type: 'column'
+        type: 'spline'
       },
       title: {
         text: 'Discharge'
@@ -2427,7 +2427,7 @@ function plot_data_list(){
     // Generates tele - rain plot.
     Highcharts.chart('highcharts-tele-rain', {
       chart: {
-        type: 'spline'
+        type: 'column'
       },
       title: {
         text: 'Rain mm'
@@ -2803,8 +2803,8 @@ function makeTable(){
                 <tr>
                     <td>${(date_col)}</td>
                     <td>${number_add_comma((data_filter[1] && data_filter[2] != "" && data_filter[1] != '#N/A')?data_filter[1].toFixed(2):"0.00")}</td>
-                    <td>${number_add_comma((data_filter[3] && data_filter[2] != "" && data_filter[3] != '#N/A')?data_filter[3].toFixed(2):"0.00")}</td>
                     <td>${number_add_comma((data_filter[2] && data_filter[2] != "" && data_filter[2] != '#N/A')?data_filter[2].toFixed(2):"0.00")}</td>
+                    <td>${number_add_comma((data_filter[3] && data_filter[2] != "" && data_filter[3] != '#N/A')?data_filter[3].toFixed(2):"0.00")}</td>
                 </tr>`)
             }
             n++
