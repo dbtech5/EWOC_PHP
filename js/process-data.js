@@ -304,13 +304,12 @@ function load_csv_totable(){
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2]+" "+tmp_split[3])
-        console.log(tmp_key)
         if(tmp_key != ""){
+          console.log(tmp_split)
           tmp_json['date'] = tmp_key
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
           tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[6].split(',')[0]))
           tmp_json['rain'] = parseFloat(filter_charecter(tmp_split[7].split(',')[0]))
-          console.log(tmp_split)
           storage_data[tmp_key] = tmp_json
           //console.log(tmp_json)
           let t = tmp_key.split('-')[0]
@@ -2283,14 +2282,24 @@ function plot_data_list(){
       text += (parseInt(document.getElementById('year_select').value)>parseInt(document.getElementById('year_select_end').value)?document.getElementById('year_select').value:document.getElementById('year_select_end').value)
     }
     document.getElementById('alert_tele').innerHTML = text
-
+    let date_count = []
+    let month_tmp = ''
     // Creates a label for each item in the storage data.
     Object.entries(storage_data).forEach(([key, value]) => {
-      console.log(value)
-      item_lit.push(value['wl']==undefined?0:value['wl'])
-      key_label.push(parttern_label[value['date'].split('-')[1]])
+      //console.log(value['date'].split('-'))
+      if(month_tmp != value['date'].split('-')[1]){
+        date_count = []
+      }
+      console.log(value['date'].split('-')[0],document.getElementById('year_select_start').value)
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
+        item_lit.push(value['wl']==undefined?0:value['wl'])
+        key_label.push(parttern_label[value['date'].split('-')[1]])
+        date_count.push(value['date'].split('-')[2].split(' ')[0])
+        console.log(value['date'])
+        month_tmp = value['date'].split('-')[1]
+      }
     })
-    console.log(key_label)
+    console.log(key_label,key_label.length)
     dataset_series.push({
       name: 'สถานีโทรมาตรวัดละหารไร่',
       data: item_lit
@@ -2350,11 +2359,20 @@ function plot_data_list(){
     item_lit = []
     dataset_series = []
 
-    // Adds the discharge labels to the item_lit
+    date_count = []
+    month_tmp = ''
+    // Creates a label for each item in the storage data.
     Object.entries(storage_data).forEach(([key, value]) => {
-      item_lit.push(value['discharge']==undefined?0:value['discharge'])
-      key_label.push(parttern_label[value['date'].split('-')[1]])
-      console.log(value['date'].split('-')[1])
+      //console.log(value['date'].split('-'))
+      if(month_tmp != value['date'].split('-')[1]){
+        date_count = []
+      }
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
+        item_lit.push(value['discharge']==undefined?0:value['discharge'])
+        key_label.push(parttern_label[value['date'].split('-')[1]])
+        date_count.push(value['date'].split('-')[2].split(' ')[0])
+        month_tmp = value['date'].split('-')[1]
+      }
     })
 
     dataset_series.push({
@@ -2413,10 +2431,20 @@ function plot_data_list(){
     dataset_series = []
     item_lit = []
 
-    // Creates the item_lit labels for the storage data.
+    date_count = []
+    month_tmp = ''
+    // Creates a label for each item in the storage data.
     Object.entries(storage_data).forEach(([key, value]) => {
-      item_lit.push(value['rain']==undefined?0:value['rain'])
-      key_label.push(value['date'])
+      //console.log(value['date'].split('-'))
+      if(month_tmp != value['date'].split('-')[1]){
+        date_count = []
+      }
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
+        item_lit.push(value['rain']==undefined?0:value['rain'])
+        key_label.push(parttern_label[value['date'].split('-')[1]])
+        date_count.push(value['date'].split('-')[2].split(' ')[0])
+        month_tmp = value['date'].split('-')[1]
+      }
     })
 
     dataset_series.push({
