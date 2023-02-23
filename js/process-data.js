@@ -2290,14 +2290,22 @@ function plot_data_list(){
     document.getElementById('alert_tele').innerHTML = text
     let date_count = []
     let month_tmp = ''
+    let data_set = {}
     // Creates a label for each item in the storage data.
     Object.entries(storage_data).forEach(([key, value]) => {
       //console.log(value['date'].split('-'))
       if(month_tmp != value['date'].split('-')[1]){
         date_count = []
       }
+      
       //console.log(value['date'].split('-')[0],document.getElementById('year_select_start').value)
-      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
+        console.log(data_set[key.split('-')[0]])
+        if(data_set[key.split('-')[0]]==undefined){
+          console.log('s')
+          data_set[key.split('-')[0]] = []
+        }
+        data_set[key.split('-')[0]].push(value['wl']==undefined?0:value['wl'])
         item_lit.push(value['wl']==undefined?0:value['wl'])
         key_label.push(parttern_label[value['date'].split('-')[1]])
         date_count.push(value['date'].split('-')[2].split(' ')[0])
@@ -2305,11 +2313,15 @@ function plot_data_list(){
         month_tmp = value['date'].split('-')[1]
       }
     })
-    console.log(key_label,key_label.length)
-    dataset_series.push({
-      name: 'สถานีโทรมาตรวัดละหารไร่',
-      data: item_lit
-    })
+    console.log(key_label,key_label.length,data_set)
+    for(let n=0;n<Object.values(data_set).length;n++){
+      dataset_series.push({
+        name: parseInt(Object.keys(data_set)[n])+543,
+        data: Object.values(data_set)[n],
+        color: color_list[n]
+      })
+    }
+    
 
     // Plots the value of the dataset.
     Highcharts.chart('highcharts-tele-wl', {
@@ -2364,7 +2376,7 @@ function plot_data_list(){
 
     item_lit = []
     dataset_series = []
-
+    data_set = {}
     date_count = []
     month_tmp = ''
     // Creates a label for each item in the storage data.
@@ -2373,18 +2385,26 @@ function plot_data_list(){
       if(month_tmp != value['date'].split('-')[1]){
         date_count = []
       }
-      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
-        item_lit.push(value['discharge']==undefined?0:value['discharge'])
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
+        
+        if(data_set[key.split('-')[0]]==undefined){
+          console.log('s')
+          data_set[key.split('-')[0]] = []
+        }
+        data_set[key.split('-')[0]].push(value['discharge']==undefined?0:value['discharge'])
         key_label.push(parttern_label[value['date'].split('-')[1]])
         date_count.push(value['date'].split('-')[2].split(' ')[0])
         month_tmp = value['date'].split('-')[1]
       }
     })
 
-    dataset_series.push({
-      name: 'สถานีโทรมาตรวัดละหารไร่',
-      data: item_lit
-    })
+    for(let n=0;n<Object.values(data_set).length;n++){
+      dataset_series.push({
+        name: parseInt(Object.keys(data_set)[n])+543,
+        data: Object.values(data_set)[n],
+        color: color_list[n]
+      })
+    }
 
     // Creates a spline plot
     Highcharts.chart('highcharts-tele-discharge', {
@@ -2434,9 +2454,9 @@ function plot_data_list(){
       series: dataset_series
     });
 
-    dataset_series = []
     item_lit = []
-
+    dataset_series = []
+    data_set = {}
     date_count = []
     month_tmp = ''
     // Creates a label for each item in the storage data.
@@ -2445,18 +2465,27 @@ function plot_data_list(){
       if(month_tmp != value['date'].split('-')[1]){
         date_count = []
       }
-      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
-        item_lit.push(value['rain']==undefined?0:value['rain'])
+      if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
+        
+        if(data_set[key.split('-')[0]]==undefined){
+          console.log('s')
+          data_set[key.split('-')[0]] = []
+        }
+        data_set[key.split('-')[0]].push(value['rain']==undefined?0:value['rain'])
         key_label.push(parttern_label[value['date'].split('-')[1]])
         date_count.push(value['date'].split('-')[2].split(' ')[0])
         month_tmp = value['date'].split('-')[1]
       }
     })
 
-    dataset_series.push({
-      name: 'สถานีโทรมาตรวัดละหารไร่',
-      data: item_lit
-    })
+    for(let n=0;n<Object.values(data_set).length;n++){
+      dataset_series.push({
+        name: parseInt(Object.keys(data_set)[n])+543,
+        data: Object.values(data_set)[n],
+        color: color_list[n]
+      })
+    }
+
 
     // Generates tele - rain plot.
     Highcharts.chart('highcharts-tele-rain', {
@@ -2827,6 +2856,7 @@ function makeTable(){
         let h_tmp = (dt.getHours()+[].length == 1)?'0'+dt.getHours()+[]:dt.getHours()+[]
         let format_time = 15*parseInt(dt.getMinutes()/15)
         format_time = (format_time+[].length == 1)?'0'+format_time+[]:format_time+[]
+        format_time = (format_time == '0')?'0'+format_time:format_time
         console.log(dt.getMinutes())
         console.log('http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
