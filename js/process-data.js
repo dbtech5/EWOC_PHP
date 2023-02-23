@@ -2290,12 +2290,12 @@ function plot_data_list(){
       if(month_tmp != value['date'].split('-')[1]){
         date_count = []
       }
-      console.log(value['date'].split('-')[0],document.getElementById('year_select_start').value)
+      //console.log(value['date'].split('-')[0],document.getElementById('year_select_start').value)
       if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && value['date'].split('-')[0] == document.getElementById('year_select_start').value-543){
         item_lit.push(value['wl']==undefined?0:value['wl'])
         key_label.push(parttern_label[value['date'].split('-')[1]])
         date_count.push(value['date'].split('-')[2].split(' ')[0])
-        console.log(value['date'])
+        //console.log(value['date'])
         month_tmp = value['date'].split('-')[1]
       }
     })
@@ -2815,7 +2815,11 @@ function makeTable(){
               <th>วันที่</th><th>ระดับน้ำ (ม.รทก.)</th><th>ปริมาณน้ำ (ลบ.ม./วินาที)</th><th>ปริมาณน้ำฝน (มม.)</th>
           </tr>
         `)
+        let dt = new Date()
+        let m = (dt.getMonth()+1)
+        let format_ftp = (dt.getFullYear()+[])+(((m+[]).length == 1)?'0'+m:m+[])+dt.getDate()
 
+        $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_0000.jpg')
         Object.keys(storage_data).forEach(head => {
           // Parse a date and column from a string.
             let data_filter = Object.values(data_val[n])
