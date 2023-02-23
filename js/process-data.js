@@ -17,6 +17,7 @@ var name_reservoir = ""
 var year_list = []
 var data_list = []
 var vol_list = []
+var color_list = ["#7D3C98","#5DADE2","#16A085","#F4D03F","#DF42CA","#EB984E"]
 // Get a list of inflow and outflow variables.
 var inflow_list = []
 var outflow_list = []
@@ -305,7 +306,7 @@ function load_csv_totable(){
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[2]+" "+tmp_split[3])
         if(tmp_key != ""){
-          console.log(tmp_split)
+          //console.log(tmp_split)
           tmp_json['date'] = tmp_key
           tmp_json['wl'] = parseFloat(filter_charecter(tmp_split[5].split(',')[0]))
           tmp_json['discharge'] = parseFloat(filter_charecter(tmp_split[6].split(',')[0]))
@@ -1165,7 +1166,7 @@ function plot_data_list(){
     // Parse the year_select_start and year_filter.
 
     let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-    let color_list = ["#7D3C98","#5DADE2","#16A085","#F4D03F","#DF42CA","#EB984E"]
+    
     let index = 0
     // Parse the year_select and year_exam elements.
     for(let i=1;i<tmp_year_filter.length;i++){
@@ -1502,12 +1503,14 @@ function plot_data_list(){
       }
     })
 
-
+    let i = 0
     Object.entries(year_tmp).forEach(([key,value])=>{
       dataset_series.push({
         name: key,
-        data: value
+        data: value,
+        color: color_list[i]
       })
+      i+=1
     })
 
     Highcharts.chart('highcharts-flow-wl', {
@@ -1590,11 +1593,14 @@ function plot_data_list(){
 
     })
     dataset_series = []
+    i = 0
     Object.entries(year_tmp).forEach(([key,value])=>{
       dataset_series.push({
         name: key,
-        data: value
+        data: value,
+        color: color_list[i]
       })
+      i+=1
     })
     console.log(year_name)
     Highcharts.chart('highcharts-flow-discharge', {
@@ -2818,8 +2824,12 @@ function makeTable(){
         let dt = new Date()
         let m = (dt.getMonth()+1)
         let format_ftp = (dt.getFullYear()+[])+(((m+[]).length == 1)?'0'+m:m+[])+dt.getDate()
-
-        $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_0000.jpg')
+        let h_tmp = (dt.getHours()+[].length == 1)?'0'+dt.getHours()+[]:dt.getHours()+[]
+        let format_time = 15*parseInt(dt.getMinutes()/15)
+        format_time = (format_time+[].length == 1)?'0'+format_time+[]:format_time+[]
+        console.log(dt.getMinutes())
+        console.log('http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
+        $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         Object.keys(storage_data).forEach(head => {
           // Parse a date and column from a string.
             let data_filter = Object.values(data_val[n])
@@ -2830,7 +2840,7 @@ function makeTable(){
 
             if(parseInt(document.getElementById("year_select_start").value) == (parseInt(da_t[0])+543) && (document.getElementById("year_select_end").value == 'เลือกปี') || (parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) && document.getElementById("year_select").value != 'เลือกปี') || parseInt(document.getElementById("year_select").value) == (parseInt(da_t[0])+543) || ((parseInt(da_t[0])+543) >= parseInt(document.getElementById("year_select_start").value) && (parseInt(da_t[0])+543) <= parseInt(document.getElementById("year_select_end").value))){
               // Returns a tele_bodyT formatted string.
-              console.log(data_filter)
+              //console.log(data_filter)
               $('#tele_bodyT').append(`
                 <tr>
                     <td>${(date_col)}</td>
