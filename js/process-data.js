@@ -2313,8 +2313,22 @@ function plot_data_list(){
         month_tmp = value['date'].split('-')[1]
       }
     })
+    key_label = []
+    for(let n=0;n<12;n++){
+      for(let i=0;i<30;i++){
+        console.log((((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[]))
+        key_label.push(parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])])
+      }
+    }
     console.log(key_label,key_label.length,data_set)
     for(let n=0;n<Object.values(data_set).length;n++){
+      let tmp_l = (365-Object.values(data_set)[n].length)
+      for(let i=0;i<(tmp_l);i++){
+        console.log(1)
+        data_set[Object.keys(data_set)[n]].splice(0, 0, 0);
+      }
+      console.log(365-Object.values(data_set)[n].length)
+      console.log(Object.values(data_set)[n])
       dataset_series.push({
         name: parseInt(Object.keys(data_set)[n])+543,
         data: Object.values(data_set)[n],
@@ -2857,7 +2871,9 @@ function makeTable(){
         let format_time = 15*parseInt(dt.getMinutes()/15)
         format_time = (format_time+[].length == 1)?'0'+format_time+[]:format_time+[]
         format_time = (format_time == '0')?'0'+format_time:format_time
-        console.log(dt.getMinutes())
+        
+        h_tmp = (h_tmp+[] == '0')?'0'+h_tmp:h_tmp
+        console.log(dt.getMinutes(),format_time,h_tmp)
         console.log('http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         Object.keys(storage_data).forEach(head => {

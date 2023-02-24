@@ -127,9 +127,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
-				<div class="Spilt-Screen">
-					<div>
-						<div class='sub-menu'>
+			<div class='sub-menu' style="width: 80%; margin-top: 20px; margin-left: 80px;">
 							<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
 							<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
 							<a href="index.php?type=rain">ปริมาณน้ำฝน</a>
@@ -138,6 +136,9 @@ error_reporting(E_ERROR | E_PARSE);
 							<a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
 							<a href="index.php?type=tele">โทรมาตร</a>
 						</div>
+				<div class="Spilt-Screen">
+					<div>
+						
 						<div id="content">
 							<!-- Page Content  -->
 							<!-- tooltip style -->
@@ -358,7 +359,7 @@ error_reporting(E_ERROR | E_PARSE);
 						</div>
 					</div>
 
-					<div>
+					<div style="padding-top:0px;">
 
 
 
