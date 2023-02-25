@@ -72,7 +72,7 @@ tr:hover > td{
 td {
   padding: 5px 8px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   border:1px solid #ddd;
 }
 
@@ -110,7 +110,7 @@ tr:nth-child(1) > td:nth-child(2),tr:nth-child(1) > td:nth-child(3),tr:nth-child
 }
 
 .sub-menu {
-  background-color: #222d32;
+  background-color: #add8e6;
   margin-bottom: 20px;
   width: 98%;
   text-align: left;
@@ -121,15 +121,16 @@ tr:nth-child(1) > td:nth-child(2),tr:nth-child(1) > td:nth-child(3),tr:nth-child
 .sub-menu > a {
   padding: 10px 25px;
   width: 10%;
-  padding: 5px 1s5px;
-  color: #FFF;
-  font-size: 12px;
+  padding: 12px 1s5px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 15px;
   font-family: 'Prompt', sans-serif;
   cursor: pointer;
 
 }
 .sub-menu > a:hover {
-  background-color: #000;
+  background-color: #e0ffff;
 }
 canvas {
   position: relative;
