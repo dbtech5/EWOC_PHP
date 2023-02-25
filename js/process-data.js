@@ -1166,7 +1166,7 @@ function plot_data_list(){
     // Parse the year_select_start and year_filter.
 
     let tmp_year_filter = document.getElementById('year_select_start').innerHTML.replaceAll('<option>','').split('</option>')
-    
+
     let index = 0
     // Parse the year_select and year_exam elements.
     for(let i=1;i<tmp_year_filter.length;i++){
@@ -2297,7 +2297,7 @@ function plot_data_list(){
       if(month_tmp != value['date'].split('-')[1]){
         date_count = []
       }
-      
+
       //console.log(value['date'].split('-')[0],document.getElementById('year_select_start').value)
       if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
         console.log(data_set[key.split('-')[0]])
@@ -2335,7 +2335,7 @@ function plot_data_list(){
         color: color_list[n]
       })
     }
-    
+
 
     // Plots the value of the dataset.
     Highcharts.chart('highcharts-tele-wl', {
@@ -2400,7 +2400,7 @@ function plot_data_list(){
         date_count = []
       }
       if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
-        
+
         if(data_set[key.split('-')[0]]==undefined){
           console.log('s')
           data_set[key.split('-')[0]] = []
@@ -2480,7 +2480,7 @@ function plot_data_list(){
         date_count = []
       }
       if(!date_count.includes(value['date'].split('-')[2].split(' ')[0]) && (value['date'].split('-')[0] == document.getElementById('year_select_start').value-543 || value['date'].split('-')[0] == document.getElementById('year_select_end').value-543)){
-        
+
         if(data_set[key.split('-')[0]]==undefined){
           console.log('s')
           data_set[key.split('-')[0]] = []
@@ -2689,8 +2689,8 @@ function makeTable(){
             $('#flow_bodyT').append(`
               <tr>
                 <td>${(date_col)}</td>
-                <td>${number_add_comma(data_filter[1].toFixed(2))}</td>
                 <td>${number_add_comma(data_filter[2].toFixed(2))}</td>
+                <td>${number_add_comma(data_filter[1].toFixed(2))}</td>
               </tr>`)
           }
           n++
@@ -2871,7 +2871,7 @@ function makeTable(){
         let format_time = 15*parseInt(dt.getMinutes()/15)
         format_time = (format_time+[].length == 1)?'0'+format_time+[]:format_time+[]
         format_time = (format_time == '0')?'0'+format_time:format_time
-        
+
         h_tmp = (h_tmp+[] == '0')?'0'+h_tmp:h_tmp
         console.log(dt.getMinutes(),format_time,h_tmp)
         console.log('http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
