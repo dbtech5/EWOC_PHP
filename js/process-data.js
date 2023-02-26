@@ -2228,7 +2228,7 @@ function plot_data_list(){
 
     Highcharts.chart('highcharts-rain', {
       chart: {
-        type: 'spline'
+        type: 'column'
       },
       title: {
         text: $("#val_data :selected").text()
@@ -2283,9 +2283,9 @@ function plot_data_list(){
       text += document.getElementById('year_select_start').value
     }else{
       text += " ช่วงปี "
-      text += (parseInt(document.getElementById('year_select').value)>parseInt(document.getElementById('year_select_start').value)?document.getElementById('year_select_start').value:document.getElementById('year_select').value)
+      text += document.getElementById('year_select_start').value
       text += " ถึงปี "
-      text += (parseInt(document.getElementById('year_select').value)>parseInt(document.getElementById('year_select_end').value)?document.getElementById('year_select').value:document.getElementById('year_select_end').value)
+      text += (document.getElementById('year_select').value !='เลือกปี' && parseInt(document.getElementById('year_select').value)>parseInt(document.getElementById('year_select_end').value)?document.getElementById('year_select').value:document.getElementById('year_select_end').value)
     }
     document.getElementById('alert_tele').innerHTML = text
     let date_count = []
@@ -2325,7 +2325,7 @@ function plot_data_list(){
       let tmp_l = (365-Object.values(data_set)[n].length)
       for(let i=0;i<(tmp_l);i++){
         console.log(1)
-        data_set[Object.keys(data_set)[n]].splice(0, 0, 0);
+        data_set[Object.keys(data_set)[n]].push(0);
       }
       console.log(365-Object.values(data_set)[n].length)
       console.log(Object.values(data_set)[n])
@@ -2412,7 +2412,16 @@ function plot_data_list(){
       }
     })
 
+
+    console.log(key_label,key_label.length,data_set)
     for(let n=0;n<Object.values(data_set).length;n++){
+      let tmp_l = (365-Object.values(data_set)[n].length)
+      for(let i=0;i<(tmp_l);i++){
+        console.log(1)
+        data_set[Object.keys(data_set)[n]].push(0);
+      }
+      console.log(365-Object.values(data_set)[n].length)
+      console.log(Object.values(data_set)[n])
       dataset_series.push({
         name: parseInt(Object.keys(data_set)[n])+543,
         data: Object.values(data_set)[n],

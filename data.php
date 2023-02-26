@@ -599,10 +599,10 @@
 
         <div class="chart-flow">
             <figure class="highcharts-main">
-                <div id="highcharts-flow-wl" style="height: 800px;"></div>
+                <div id="highcharts-flow-discharge" style="height: 800px;"></div>
             </figure>
             <figure class="highcharts-main">
-                <div id="highcharts-flow-discharge" style="height: 800px;"></div>
+                <div id="highcharts-flow-wl" style="height: 800px;"></div>
             </figure>
         </div>
 
