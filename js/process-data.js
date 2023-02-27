@@ -1244,7 +1244,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: $("#val_data :selected").text()
+        text: 'ปริมาตรน้ำในอ่าง'
       },
       xAxis: {
         categories: key_label,
@@ -1265,7 +1265,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาตรน้ำในอ่าง, ล้าน ลบ.ม.'
+          text: 'ปริมาตรน้ำในอ่าง,ล้าน ลบ.ม.'
         },
           labels: {
             formatter: function () {
@@ -1315,7 +1315,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาตรน้ำระบาย, ล้าน ลบ.ม.'
+          text: 'ปริมาตรน้ำระบาย,ล้าน ลบ.ม.'
         },
         labels: {
           formatter: function () {
@@ -1360,7 +1360,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาตรน้ำไหลลงอ่าง, ล้าน ลบ.ม.'
+          text: 'ปริมาตรน้ำไหลลงอ่าง,ล้าน ลบ.ม.'
         },
         labels: {
           formatter: function () {
@@ -1425,7 +1425,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: $("#val_data :selected").text()
+        text: 'ปริมาณการสูบน้ำ'
       },
       xAxis: {
         categories:key_label,
@@ -1518,7 +1518,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: $("#val_data :selected").text()
+        text: 'ปริมาตรน้ำ'
       },
       xAxis: {
         categories:Object.values(year_name)[0],
@@ -1534,7 +1534,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ระดับน้ำ (ม.รทก.)'
+          text: 'ปริมาตรน้ำ,ล้าน ลบ.ม.'
         },
           labels: {
             formatter: function () {
@@ -1608,7 +1608,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'ปริมาตรน้ำ'
+        text: 'ระดับน้ำ'
       },
       xAxis: {
         categories:Object.values(year_name)[0],
@@ -1624,7 +1624,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาตรน้ำ (ล้าน ลบ.ม)'
+          text: 'ระดับน้ำ,ม.รทก.'
         },
           labels: {
             formatter: function () {
@@ -1701,7 +1701,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: $("#val_data :selected").text()
+        text: 'ปริมาณการใช้น้ำของลูกค้า'
       },
       xAxis: {
         categories:key_label,
@@ -1787,7 +1787,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'Salinty'
+        text: 'ความเค็ม'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -1803,7 +1803,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ความเค็ม, (g/l)'
+          text: 'ความเค็ม,g/l'
         },
           labels: {
             formatter: function () {
@@ -1862,7 +1862,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'pH'
+        text: 'กรด-ด่าง'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -1878,7 +1878,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'กรด-ด่าง, pH'
+          text: 'กรด-ด่าง,pH'
         },
           labels: {
             formatter: function () {
@@ -1937,7 +1937,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'Temp'
+        text: 'อุณหภูมิ'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -1953,7 +1953,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'อุณหภูมิ, (°C)'
+          text: 'อุณหภูมิ,°C'
         },
           labels: {
             formatter: function () {
@@ -2012,7 +2012,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'TDS'
+        text: 'ของแข็งละลายน้ำ'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -2028,7 +2028,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ของแข็งละลายน้ำ, (mg/l)'
+          text: 'ของแข็งละลายน้ำ,mg/l'
         },
           labels: {
             formatter: function () {
@@ -2087,7 +2087,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'DO'
+        text: 'ออกซิเจนในน้ำ'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -2103,7 +2103,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ออกซิเจนในน้ำ, (mg/l)'
+          text: 'ออกซิเจนในน้ำ,mg/l'
         },
           labels: {
             formatter: function () {
@@ -2163,7 +2163,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'EC'
+        text: 'ค่าการนำไฟฟ้า'
       },
       xAxis: {
         categories:Object.values(data_lit_key)[0],
@@ -2179,7 +2179,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ค่าการนำไฟฟ้า, (µS/cm)'
+          text: 'ค่าการนำไฟฟ้า,µS/cm'
         },
           labels: {
             formatter: function () {
@@ -2231,7 +2231,7 @@ function plot_data_list(){
         type: 'column'
       },
       title: {
-        text: $("#val_data :selected").text()
+        text: 'ปริมาณน้ำฝน'
       },
       xAxis: {
         categories:key_label,
@@ -2241,7 +2241,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาตรน้ำฝน, มม.'
+          text: 'ปริมาณน้ำฝน,มม.'
         },
           labels: {
             formatter: function () {
@@ -2343,7 +2343,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'Wl'
+        text: 'ระดับน้ำ'
       },
       xAxis: {
         categories:key_label,
@@ -2359,7 +2359,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ระดับน้ำ (ม.รทก.)'
+          text: 'ระดับน้ำ,ม.รทก.'
         },
           labels: {
             formatter: function () {
@@ -2435,7 +2435,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'Discharge'
+        text: 'ปริมาณน้ำ'
       },
       xAxis: {
         categories:key_label,
@@ -2451,7 +2451,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาณน้ำ (ลบ.ม./วินาที)'
+          text: 'ปริมาณน้ำ,ลบ.ม./วินาที'
         },
           labels: {
             formatter: function () {
@@ -2516,7 +2516,7 @@ function plot_data_list(){
         type: 'column'
       },
       title: {
-        text: 'Rain mm'
+        text: 'ปริมาณน้ำฝน'
       },
       xAxis: {
         categories:key_label,
@@ -2532,7 +2532,7 @@ function plot_data_list(){
       },
       yAxis: {
         title: {
-          text: 'ปริมาณน้ำฝน (มม.)'
+          text: 'ปริมาณน้ำฝน,มม.'
         },
           labels: {
             formatter: function () {
