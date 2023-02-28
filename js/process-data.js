@@ -2754,7 +2754,7 @@ function makeTable(){
             <th>${text}</th>
           </tr>
           <tr style="display: none;">
-            <th>วันที่</th><th>ปริมาณการใช้น้ำของลูกค้า</th>
+            <th>วันที่</th><th>ปริมาณการใช้น้ำของลูกค้า (ลบ.ม.)</th>
           </tr>
         `)
 
@@ -2835,7 +2835,7 @@ function makeTable(){
           <th>${text}</th>
         </tr>
         <tr style="display: none;">
-            <th>วันที่</th><th>ปริมาณน้ำฝน</th>
+            <th>วันที่</th><th>ปริมาณน้ำฝน (มม.)</th>
         </tr>
       `)
 
