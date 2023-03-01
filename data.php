@@ -428,7 +428,7 @@
                 <div class="group_make_header" >
                     <table style="width:85%;margin-left:0;">
                         <tr>
-                            <th>วันที่</th><th>ปริมาณการใช้น้ำของลูกค้า</th>
+                            <th>วันที่</th><th>ปริมาณการใช้น้ำของลูกค้า (ลบ.ม.)</th>
                         </tr>
                     </table>
                 </div>
@@ -467,7 +467,7 @@
                 <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
-                            <th>วันที่</th><th>ปริมาณการสูบน้ำ</th>
+                            <th>วันที่</th><th>ปริมาณการสูบน้ำ (ลบ.ม.)</th>
                         </tr>
                     </table>
                 </div>
@@ -505,7 +505,7 @@
                 <div class="group_make_header" style="margin-left:0;">
                     <table style="width:85%;margin-left:0;">
                         <tr>
-                            <th>วันที่</th><th>ปริมาณน้ำฝน</th>
+                            <th>วันที่</th><th>ปริมาณน้ำฝน (มม.)</th>
                         </tr>
                     </table>
                 </div>
