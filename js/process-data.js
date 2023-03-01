@@ -187,6 +187,7 @@ function load_csv_totable(){
         $('#year_select_end').append('<option>เลือกปี</option>')
         //$('#year_select_end').append('<option>-- ไม่ระบุปี --</option>')
         year.forEach(item=>{
+          console.log(item)
           if(parseInt(item) > 0){
             $('#year_select').append('<option>'+(parseInt(item)+543)+'</option>')
             $('#year_select_start').append('<option>'+(parseInt(item)+543)+'</option>')
@@ -356,8 +357,8 @@ function load_csv_totable(){
 
   }else if($('#val_data').val() != "เลือกสถานีน้ำฝน" && type == 'rain'){
     storage_data = {}
-    console.log("load_data.php?type=rain&id="+$('#val_data').val())
-    $.get("load_data.php?type=rain&id="+$('#val_data').val(), function( datas ) {
+    console.log("load_data.php?type=rain&id=090160")
+    $.get("load_data.php?type=rain&id=090160", function( datas ) {
       console.log(datas)
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
@@ -365,6 +366,7 @@ function load_csv_totable(){
 
         let tmp_split = (data).replace("}","").split(":")
         let tmp_json = {}
+        console.log(tmp_split)
         let tmp_key = filter_charecter(tmp_split[2].split(',')[0])
         console.log(tmp_key)
         if(tmp_key != ""){
@@ -613,6 +615,9 @@ function select_data(type){
   if(parameter_set){
     setTimeout(()=>{
       document.getElementById('val_data').value = urlParams.get('name')
+      if(urlParams.get('type') == 3){
+        document.getElementById('val_data').value = '090160'
+      }
       console.log('successful load parameters')
 
       // Load csv to table
@@ -899,6 +904,7 @@ function load_option(){
       dt.forEach((it)=>{
         // Parse a comma - separated list of options.
         let d = it.split(',')
+        console.log(d)
         if(d[1] != undefined){
           $('#val_data').append(`<option value='${d[0].trim()}'>${d[1]}</option>`)
         }
@@ -997,11 +1003,12 @@ document.getElementById('year_select_start').addEventListener('change',()=>{
     }
   })
 
-  $('#year_select').empty()
 
+  $('#year_select').empty()
+  $('#year_select').append('<option>เลือกปี</option>')
   // Generate a year select clause.
   lit.forEach((item)=>{
-    if(document.getElementById('year_select_end').value != 'เลือกปี'){
+    if(document.getElementById('year_select_end').value == 'เลือกปี'){
       $('#year_select').append('<option>'+item+'</option>')
     }
   })
@@ -1250,7 +1257,7 @@ function plot_data_list(){
         categories: key_label,
         labels: {
           formatter: function() {
-            return this.value;
+            return this.value ;
           }
         },
         accessibility: {
@@ -1281,6 +1288,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1550,6 +1566,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1640,6 +1665,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1683,9 +1717,6 @@ function plot_data_list(){
         year_item[tmp_split].push((value['wl']+""=="NaN"?0:value['wl']))
         key_label.push(parttern_label[value['date'].split('-')[1]])
       }
-
-
-
       console.log(value['date'],value['wateruse'],((value['wateruse']+""=="NaN"?" ":value['wateruse'])))
     })
     console.log(item_lit)
@@ -1730,6 +1761,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1819,6 +1859,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1894,6 +1943,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -1969,6 +2027,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2044,6 +2111,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2119,6 +2195,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2195,6 +2280,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2213,18 +2307,55 @@ function plot_data_list(){
     key_label = []
     let n = 0
     let item_lit = []
-
+    
     document.getElementById('alert_rain').innerHTML = getTextRange()
+    console.log(Object.keys(storage_data).length)
+
+    year_tmp = {}
+    year_name = {}
 
     Object.entries(storage_data).forEach(([key, value]) => {
-      item_lit.push(!Number.isInteger(value['rain'])?0:value['rain'])
-      key_label.push(parttern_label[value['date'].split(',')[0].split('-')[1]])
+
+      let tmp_split = parseInt(value['date'].split('-')[0])+543
+      if(document.getElementById('year_select_start').value == tmp_split && document.getElementById('year_select_end').value == "เลือกปี"){
+        if(year_tmp[tmp_split] == undefined){
+          year_tmp[tmp_split] = []
+          year_name[tmp_split] = []
+        }
+        year_tmp[tmp_split].push(value['rain'])
+        year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
+
+      }else if(document.getElementById('year_select_start').value <= tmp_split && document.getElementById('year_select_end').value >= tmp_split || document.getElementById('year_select').value >= tmp_split){
+        if(year_tmp[tmp_split] == undefined){
+          year_tmp[tmp_split] = []
+          year_name[tmp_split] = []
+        }
+        year_tmp[tmp_split].push(value['rain'])
+        year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
+
+      }
+
+
+    })
+    dataset_series = []
+    i = 0
+    Object.entries(year_tmp).forEach(([key,value])=>{
+      dataset_series.push({
+        name: key,
+        data: value,
+        color: color_list[i]
+      })
+      i+=1
     })
 
-    dataset_series.push({
-      name: 'wl',
-      data: item_lit
-    })
+    key_label = []
+    for(let n=0;n<12;n++){
+      for(let i=0;i<30;i++){
+        console.log((((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[]))
+        key_label.push(parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])])
+      }
+    }
+
 
     Highcharts.chart('highcharts-rain', {
       chart: {
@@ -2257,6 +2388,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2375,6 +2515,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2464,6 +2613,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {
@@ -2545,6 +2703,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+        }
       },
       plotOptions: {
         spline: {

@@ -314,10 +314,10 @@
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
-                    <div style="width:40%;">
+                    <div style="width:70%;">
                         <h4 style="margin-left:0;" id="alert_reservoir">รายงานปริมาณน้ำ</h4>
                     </div>
-                    <div style="width:45%;float:right;">
+                    <div style="width:25%;float:right;">
                         <button onclick="exportReportToExcel()"><i class="fa fa-file-excel-o"></i> Export</button>
                     </div>
                 </div>
