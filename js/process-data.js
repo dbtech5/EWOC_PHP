@@ -1292,7 +1292,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1344,7 +1344,18 @@ function plot_data_list(){
       },
       tooltip: {
         crosshairs: true,
-        shared: true
+        shared: true,
+        outside: true,
+        useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+          }
       },
       plotOptions: {
         spline: {
@@ -1389,7 +1400,18 @@ function plot_data_list(){
       },
       tooltip: {
         crosshairs: true,
-        shared: true
+        shared: true,
+        outside: true,
+        useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+          }
       },
       plotOptions: {
         spline: {
@@ -1473,6 +1495,15 @@ function plot_data_list(){
         shared: true,
         outside: true,
         useHTML: true,
+        formatter: function() {
+          let txt= ""
+          txt += this.x+"<br>"
+          for(let i=0;i<this.points.length;i++){
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+          }
+          console.log(this.points)
+            return txt
+          }
       },
       plotOptions: {
         spline: {
@@ -1570,7 +1601,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1669,7 +1700,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
           }
           console.log(this.points)
             return txt
@@ -1863,7 +1894,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" g/l<br>"
           }
           console.log(this.points)
             return txt
@@ -1947,7 +1978,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" pH<br>"
           }
           console.log(this.points)
             return txt
@@ -2031,7 +2062,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" °C<br>"
           }
           console.log(this.points)
             return txt
@@ -2115,7 +2146,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" mg/l<br>"
           }
           console.log(this.points)
             return txt
@@ -2199,7 +2230,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" mg/l<br>"
           }
           console.log(this.points)
             return txt
@@ -2284,7 +2315,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" µS/cm<br>"
           }
           console.log(this.points)
             return txt
@@ -2307,7 +2338,7 @@ function plot_data_list(){
     key_label = []
     let n = 0
     let item_lit = []
-    
+
     document.getElementById('alert_rain').innerHTML = getTextRange()
     console.log(Object.keys(storage_data).length)
 
@@ -2392,7 +2423,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" มม.<br>"
           }
           console.log(this.points)
             return txt
@@ -2519,7 +2550,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
           }
           console.log(this.points)
             return txt
@@ -2617,7 +2648,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม./วินาที<br>"
           }
           console.log(this.points)
             return txt
@@ -2707,7 +2738,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" มม.<br>"
           }
           console.log(this.points)
             return txt
