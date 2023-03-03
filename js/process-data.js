@@ -2377,16 +2377,33 @@ function plot_data_list(){
         color: color_list[i]
       })
       i+=1
+      let last = ''
+      key_label = []
+      let count = 0
+      for(let n=0;n<12;n++){
+        for(let i=0;i<30;i++){
+          console.log(parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])])
+          if(last != parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])]){
+            last = parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])]
+            key_label.push(last)
+            count += 1
+          }else if(count >= 1 && count <=((value.length < 300)?1:7)){
+            key_label.push(last)
+            count += 1
+          }else{
+            key_label.push(' ')
+            count = 0
+          }
+          
+        }
+      }
+      for(let i=0;i<5;i++){
+        key_label.push(' ')
+      }
+      console.log(key_label)
     })
 
-    key_label = []
-    for(let n=0;n<12;n++){
-      for(let i=0;i<30;i++){
-        console.log((((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[]))
-        key_label.push(parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])])
-      }
-    }
-
+    
 
     Highcharts.chart('highcharts-rain', {
       chart: {
@@ -2494,12 +2511,15 @@ function plot_data_list(){
     console.log(key_label,key_label.length,data_set)
     for(let n=0;n<Object.values(data_set).length;n++){
       let tmp_l = (365-Object.values(data_set)[n].length)
+      console.log(tmp_l)
       for(let i=0;i<(tmp_l);i++){
-        console.log(1)
-        data_set[Object.keys(data_set)[n]].push(0);
+        console.log(Object.keys(data_set)[n])
+        if(Object.keys(data_set)[n] == '2022'){
+          data_set[Object.keys(data_set)[n]].push(0);
+        }else if(Object.keys(data_set)[n] == '2023'){
+          data_set[Object.keys(data_set)[n]].splice(1, 0, 0);
+        }
       }
-      console.log(365-Object.values(data_set)[n].length)
-      console.log(Object.values(data_set)[n])
       dataset_series.push({
         name: parseInt(Object.keys(data_set)[n])+543,
         data: Object.values(data_set)[n],
@@ -3073,14 +3093,15 @@ function makeTable(){
         `)
         let dt = new Date()
         let m = (dt.getMonth()+1)
-        let format_ftp = (dt.getFullYear()+[])+(((m+[]).length == 1)?'0'+m:m+[])+dt.getDate()
+        let format_date = (dt.getDate()+[]).length == 1?'0'+dt.getDate():dt.getDate()+[]
+        let format_ftp = (dt.getFullYear()+[])+(((m+[]).length == 1)?'0'+m:m+[])+format_date
         let h_tmp = (dt.getHours()+[].length == 1)?'0'+dt.getHours()+[]:dt.getHours()+[]
         let format_time = 15*parseInt(dt.getMinutes()/15)
         format_time = (format_time+[].length == 1)?'0'+format_time+[]:format_time+[]
         format_time = (format_time == '0')?'0'+format_time:format_time
 
         h_tmp = (h_tmp+[] == '0')?'0'+h_tmp:h_tmp
-        console.log(dt.getMinutes(),format_time,h_tmp)
+        console.log(dt.getMinutes(),h_tmp,format_time)
         console.log('http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         $('#image_ftp').attr('src','http://eswoc.rid.go.th/ipcam/STN0001/'+format_ftp+'/EAST_'+format_ftp+'_'+h_tmp+format_time+'.jpg')
         Object.keys(storage_data).forEach(head => {
