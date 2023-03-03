@@ -2617,8 +2617,12 @@ function plot_data_list(){
     for(let n=0;n<Object.values(data_set).length;n++){
       let tmp_l = (365-Object.values(data_set)[n].length)
       for(let i=0;i<(tmp_l);i++){
-        console.log(1)
-        data_set[Object.keys(data_set)[n]].push(0);
+        console.log(Object.keys(data_set)[n])
+        if(Object.keys(data_set)[n] == '2022'){
+          data_set[Object.keys(data_set)[n]].push(0);
+        }else if(Object.keys(data_set)[n] == '2023'){
+          data_set[Object.keys(data_set)[n]].splice(1, 0, 0);
+        }
       }
       console.log(365-Object.values(data_set)[n].length)
       console.log(Object.values(data_set)[n])
