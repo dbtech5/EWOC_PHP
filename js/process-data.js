@@ -2387,9 +2387,6 @@ function plot_data_list(){
             last = parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])]
             key_label.push(last)
             count += 1
-          }else if(count >= 1 && count <=((value.length < 300)?1:7)){
-            key_label.push(last)
-            count += 1
           }else{
             key_label.push(' ')
             count = 0
@@ -2416,6 +2413,12 @@ function plot_data_list(){
         categories:key_label,
         accessibility: {
           description: 'Months of the year'
+        },
+        labels: {
+            step: 31,
+            style: {
+              fontSize: '14px',
+            }
         }
       },
       yAxis: {
@@ -2514,9 +2517,9 @@ function plot_data_list(){
       console.log(tmp_l)
       for(let i=0;i<(tmp_l);i++){
         console.log(Object.keys(data_set)[n])
-        if(Object.keys(data_set)[n] == '2022'){
+        if(Object.keys(data_set)[n] == '2023'){
           data_set[Object.keys(data_set)[n]].push(0);
-        }else if(Object.keys(data_set)[n] == '2023'){
+        }else if(Object.keys(data_set)[n] == '2022'){
           data_set[Object.keys(data_set)[n]].splice(1, 0, 0);
         }
       }
@@ -2618,9 +2621,9 @@ function plot_data_list(){
       let tmp_l = (365-Object.values(data_set)[n].length)
       for(let i=0;i<(tmp_l);i++){
         console.log(Object.keys(data_set)[n])
-        if(Object.keys(data_set)[n] == '2022'){
+        if(Object.keys(data_set)[n] == '2023'){
           data_set[Object.keys(data_set)[n]].push(0);
-        }else if(Object.keys(data_set)[n] == '2023'){
+        }else if(Object.keys(data_set)[n] == '2022'){
           data_set[Object.keys(data_set)[n]].splice(1, 0, 0);
         }
       }
