@@ -608,7 +608,7 @@ function point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,ilabel)
                         scale: iconscale
                     })),
                     text: new ol.style.Text({
-                        text: data.properties[ilabel],
+                        text: 'a'+data.properties[ilabel],
                         scale: isize,
                         fill: new ol.style.Fill({
                           color: '#000000'

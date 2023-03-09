@@ -775,7 +775,72 @@ a.article:hover {
     line-height: 65px;
 }
 /*---------------------------------------------------*/
+.flex {
+    display: flex;
+    width: 100% !important;
+}
 
+.flex-20 {
+    display: inline-block;
+    width: 20% !important;
+}
+
+.flex-35 {
+    display: inline-block;
+    width: 35% !important;
+}
+
+.flex-40 {
+    display: inline-block;
+    width: 40% !important;
+}
+.flex-60 {
+    display: inline-block;
+    width: 60% !important;
+}
+
+.flex-50 {
+    width: 50%;
+}
+
+.flex-55 {
+    width: 55%;
+}
+
+.flex-80 {
+    width: 80%;
+}
+
+.h-30 {
+    height: 30%;
+}
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+.dark-gray {
+    background-color: #DDD;
+}
+
+.pa-md {
+    padding: 10px 25px;
+}
+
+.ma-sm {
+    margin-left: 7%;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.size-12 {
+    font-size: 12px !important;
+}
+/*---------------------------------------------------*/
 .Split-Inner {
   display: flex;
 }

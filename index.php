@@ -22,6 +22,11 @@ error_reporting(E_ERROR | E_PARSE);
 	<link rel="stylesheet" type="text/css" href="./css/lightbox.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="./css/index.css">
+	<style>
+		.ol-viewport {
+			height: 600px !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -126,17 +131,17 @@ error_reporting(E_ERROR | E_PARSE);
 			</div>
 
 			<!-- Main Content -->
-			<div class="Main-container pad-Main" style="overflow-y: scroll;">
-			<div class='sub-menu' style="width: 50%; margin-top: 20px; margin-left: 500px;">
-							<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
-							<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
-							<a href="index.php?type=rain">ปริมาณน้ำฝน</a>
-							<a href="index.php?type=wq">คุณภาพน้ำ</a>
-							<a href="index.php?type=pump">สถานีสูบน้ำ</a>
-							<a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
-							<a href="index.php?type=tele">โทรมาตร</a>
-						</div>
-				<div class="Spilt-Screen">
+			<div class="Main-container pad-Main" style="overflow:hidden;">
+				<div class='sub-menu' style="font-size:12px;width: 59%; margin-top: 20px; margin-right: 10px;float:right;">
+					<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
+					<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
+					<a href="index.php?type=rain">ปริมาณน้ำฝน</a>
+					<a href="index.php?type=wq">คุณภาพน้ำ</a>
+					<a href="index.php?type=pump">สถานีสูบน้ำ</a>
+					<a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
+					<a href="index.php?type=tele">โทรมาตร</a>
+				</div>
+				<div class="Spilt-Screen" >
 					<div>
 
 						<div id="content">
@@ -145,7 +150,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<style>
 								canvas {
 									width: 97% !important;
-									height: 82% !important;
+									height: 600px !important;
 									margin-left: 1% !important;
 									margin-right: 2.5% !important;
 								}
@@ -482,7 +487,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['sta_code'] . '"] = [' . $row['long'] . ',' . $row['lat'] . '];';
-												$sql = "SELECT * FROM `flow_data` WHERE sta_id ='" . $row['sta_id'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `flow_data` WHERE sta_id ='" . $row['sta_id'] . "' ORDER BY date DESC LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -551,7 +556,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['sta_code'] . '"] = [' . $row['long'] . ',' . $row['lat'] . '];';
-												$sql = "SELECT * FROM `rain_data` WHERE sta_code ='" . $row['sta_code'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `rain_data` WHERE sta_code ='" . $row['sta_code'] . "' ORDER BY date DESC  LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -614,7 +619,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['sta_code'] . '"] = [' . (((float)$row['lon'])) . ',' . (((float)$row['lat']) + 0.03) . '];';
-												$sql = "SELECT * FROM `wq_data` WHERE sta_code ='" . $row['sta_code'] . "' AND ec != '' LIMIT 1";
+												$sql = "SELECT * FROM `wq_data` WHERE sta_code ='" . $row['sta_code'] . "' AND ec != '' ORDER BY date_time DESC LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -698,7 +703,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['pump_code'] . '"] = [' . $row['long'] . ',' . $row['lat'] . '];';
-												$sql = "SELECT * FROM `pump_data` WHERE pump_code ='" . $row['pump_code'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `pump_data` WHERE pump_code ='" . $row['pump_code'] . "' ORDER BY date DESC LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -749,6 +754,7 @@ error_reporting(E_ERROR | E_PARSE);
 								<?php
 								} else if ($_GET['type'] == 'customer') {
 									$sql_s = "SELECT * FROM `customer_info`";
+									$h = 0;
 								?>
 									<script>
 										<?php
@@ -758,7 +764,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['customer_code'] . '"] = [' . $row['long'] . ',' . $row['lat'] . '];';
-												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='" . $row['customer_code'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='" . $row['customer_code'] . "' ORDER BY date DESC";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -784,29 +790,34 @@ error_reporting(E_ERROR | E_PARSE);
 											<td>ปริมาณการใช้น้ำ (ลบ.ม.)</td>
 										</tr>
 										<?php
+										
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 
-												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='" . $row['customer_code'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='" . $row['customer_code'] . "'  LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
-														echo "<tr onclick='GoToPosition(\"" . $row['customer_code'] . "\",\"customer\",[\"" . $row['customer_name'] . "\"," . number_format((float)$row_s['wateruse'], 2) . "])'>";
-														echo "<td>" . $row['no'] . "</td>";
-														echo "<td class='left_txt'>" . $row['customer_name'] . "</td>";
-														echo "<td class='left_txt'>" . $row['customer_code'] . "</td>";
-														echo "<td>" . number_format((float)$row['area'], 2) . "</td>";
-														echo "<td>" . number_format((float)$row['meter'], 2) . "</td>";
-														echo "<td>" . number_format((float)$row_s['wateruse'], 2) . "</td>";
-														echo "</tr>";
-														echo "<script>";
-														echo 'position_label["' . $row['customer_code'] . '"].push("' . $row['customer_name'] . '");';
-														echo 'position_label["' . $row['customer_code'] . '"].push(' . number_format((float)$row_s['wateruse'], 2) . ');';
-														echo "</script>";
+														$h += 1;
+														if(str_contains(strval($row['no']),strval($h))) {
+															echo "<tr onclick='GoToPosition(\"" . $row['customer_code'] . "\",\"customer\",[\"" . $row['customer_name'] . "\"," . number_format((float)$row_s['wateruse'], 2) . "])'>";
+															echo "<td>". $row['no'] . "</td>";
+															echo "<td class='left_txt'>" . $row['customer_name'] . "</td>";
+															echo "<td class='left_txt'>" . $row['customer_code'] . "</td>";
+															echo "<td>" . number_format((float)$row['area'], 2) . "</td>";
+															echo "<td>" . number_format((float)$row['meter'], 2) . "</td>";
+															echo "<td>" . number_format((float)$row_s['wateruse'], 2) . "</td>";
+															echo "</tr>";
+															echo "<script>";
+															echo 'position_label["' . $row['customer_code'] . '"].push("' . $row['customer_name'] . '");';
+															echo 'position_label["' . $row['customer_code'] . '"].push(' . number_format((float)$row_s['wateruse'], 2) . ');';
+															echo "</script>";
+														}
 													}
 												}
 											}
+											print_r($count);
 										}
 
 										?>
@@ -824,7 +835,7 @@ error_reporting(E_ERROR | E_PARSE);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
 												echo 'position_label["' . $row['sta_code'] . '"] = [' . $row['long'] . ',' . $row['lat'] . '];';
-												$sql = "SELECT * FROM `tele_data` WHERE sta_code ='" . $row['sta_code'] . "' LIMIT 1";
+												$sql = "SELECT * FROM `tele_data` WHERE sta_code ='" . $row['sta_code'] . "' ORDER BY date_time DESC LIMIT 1";
 												$result = $conn->query($sql);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
@@ -1273,8 +1284,17 @@ error_reporting(E_ERROR | E_PARSE);
 					ilayerfile = './json/data_index/customer.geojson';
 					iconfile = './img/customer.png';
 					iconscale = 4 / 100;
-					choose_active([ilayer])
-					point_label(ilayer, ilayerfile, iconfile, 'resorvoir', iconscale, 'name');
+					point_label(ilayer, ilayerfile, iconfile, 'customer', iconscale, '');
+
+					map.on('moveend', function(e) {
+						map.removeLayer(map.getLayers()['array_'][map.getLayers()['array_'].length-1])
+						if(map.getView().getZoom() >= 12){
+							point_label(ilayer, ilayerfile, iconfile, 'customer', iconscale, 'name');
+						}else{
+							point_label(ilayer, ilayerfile, iconfile, 'customer', iconscale, '');
+						}
+					});
+					
 				</script>
 			<?php
 			} else if ($_GET['type'] == 'tele') {
