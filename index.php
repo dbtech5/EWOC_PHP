@@ -790,7 +790,7 @@ error_reporting(E_ERROR | E_PARSE);
 											<td>ปริมาณการใช้น้ำ (ลบ.ม.)</td>
 										</tr>
 										<?php
-										
+
 										$result_s = $conn->query($sql_s);
 										if ($result_s->num_rows > 0) {
 											while ($row = $result_s->fetch_assoc()) {
@@ -800,7 +800,7 @@ error_reporting(E_ERROR | E_PARSE);
 												if ($result->num_rows > 0) {
 													while ($row_s = $result->fetch_assoc()) {
 														$h += 1;
-														if(str_contains(strval($row['no']),strval($h))) {
+														if(strpos(strval($row['no']),strval($h)) !== false) {
 															echo "<tr onclick='GoToPosition(\"" . $row['customer_code'] . "\",\"customer\",[\"" . $row['customer_name'] . "\"," . number_format((float)$row_s['wateruse'], 2) . "])'>";
 															echo "<td>". $row['no'] . "</td>";
 															echo "<td class='left_txt'>" . $row['customer_name'] . "</td>";
@@ -1294,7 +1294,7 @@ error_reporting(E_ERROR | E_PARSE);
 							point_label(ilayer, ilayerfile, iconfile, 'customer', iconscale, '');
 						}
 					});
-					
+
 				</script>
 			<?php
 			} else if ($_GET['type'] == 'tele') {
