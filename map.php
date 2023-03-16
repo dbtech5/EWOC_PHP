@@ -57,39 +57,51 @@
 				<div class="list-menu-hide">
 					<div>
 						<a href="index.php" class="tooltip-nav">
-                <i class="fa fa-home"></i>
-                <span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
-            </a>
+							<i class="fa fa-home"></i>
+							<span class="tooltiptext">หน้าแรก</span>
+						</a>
+					</div>
+					<div>
+						<a href="realtime.php" class="tooltip-nav">
+							<i class="fa fa-line-chart"></i>
+							<span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
+						</a>
 					</div>
 					<div>
 						<a href="map.php" class="tooltip-nav">
-                            <i class="fa fa-map"></i>
-                            <span class="tooltiptext">แผนที่</span>
-                        </a>
+							<i class="fa fa-map"></i>
+							<span class="tooltiptext">แผนที่</span>
+						</a>
 					</div>
-                    <div>
+					<div>
 						<a href="data.php" class="tooltip-nav">
-                            <i class="fa fa-line-chart"></i>
-                            <span class="tooltiptext">ข้อมูล</span>
-                        </a>
+							<i class="fa fa-line-chart"></i>
+							<span class="tooltiptext">ข้อมูล</span>
+						</a>
 					</div>
 					<div>
 						<a href="" class="tooltip-nav">
-                            <i class="fa fa-pie-chart"></i>
-                            <span class="tooltiptext">แผนจัดสรรน้ำ</span>
-                        </a>
+							<i class="fa fa-pie-chart"></i>
+							<span class="tooltiptext">แผนจัดสรรน้ำ</span>
+						</a>
 					</div>
 					<div>
 						<a href="" class="tooltip-nav">
-                            <i class="fa fa-server"></i>
-                            <span class="tooltiptext">ระบบ</span>
-                        </a>
+							<i class="fa fa-server"></i>
+							<span class="tooltiptext">ระบบ</span>
+						</a>
 					</div>
 				</div>
 				<div class="list-menu-show">
 					<a href="/">
 						<div>
 							<i class="fa fa-home"></i>
+							<p>หน้าแรก</p>
+						</div>
+					</a>
+					<a href="realtime.php">
+						<div>
+							<i class="fa fa-line-chart"></i>
 							<p>สรุปสถานการณ์น้ำ</p>
 						</div>
 					</a>
@@ -99,7 +111,7 @@
 							<p>แผนที่</p>
 						</div>
 					</a>
-                    <a href="data.php">
+					<a href="data.php">
 						<div>
 							<i class="fa fa-line-chart"></i>
 							<p>ข้อมูล</p>
@@ -118,7 +130,7 @@
 						</div>
 					</a>
 				</div>
-		   	</div>
+			</div>
 
 			<!-- Main Content -->
 		   	<div class="Main-container">

@@ -837,6 +837,23 @@ a.article:hover {
     width: 100% !important;
 }
 
+.w-30 {
+    width: 30% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.pt-10 {
+    padding-top: 10px !important;
+}
+.pl-10 {
+    padding-left: 10% !important;
+}
+.pl-5 {
+    padding-left: 5% !important;
+}
 .size-12 {
     font-size: 12px !important;
 }

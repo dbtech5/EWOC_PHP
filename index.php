@@ -68,6 +68,12 @@ error_reporting(E_ERROR | E_PARSE);
 					<div>
 						<a href="index.php" class="tooltip-nav">
 							<i class="fa fa-home"></i>
+							<span class="tooltiptext">หน้าแรก</span>
+						</a>
+					</div>
+					<div>
+						<a href="realtime.php" class="tooltip-nav">
+							<i class="fa fa-line-chart"></i>
 							<span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
 						</a>
 					</div>
@@ -100,6 +106,12 @@ error_reporting(E_ERROR | E_PARSE);
 					<a href="/">
 						<div>
 							<i class="fa fa-home"></i>
+							<p>หน้าแรก</p>
+						</div>
+					</a>
+					<a href="realtime.php">
+						<div>
+							<i class="fa fa-line-chart"></i>
 							<p>สรุปสถานการณ์น้ำ</p>
 						</div>
 					</a>
