@@ -216,7 +216,7 @@ error_reporting(E_ERROR | E_PARSE);
 					</div>
 					<div class="w-40" style="background-color: #dae3f3;">
 						<center>
-							
+
 							<img src="./img/icon/resvoir.png" width="20px" style="display: inline-block;">
 							<h5 style="display: inline-block;font-size:13px;">อ่างเก็บน้ำ</h5>
 							<div id="content_reservoir" style="position:relative;width: 400px;height: 280px;background-image:url('./img/ภาพรวมอ่างเก็บน้ำ.png');background-size:cover;">
@@ -348,12 +348,12 @@ error_reporting(E_ERROR | E_PARSE);
 				let dataset_customer = []
 				let dataset_flow = []
 				var pump_n = []
-				fetch('http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/info_type.php?type=' + type_data).then(response => response.text()).then(data => {
+				fetch('info_type.php?type=' + type_data).then(response => response.text()).then(data => {
 					let lit = data.replaceAll('                ', '').replace('        ', '').split('],[')
 					lit.forEach((dt) => {
 						console.log(dt)
 						n_key = -1
-						fetch('http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]).then(response_copy => response_copy.text()).then(D => {
+						fetch('load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]).then(response_copy => response_copy.text()).then(D => {
 							try {
 								let json_data = eval(D.substring(0, D.length - 4))[eval(D.substring(0, D.length - 4)).length - 1]
 								console.log(json_data, type_data,dt.split(',')[0].replace(']', ''))
@@ -533,18 +533,18 @@ error_reporting(E_ERROR | E_PARSE);
 
 			//load_data('reservoir')
 			console.log('start')
-			
+
 			load_data('rain')
 			load_data('reservoir')
-			
+
 			load_data('pump')
 			load_data('flow')
 			load_data('wq')
 			setTimeout(() => {
 				load_data('customer')
 			}, 1000)
-			
-			
+
+
 		</script>
 </body>
 
