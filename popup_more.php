@@ -172,7 +172,7 @@
             let dataset_customer = []
             let dataset_flow = []
             var pump_n = []
-            fetch('http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/info_type.php?type=' + type_data).then(response => response.text()).then(data => {
+            fetch('./info_type.php?type=' + type_data).then(response => response.text()).then(data => {
                 let lit = data.replaceAll('                ', '').replace('        ', '').split('],[')
                 lit.forEach((dt) => {
                     console.log(dt)
