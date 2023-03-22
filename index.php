@@ -394,7 +394,7 @@ error_reporting(E_ERROR | E_PARSE);
 									`)
 								} else if (type_data == 'pump') {
 									dataset_pump.push(
-										[dt.split(',')[1], parseInt([json_data['flow']])]
+										[dt.split(',')[0], parseInt([json_data['flow']])]
 									)
 									pump_n.push(dt.split(',')[1])
 									Highcharts.chart('content_pump', {
@@ -445,13 +445,24 @@ error_reporting(E_ERROR | E_PARSE);
 									});
 								} else if (type_data == 'customer') {
 									dataset_customer.push(
-										[dt.split(',')[1], parseInt([json_data['wateruse']])]
+										[dt.split(',')[0], parseInt([json_data['wateruse']])]
 									)
 									Highcharts.chart('content_customer', {
 										chart: {
-											type: 'column',
-											backgroundColor: '#fbe5d6',
+											type: 'column',backgroundColor: { //<<--that is what you are using as fill color
+											linearGradient : {
+											x1: 0,
+											y1: 0,
+											x2: 0,
+											y2: 250
+											},
+											stops : [
+											[0, '#DDD'],
+											[1, '#000']
+											]
 										},
+										},
+										
 										title: {
 											text: ''
 										},

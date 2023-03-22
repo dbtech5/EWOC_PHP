@@ -49,7 +49,7 @@
         
         }
     }else if($_GET['type']=='customer'){
-        $sql = "SELECT * FROM customer_info";
+        $sql = "SELECT * FROM customer_info limit 10";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
@@ -64,7 +64,7 @@
         
         }
     }else if($_GET['type']=='pump'){
-        $sql = "SELECT * FROM pump_info";
+        $sql = "SELECT * FROM pump_info limit 10";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
