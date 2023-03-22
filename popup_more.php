@@ -177,7 +177,7 @@
                 lit.forEach((dt) => {
                     console.log(dt)
                     n_key = -1
-                    fetch('http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]).then(response_copy => response_copy.text()).then(D => {
+                    fetch('./load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]).then(response_copy => response_copy.text()).then(D => {
                         try {
                             let json_data = eval(D.substring(0, D.length - 4))[eval(D.substring(0, D.length - 4)).length - 1]
                             console.log(json_data, type_data, dt.split(',')[0].replace(']', ''))
