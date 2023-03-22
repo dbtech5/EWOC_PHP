@@ -207,7 +207,7 @@ error_reporting(E_ERROR | E_PARSE);
 				<div class="flex pl-5" style="overflow: hidden;height:380px;">
 					<div class="w-30 pt-10" style="background-color: #dbeef1;">
 						<center>
-							<a href="http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/popup_more.php?type=rain" target="_blank">
+							<a href="./popup_more.php?type=rain" target="_blank">
 								<img src="./img/icon/rain.png" width="20px" style="display: inline-block;">
 							</a>
 							<h5 style="display: inline-block;font-size:13px;">ปริมาณน้ำฝน</h5>
@@ -218,7 +218,7 @@ error_reporting(E_ERROR | E_PARSE);
 					</div>
 					<div class="w-40" style="background-color: #dae3f3;">
 						<center>
-							<a href="http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/popup_more.php?type=reservoir" target="_blank">
+							<a href="./popup_more.php?type=reservoir" target="_blank">
 								<img src="./img/icon/resvoir.png" width="20px" style="display: inline-block;">
 							</a>
 							<h5 style="display: inline-block;font-size:13px;">อ่างเก็บน้ำ</h5>
@@ -242,7 +242,7 @@ error_reporting(E_ERROR | E_PARSE);
 				<div class="flex pl-5" style="overflow: hidden;height:400px;">
 					<div class="w-30 pt-10" style="background: #e3daea;">
 						<center>
-							<a href="http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/popup_more.php?type=flow" target="_blank">
+							<a href="./popup_more.php?type=flow" target="_blank">
 								<img src="./img/icon/flow.png" width="20px" height="15px" style="display: inline-block;">
 							</a>
 							<h5 style="display: inline-block;font-size:13px;">ปริมาณน้ำท่า</h5>
@@ -266,7 +266,7 @@ error_reporting(E_ERROR | E_PARSE);
 					</div>
 					<div class="w-30" style="background: #e2f0d9;">
 						<center>
-							<a href="http://localhost/EWOC%20V.11%2001-10-65/EWOC%20V.Desktop/popup_more.php?type=wq" target="_blank">
+							<a href="./popup_more.php?type=wq" target="_blank">
 								<img src="./img/icon/wq.png" width="20px" height="15px" style="display: inline-block;">
 							</a>
 							<h5 style="display: inline-block;font-size:13px;">คุณภาพน้ำ</h5>
