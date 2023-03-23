@@ -200,10 +200,10 @@ error_reporting(E_ERROR | E_PARSE);
 
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
-			<div style="text-align:center;padding: 10px;font-size:13px;background-color: #adcdea;">
-				<h5 style="display: inline-block;font-size:13px;" id="date_show">วันที่</h5>
-				<img src="./img/icon/clock.png" width="20px" style="display: inline-block;">
-			</div>
+				<div style="text-align:center;padding: 10px;font-size:13px;background-color: #adcdea;">
+					<h5 style="display: inline-block;font-size:13px;" id="date_show">วันที่</h5>
+					<img src="./img/icon/clock.png" width="20px" style="display: inline-block;">
+				</div>
 				<div class="flex pl-5" style="overflow: hidden;height:380px;">
 					<div class="w-30 pt-10" style="background-color: #dbeef1;">
 						<center>
@@ -304,8 +304,6 @@ error_reporting(E_ERROR | E_PARSE);
 		<script type="text/javascript" src="./js/lightbox.js"></script>
 		<script type="text/javascript" src="./js/map_script.js"></script>
 		<script type="text/javascript" src="./js/map_layers.js"></script>
-		<script type="text/javascript" src="./js/map_controls_index.js"></script>
-		<script type="text/javascript" src="./js/map_layercontrols_index.js"></script>
 		<script type="text/javascript" src="./js/slidbar.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.0/highcharts.js"></script>
@@ -355,17 +353,148 @@ error_reporting(E_ERROR | E_PARSE);
 				let dataset_customer = []
 				let dataset_flow = []
 				var pump_n = []
-				fetch('info_type.php?type=' + type_data).then(response => response.text()).then(data => {
-					let lit = data.replaceAll('                ', '').replace('        ', '').split('],[')
-					lit.forEach((dt) => {
-						console.log(dt)
-						n_key = -1
-						fetch('load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]).then(response_copy => response_copy.text()).then(D => {
-							try {
-								let json_data = eval(D.substring(0, D.length - 4))[eval(D.substring(0, D.length - 4)).length - 1]
-								console.log(json_data, type_data,dt.split(',')[0].replace(']', ''))
-								if (type_data == 'rain') {
-									$('#content_rain').append(`
+
+				let sql_statement = ''
+				if (type_data == 'customer') {
+					sql_statement = 'load_data.php?type=customer_top10'
+				} else if (type_data == 'pump') {
+					sql_statement = 'load_data.php?type=pump_top10'
+				}
+				console.log(type_data)
+				if (type_data == 'customer' || type_data == 'pump') {
+					fetch(sql_statement).then(response_copy => response_copy.text()).then(D => {
+						console.log(D)
+						try {
+							let json_data = eval(D.substring(0, D.length - 4))
+							console.log(json_data)
+							console.log('-----------')
+							if (type_data == 'pump') {
+								json_data.forEach(list_data=>{
+									dataset_pump.push(
+										[list_data['pump_code'], parseInt([list_data['flow']])]
+									)
+								})
+								
+								console.log(dataset_pump)
+								Highcharts.chart('content_pump', {
+									chart: {
+										type: 'bar',
+										backgroundColor: '#fff2cc',
+									},
+									title: {
+										text: '',
+										align: 'left'
+									},
+									xAxis: {
+										type: 'category',
+										title: {
+											text: null
+										},
+										min: 0,
+										scrollbar: {
+											enabled: true
+										},
+										tickLength: 0
+									},
+									yAxis: {
+										min: 0,
+										max: 1200,
+										title: {
+											text: 'Votes',
+											align: 'high'
+										}
+									},
+									plotOptions: {
+										bar: {
+											dataLabels: {
+												enabled: true
+											}
+										}
+									},
+									legend: {
+										enabled: false
+									},
+									credits: {
+										enabled: false
+									},
+									series: [{
+										name: 'a',
+										data: dataset_pump
+									}]
+								});
+							} else if (type_data == 'customer') {
+								json_data.forEach(list_data=>{
+									dataset_customer.push(
+										[list_data['customer_code'], parseInt([list_data['wateruse']])]
+									)
+								})
+								console.log(dataset_customer)
+								Highcharts.chart('content_customer', {
+									chart: {
+										type: 'column',
+										backgroundColor: { //<<--that is what you are using as fill color
+											linearGradient: {
+												x1: 0,
+												y1: 0,
+												x2: 0,
+												y2: 250
+											},
+											stops: [
+												[0, '#DDD'],
+												[1, '#000']
+											]
+										},
+									},
+
+									title: {
+										text: ''
+									},
+									xAxis: {
+										type: 'category',
+										labels: {
+											rotation: -45,
+											style: {
+												fontSize: '13px',
+												fontFamily: 'Verdana, sans-serif'
+											}
+										}
+									},
+									yAxis: {
+										min: 0,
+										title: {
+											text: 'Population (millions)'
+										}
+									},
+									legend: {
+										enabled: false
+									},
+									tooltip: {
+										pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
+									},
+									series: [{
+										name: 'Population',
+										data: dataset_customer,
+									}]
+								});
+
+							}
+						} catch (e) {
+
+						}
+					})
+				} else {
+
+					fetch('info_type.php?type=' + type_data).then(response => response.text()).then(data => {
+						let lit = data.replaceAll('                ', '').replace('        ', '').split('],[')
+						lit.forEach((dt) => {
+							//console.log(dt)
+							n_key = -1
+							sql_statement = 'load_data.php?type=' + type_data + '&id=' + dt.replace('[', '').replace(']', '').split(',')[0]
+							fetch(sql_statement).then(response_copy => response_copy.text()).then(D => {
+								try {
+									let json_data = eval(D.substring(0, D.length - 4))[eval(D.substring(0, D.length - 4)).length - 1]
+									if (type_data == 'rain') {
+										$('#content_rain').append(`
 										<div style="overflow:hidden;position:relative;box-shadow: 0px 5px 10px #00000020;display:inline-block; width: 80px;height: 120px;margin: 5px;padding: 5px;">
 											<p style="font-size:12px;">${dt.split(',')[1].split(' ').reverse().join('<br>')}</p>
 											<div style="position:absolute;bottom:5;background:#a4c8e8;border-radius:5px;width:90%;text-align:center;">
@@ -373,178 +502,81 @@ error_reporting(E_ERROR | E_PARSE);
 											</div>
 										<div>
 									`)
-								} else if (type_data == 'reservoir' && dt.split(',')[0].replace('[', '').replace(']', '').includes(json_data['res_code'])) {
-									n_key += 1
-									let format = json_data['date'].split('-')
-									let display_date = format[2] + parttern_label[format[1]] + " " + ((parseInt(format[0]) + 543) + [])
-									$('#date_show').text('วันที่ ' + display_date)
-									$('#content_reservoir').append(`
+									} else if (type_data == 'reservoir' && dt.split(',')[0].replace('[', '').replace(']', '').includes(json_data['res_code'])) {
+										n_key += 1
+										let format = json_data['date'].split('-')
+										let display_date = format[2] + parttern_label[format[1]] + " " + ((parseInt(format[0]) + 543) + [])
+										$('#date_show').text('วันที่ ' + display_date)
+										$('#content_reservoir').append(`
 									<div class="hover-opacity" style="position:absolute;left:${position_box[dt.split(',')[1].replace(']','')][0]};top:${position_box[dt.split(',')[1].replace(']','')][1]};background-color: #FFF;text-align:left;border-radius: 5px;width:120px;">
 										<b class="size-12">อ่างเก็บน้ำ${dt.split(',')[1].replace(']','')}</b>
 										<p class="size-12" style="margin:0;">น้ำไหลเข้า ${json_data['inflow']}</p>
 										<p class="size-12" style="margin:0;">น้ำไหลออก ${json_data['outflow']}</p>
 									</div>
 									`)
-								} else if (type_data == 'wq' && dt.split(',')[0].replace('[', '').replace(']', '').includes(json_data['sta_code'])) {
-									let pos = dt.split(',')[0].replace('[', '').replace(']', '')
-									$('#content_wq').append(`
+									} else if (type_data == 'wq' && dt.split(',')[0].replace('[', '').replace(']', '').includes(json_data['sta_code'])) {
+										let pos = dt.split(',')[0].replace('[', '').replace(']', '')
+										$('#content_wq').append(`
 									<div class="hover-opacity" style="position:absolute;left:${position_box_wq[pos][0]};top:${position_box_wq[pos][1]};background-color: #FFF;text-align:left;border-radius: 5px;width:120px;">
 										<p class="size-12" style="margin:0;">ค่าความเค็ม ${json_data['ec']==''?'0':json_data['ec']}</p>
 									</div>
 									`)
-								} else if (type_data == 'pump') {
-									dataset_pump.push(
-										[dt.split(',')[0], parseInt([json_data['flow']])]
-									)
-									pump_n.push(dt.split(',')[1])
-									Highcharts.chart('content_pump', {
-										chart: {
-											type: 'bar',
-											backgroundColor: '#fff2cc',
-										},
-										title: {
-											text: '',
-											align: 'left'
-										},
-										xAxis: {
-											type: 'category',
-											title: {
-												text: null
+									} else if (type_data == 'flow') {
+										dataset_flow.push(
+											[dt.split(',')[1], parseFloat([json_data['wl']])]
+										)
+										Highcharts.chart('content_flow', {
+											chart: {
+												type: 'column',
+												backgroundColor: '#e3daea',
 											},
-											min: 0,
-											scrollbar: {
-												enabled: true
-											},
-											tickLength: 0
-										},
-										yAxis: {
-											min: 0,
-											max: 1200,
 											title: {
-												text: 'Votes',
-												align: 'high'
-											}
-										},
-										plotOptions: {
-											bar: {
-												dataLabels: {
-													enabled: true
+												text: ''
+											},
+											xAxis: {
+												type: 'category',
+												labels: {
+													rotation: -45,
+													style: {
+														fontSize: '13px',
+														fontFamily: 'Verdana, sans-serif'
+													}
 												}
-											}
-										},
-										legend: {
-											enabled: false
-										},
-										credits: {
-											enabled: false
-										},
-										series: [{
-											name: 'a',
-											data: dataset_pump
-										}]
-									});
-								} else if (type_data == 'customer') {
-									dataset_customer.push(
-										[dt.split(',')[0], parseInt([json_data['wateruse']])]
-									)
-									Highcharts.chart('content_customer', {
-										chart: {
-											type: 'column',backgroundColor: { //<<--that is what you are using as fill color
-											linearGradient : {
-											x1: 0,
-											y1: 0,
-											x2: 0,
-											y2: 250
 											},
-											stops : [
-											[0, '#DDD'],
-											[1, '#000']
-											]
-										},
-										},
-										
-										title: {
-											text: ''
-										},
-										xAxis: {
-											type: 'category',
-											labels: {
-												rotation: -45,
-												style: {
-													fontSize: '13px',
-													fontFamily: 'Verdana, sans-serif'
+											yAxis: {
+												min: 0,
+												title: {
+													text: 'Population (millions)'
 												}
-											}
-										},
-										yAxis: {
-											min: 0,
-											title: {
-												text: 'Population (millions)'
-											}
-										},
-										legend: {
-											enabled: false
-										},
-										tooltip: {
-											pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
-										},
-										series: [{
-											name: 'Population',
-											data: dataset_customer,
-										}]
-									});
+											},
+											legend: {
+												enabled: false
+											},
+											tooltip: {
+												pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
+											},
+											series: [{
+												name: 'Population',
+												data: dataset_flow,
+											}]
+										});
 
-								} else if (type_data == 'flow') {
-									dataset_flow.push(
-										[dt.split(',')[1], parseFloat([json_data['wl']])]
-									)
-									Highcharts.chart('content_flow', {
-										chart: {
-											type: 'column',
-											backgroundColor: '#e3daea',
-										},
-										title: {
-											text: ''
-										},
-										xAxis: {
-											type: 'category',
-											labels: {
-												rotation: -45,
-												style: {
-													fontSize: '13px',
-													fontFamily: 'Verdana, sans-serif'
-												}
-											}
-										},
-										yAxis: {
-											min: 0,
-											title: {
-												text: 'Population (millions)'
-											}
-										},
-										legend: {
-											enabled: false
-										},
-										tooltip: {
-											pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
-										},
-										series: [{
-											name: 'Population',
-											data: dataset_flow,
-										}]
-									});
+									}
+									//console.log(type_data)
+
+
+								} catch (e) {
 
 								}
-								//console.log(type_data)
 
-
-							} catch (e) {
-
-							}
-
+							})
 						})
 					})
-				})
+				}
+
+
+
+
 			}
 
 			//load_data('rain')
@@ -561,8 +593,6 @@ error_reporting(E_ERROR | E_PARSE);
 			setTimeout(() => {
 				load_data('customer')
 			}, 1000)
-
-
 		</script>
 </body>
 

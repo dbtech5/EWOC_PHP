@@ -101,6 +101,34 @@
         }
         $txt =  $txt."}";
         echo json_encode($txt);
+    }else if($_GET['type']=='customer_top10'){
+        $sql = "SELECT customer_code,wateruse, MAX(DATE) AS laste_date FROM customer_wateruse GROUP BY customer_code,wateruse ORDER BY wateruse DESC, laste_date DESC LIMIT 10";
+        $result = $conn->query($sql);
+        $txt = "{";
+        // Outputs the result as a JSON string.
+        if ($result !== false && $result->num_rows > 0) {
+            $data = $result->fetch_all( MYSQLI_ASSOC );
+            echo json_encode( $data );
+        } else {
+        }
+        
+        
+        $txt =  $txt."}";
+        echo json_encode($txt);
+    }else if($_GET['type']=='pump_top10'){
+        $sql = "SELECT pump_code,flow, MAX(DATE) AS laste_date FROM pump_data GROUP BY pump_code,flow ORDER BY flow DESC, laste_date DESC LIMIT 10";
+        $result = $conn->query($sql);
+        $txt = "{";
+        // Outputs the result as a JSON string.
+        if ($result !== false && $result->num_rows > 0) {
+            $data = $result->fetch_all( MYSQLI_ASSOC );
+            echo json_encode( $data );
+        } else {
+        }
+        
+        
+        $txt =  $txt."}";
+        echo json_encode($txt);
     }
     $conn->close();
 ?>
