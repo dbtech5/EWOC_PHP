@@ -82,6 +82,13 @@ error_reporting(E_ERROR | E_PARSE);
 		.hover-opacity:hover {
 			opacity: 1;
 		}
+
+		#content_customer,
+		#content_pump,
+		#content_flow {
+			width: 100%;
+			height: 90%;
+		}
 	</style>
 </head>
 
@@ -200,12 +207,12 @@ error_reporting(E_ERROR | E_PARSE);
 
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
-				<div style="text-align:center;padding: 10px;font-size:13px;background-color: #adcdea;">
+				<div style="text-align:center;padding: 10px;height:5%;font-size:13px;background-color: #adcdea;">
 					<h5 style="display: inline-block;font-size:13px;" id="date_show">วันที่</h5>
 					<img src="./img/icon/clock.png" width="20px" style="display: inline-block;">
 				</div>
-				<div class="flex pl-5" style="overflow: hidden;height:380px;">
-					<div class="w-30 pt-10" style="background-color: #dbeef1;">
+				<div class="flex pl-main" style="overflow: hidden;height: 42.5%;">
+					<div class="w-30 pt-10" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<a href="./popup_more.php?type=rain" target="_blank">
 								<img src="./img/icon/rain.png" width="20px" style="display: inline-block;">
@@ -214,33 +221,36 @@ error_reporting(E_ERROR | E_PARSE);
 							<div id="content_rain">
 
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย:มม.</p>
 						</center>
 					</div>
-					<div class="w-40" style="background-color: #dae3f3;">
+					<div class="w-40" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<a href="./popup_more.php?type=reservoir" target="_blank">
 								<img src="./img/icon/resvoir.png" width="20px" style="display: inline-block;">
 							</a>
 							<h5 style="display: inline-block;font-size:13px;">อ่างเก็บน้ำ</h5>
-							<div id="content_reservoir" style="position:relative;width: 400px;height: 280px;background-image:url('./img/ภาพรวมอ่างเก็บน้ำ.png');background-size:cover;">
+							<div id="content_reservoir" style="position:relative;width: 400px;height: 280px;background-image:url('./img/ภาพรวมอ่างเก็บน้ำใหม่.png');background-size:400px 280px;">
 
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย:ล้าน ลบ.ม.</p>
 						</center>
 					</div>
-					<div class="w-30" style="overflow-y: scroll;background-color: #fbe5d6;">
+					<div class="w-30" style="overflow-y: scroll;position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<img src="./img/icon/customer.png" width="20px" height="15px" style="display: inline-block;">
 							<h5 style="display: inline-block;font-size:13px;">การใช้น้ำลูกค้าสะสม</h5>
 							<div id="content_customer">
 								<figure class="highcharts-customer">
-									<div id="highcharts-customer" style="height: 800px;"></div>
+									<div id="highcharts-customer" style="height: 200px;"></div>
 								</figure>
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย: ลบ.ม.</p>
 						</center>
 					</div>
 				</div>
-				<div class="flex pl-5" style="overflow: hidden;height:400px;">
-					<div class="w-30 pt-10" style="background: #e3daea;">
+				<div class="flex pl-main" style="overflow: hidden;height: 42.5%;">
+					<div class="w-30 pt-10" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<a href="./popup_more.php?type=flow" target="_blank">
 								<img src="./img/icon/flow.png" width="20px" height="15px" style="display: inline-block;">
@@ -251,9 +261,10 @@ error_reporting(E_ERROR | E_PARSE);
 									<div id="highcharts-flow" style="height: 400px;"></div>
 								</figure>
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย: ลบ.ม.</p>
 						</center>
 					</div>
-					<div class="w-40" style="background: #fff2cc;">
+					<div class="w-40" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<img src="./img/icon/pump.png" width="20px" height="15px" style="display: inline-block;">
 							<h5 style="display: inline-block;font-size:13px;">สถานีสูบน้ำ</h5>
@@ -262,9 +273,10 @@ error_reporting(E_ERROR | E_PARSE);
 							<div id="content_pump">
 
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย: ลบ.ม.</p>
 						</center>
 					</div>
-					<div class="w-30" style="background: #e2f0d9;">
+					<div class="w-30" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<a href="./popup_more.php?type=wq" target="_blank">
 								<img src="./img/icon/wq.png" width="20px" height="15px" style="display: inline-block;">
@@ -273,6 +285,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<div id="content_wq" style="position:relative;width: 400px;height: 290px;background-image:url('./img/แผนที่คุณภาพน้ำ.png');background-size:cover;">
 
 							</div>
+							<p style="font-size:12px;position: absolute;bottom:0;right:0;z-index:999;">หน่วย: กรัม/ลิตร</p>
 						</center>
 					</div>
 				</div>
@@ -334,6 +347,60 @@ error_reporting(E_ERROR | E_PARSE);
 				'ดอกกราย': [60, 170]
 			}
 
+			var flow_color = {
+				'KGT.19A': '#FFCCFF',
+				'KGT.30': '#ff7f50',
+				'NY.1B': '#696969',
+				'KGT.6': '#ffd700',
+				'Z.11': '#47A3FF',
+				'KGT.3': '#228b22',
+				'Z.62': '#AB99CF',
+				'Z.38': '#00ff7f',
+				'NY.3': '#b22222',
+				'KGT.1': '#7fff00',
+				'NY.7': '#8a2be2'
+			}
+
+			var flow_color = {
+				'KGT.19A': '#FFCCFF',
+				'KGT.30': '#ff7f50',
+				'NY.1B': '#696969',
+				'KGT.6': '#ffd700',
+				'Z.11': '#47A3FF',
+				'KGT.3': '#228b22',
+				'Z.62': '#AB99CF',
+				'Z.38': '#00ff7f',
+				'NY.3': '#b22222',
+				'KGT.1': '#7fff00',
+				'NY.7': '#8a2be2'
+			}
+
+			var pump_color = {
+				'1': '#FFC000',
+				'2': '#9999FF',
+				'3': '#D0CECE',
+				'4': '#00B050',
+				'5': '#C55A11',
+				'6': '#BF9000',
+				'7': '#7030A0',
+				'8': '#F6ED7A',
+				'9': '#fa8072',
+				'10': '#ba55d3',
+			}
+
+			var customer_color = {
+				'1': '#AB99CF',
+				'2': '#ED7D31',
+				'3': '#A5A5A5',
+				'4': '#FFC000',
+				'5': '#0FCBAC',
+				'6': '#92CB50',
+				'7': '#255E91',
+				'8': '#FD73BB',
+				'9': '#DEEBF7',
+				'10': '#997300',
+			}
+
 			var position_box_wq = {
 				'SP01': [100, 20],
 				'SP02': [100, 60],
@@ -369,17 +436,17 @@ error_reporting(E_ERROR | E_PARSE);
 							console.log(json_data)
 							console.log('-----------')
 							if (type_data == 'pump') {
-								json_data.forEach(list_data=>{
+								json_data.forEach(list_data => {
 									dataset_pump.push(
 										[list_data['pump_code'], parseInt([list_data['flow']])]
 									)
 								})
-								
+
 								console.log(dataset_pump)
 								Highcharts.chart('content_pump', {
 									chart: {
 										type: 'bar',
-										backgroundColor: '#fff2cc',
+										backgroundColor: '#FFFFFF00',
 									},
 									title: {
 										text: '',
@@ -390,11 +457,18 @@ error_reporting(E_ERROR | E_PARSE);
 										title: {
 											text: null
 										},
+										
+										color: "#FFFFFF",
 										min: 0,
 										scrollbar: {
 											enabled: true
 										},
-										tickLength: 0
+										tickLength: 0,
+										labels: {
+													style: {
+														color: "#FFFFFF",
+													}
+												}
 									},
 									yAxis: {
 										min: 0,
@@ -402,7 +476,12 @@ error_reporting(E_ERROR | E_PARSE);
 										title: {
 											text: 'Votes',
 											align: 'high'
-										}
+										},
+										labels: {
+													style: {
+														color: "#FFFFFF",
+													}
+												}
 									},
 									plotOptions: {
 										bar: {
@@ -417,13 +496,19 @@ error_reporting(E_ERROR | E_PARSE);
 									credits: {
 										enabled: false
 									},
+									colors: Object.values(pump_color),
+									plotOptions: {
+										series: {
+											colorByPoint: true
+										}
+									},
 									series: [{
 										name: 'a',
 										data: dataset_pump
 									}]
 								});
 							} else if (type_data == 'customer') {
-								json_data.forEach(list_data=>{
+								json_data.forEach(list_data => {
 									dataset_customer.push(
 										[list_data['customer_code'], parseInt([list_data['wateruse']])]
 									)
@@ -432,20 +517,9 @@ error_reporting(E_ERROR | E_PARSE);
 								Highcharts.chart('content_customer', {
 									chart: {
 										type: 'column',
-										backgroundColor: { //<<--that is what you are using as fill color
-											linearGradient: {
-												x1: 0,
-												y1: 0,
-												x2: 0,
-												y2: 250
-											},
-											stops: [
-												[0, '#DDD'],
-												[1, '#000']
-											]
-										},
+										backgroundColor: '#FFFFFF00'
 									},
-
+									height: 200,
 									title: {
 										text: ''
 									},
@@ -454,6 +528,7 @@ error_reporting(E_ERROR | E_PARSE);
 										labels: {
 											rotation: -45,
 											style: {
+												color: "#FFFFFF",
 												fontSize: '13px',
 												fontFamily: 'Verdana, sans-serif'
 											}
@@ -463,13 +538,24 @@ error_reporting(E_ERROR | E_PARSE);
 										min: 0,
 										title: {
 											text: 'Population (millions)'
-										}
+										},
+										labels: {
+													style: {
+														color: "#FFFFFF",
+													}
+												}
 									},
 									legend: {
 										enabled: false
 									},
 									tooltip: {
 										pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
+									},
+									colors: Object.values(pump_color),
+									plotOptions: {
+										series: {
+											colorByPoint: true
+										}
 									},
 									series: [{
 										name: 'Population',
@@ -495,9 +581,9 @@ error_reporting(E_ERROR | E_PARSE);
 									let json_data = eval(D.substring(0, D.length - 4))[eval(D.substring(0, D.length - 4)).length - 1]
 									if (type_data == 'rain') {
 										$('#content_rain').append(`
-										<div style="overflow:hidden;position:relative;box-shadow: 0px 5px 10px #00000020;display:inline-block; width: 80px;height: 120px;margin: 5px;padding: 5px;">
-											<p style="font-size:12px;">${dt.split(',')[1].split(' ').reverse().join('<br>')}</p>
-											<div style="position:absolute;bottom:5;background:#a4c8e8;border-radius:5px;width:90%;text-align:center;">
+										<div style="overflow:hidden;border:1px solid #FFF;border-radius:5px;position:relative;color:#000000;box-shadow: 0px 5px 10px #00000020;display:inline-block; width: 80px;height: 120px;margin: 5px;padding: 5px;background:#f4b183;">
+											<p style="font-size:12px;color:#000000;">${dt.split(',')[1].split(' ').reverse().join('<br>')}</p>
+											<div style="position:absolute;bottom:5;color:#FFF;background:#595959;border-radius:5px;width:90%;text-align:center;">
 												${json_data['rain_mm']}
 											</div>
 										<div>
@@ -508,10 +594,10 @@ error_reporting(E_ERROR | E_PARSE);
 										let display_date = format[2] + parttern_label[format[1]] + " " + ((parseInt(format[0]) + 543) + [])
 										$('#date_show').text('วันที่ ' + display_date)
 										$('#content_reservoir').append(`
-									<div class="hover-opacity" style="position:absolute;left:${position_box[dt.split(',')[1].replace(']','')][0]};top:${position_box[dt.split(',')[1].replace(']','')][1]};background-color: #FFF;text-align:left;border-radius: 5px;width:120px;">
+									<div class="hover-opacity" style="padding:5px;position:absolute;left:${position_box[dt.split(',')[1].replace(']','')][0]};top:${position_box[dt.split(',')[1].replace(']','')][1]};background-color: #efe576;text-align:left;border-radius: 5px;width:120px;">
 										<b class="size-12">อ่างเก็บน้ำ${dt.split(',')[1].replace(']','')}</b>
-										<p class="size-12" style="margin:0;">น้ำไหลเข้า ${json_data['inflow']}</p>
-										<p class="size-12" style="margin:0;">น้ำไหลออก ${json_data['outflow']}</p>
+										<p class="size-12" style="color:#000000;margin:0;">น้ำไหลเข้า ${json_data['inflow']}</p>
+										<p class="size-12" style="color:#000000;margin:0;">น้ำไหลออก ${json_data['outflow']}</p>
 									</div>
 									`)
 									} else if (type_data == 'wq' && dt.split(',')[0].replace('[', '').replace(']', '').includes(json_data['sta_code'])) {
@@ -525,10 +611,14 @@ error_reporting(E_ERROR | E_PARSE);
 										dataset_flow.push(
 											[dt.split(',')[1], parseFloat([json_data['wl']])]
 										)
+										console.log(dataset_flow)
 										Highcharts.chart('content_flow', {
 											chart: {
 												type: 'column',
-												backgroundColor: '#e3daea',
+												backgroundColor: '#FFFFFF00',
+												style: {
+													color: "#FFFFFF"
+												}
 											},
 											title: {
 												text: ''
@@ -538,6 +628,7 @@ error_reporting(E_ERROR | E_PARSE);
 												labels: {
 													rotation: -45,
 													style: {
+														color: "#FFFFFF",
 														fontSize: '13px',
 														fontFamily: 'Verdana, sans-serif'
 													}
@@ -547,6 +638,11 @@ error_reporting(E_ERROR | E_PARSE);
 												min: 0,
 												title: {
 													text: 'Population (millions)'
+												},
+												labels: {
+													style: {
+														color: "#FFFFFF",
+													}
 												}
 											},
 											legend: {
@@ -555,9 +651,16 @@ error_reporting(E_ERROR | E_PARSE);
 											tooltip: {
 												pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
 											},
+											colors: Object.values(flow_color),
+											plotOptions: {
+												column: {
+													colorByPoint: true
+												}
+											},
 											series: [{
 												name: 'Population',
 												data: dataset_flow,
+
 											}]
 										});
 

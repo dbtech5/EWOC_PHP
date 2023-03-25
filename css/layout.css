@@ -854,6 +854,9 @@ a.article:hover {
 .pl-5 {
     padding-left: 5% !important;
 }
+.pl-main {
+    padding-left: 65px !important;
+}
 .size-12 {
     font-size: 12px !important;
 }
