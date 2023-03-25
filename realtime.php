@@ -145,13 +145,13 @@ error_reporting(E_ERROR | E_PARSE);
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow:hidden;">
 				<div class='sub-menu' style="font-size:12px;width: 59%; margin-top: 20px; margin-right: 10px;float:right;">
-					<a href="index.php?type=reservoir">อ่างเก็บน้ำ</a>
-					<a href="index.php?type=flow">ปริมาณน้ำท่า</a>
-					<a href="index.php?type=rain">ปริมาณน้ำฝน</a>
-					<a href="index.php?type=wq">คุณภาพน้ำ</a>
-					<a href="index.php?type=pump">สถานีสูบน้ำ</a>
-					<a href="index.php?type=customer">การใช้น้ำลูกค้า</a>
-					<a href="index.php?type=tele">โทรมาตร</a>
+					<a href="?type=reservoir">อ่างเก็บน้ำ</a>
+					<a href="?type=flow">ปริมาณน้ำท่า</a>
+					<a href="?type=rain">ปริมาณน้ำฝน</a>
+					<a href="?type=wq">คุณภาพน้ำ</a>
+					<a href="?type=pump">สถานีสูบน้ำ</a>
+					<a href="?type=customer">การใช้น้ำลูกค้า</a>
+					<a href="?type=tele">โทรมาตร</a>
 				</div>
 				<div class="Spilt-Screen" >
 					<div>
