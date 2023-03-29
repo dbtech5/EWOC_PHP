@@ -171,16 +171,18 @@ var name_json = {
     'Reservoir_Reserv':'อ่างเก็บน้ำ (รอง)',
     'Pump_Main':'สถานีสูบน้ำ (หลัก)',
     'Pump_Minor':'สถานีสูบน้ำ (รอง)',
-    'station_th':'สถานีตรวจอากาศ',
     'Rain_Station_Code':'สถานีวัดน้ำฝน',
     'Railway':'ทางรถไฟ',
     'Hydro_Station_Code':'สถานีวัดน้ำท่า',
     'SubDistrict':'ตำบล',
     'Customer':'ลูกค้า',
-    'Weather_Station':'สถานีตรวจอากาศ',
+    'Waterquality_Station':'สถานีตรวจวัดคุณภาพน้ำ',
+    'Tele_Station':'สถานีโทรมาตร',
+    'Tide_Station':'สถานีวัดระดับน้ำทะเล',
     'Rain_Station_Code':'สถานีวัดน้ำฝน',
     'Level_Station':'สถานีวัดน้ำท่า',
     'Trans_Station':'สถานีคมนาคม',
+
 }
 
 // Default checkbox for sub - districts klongluang
