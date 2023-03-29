@@ -594,7 +594,7 @@ error_reporting(E_ERROR | E_PARSE);
 										let display_date = format[2] + parttern_label[format[1]] + " " + ((parseInt(format[0]) + 543) + [])
 										$('#date_show').text('วันที่ ' + display_date)
 										$('#content_reservoir').append(`
-									<div class="hover-opacity" style="padding:5px;position:absolute;left:${position_box[dt.split(',')[1].replace(']','')][0]};top:${position_box[dt.split(',')[1].replace(']','')][1]};background-color: #efe576;text-align:left;border-radius: 5px;width:120px;">
+									<div class="" style="padding:5px;position:absolute;left:${position_box[dt.split(',')[1].replace(']','')][0]};top:${position_box[dt.split(',')[1].replace(']','')][1]};background-color: #efe576;text-align:left;border-radius: 5px;width:120px;">
 										<b class="size-12">อ่างเก็บน้ำ${dt.split(',')[1].replace(']','')}</b>
 										<p class="size-12" style="color:#000000;margin:0;">น้ำไหลเข้า ${json_data['inflow']}</p>
 										<p class="size-12" style="color:#000000;margin:0;">น้ำไหลออก ${json_data['outflow']}</p>
