@@ -357,8 +357,8 @@ function load_csv_totable(){
 
   }else if($('#val_data').val() != "เลือกสถานีน้ำฝน" && type == 'rain'){
     storage_data = {}
-    console.log("load_data.php?type=rain&id=090160")
-    $.get("load_data.php?type=rain&id=090160", function( datas ) {
+    console.log("load_data.php?type=rain&id="+$('#val_data').val())
+    $.get("load_data.php?type=rain&id="+$('#val_data').val(), function( datas ) {
       console.log(datas)
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
@@ -615,9 +615,7 @@ function select_data(type){
   if(parameter_set){
     setTimeout(()=>{
       document.getElementById('val_data').value = urlParams.get('name')
-      if(urlParams.get('type') == 3){
-        document.getElementById('val_data').value = '090160'
-      }
+      
       console.log('successful load parameters')
 
       // Load csv to table
@@ -784,7 +782,7 @@ function load_option(){
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
   }else if(type == 'pump'){
-    $.get("info_type.php?type="+type, (data)=>{
+    $.get("info_type.php?type="+type+"&limit=1000", (data)=>{
       // Parse a comma - separated list of data.
       let dt = (data).replaceAll('[','').split('],')
 
@@ -821,7 +819,7 @@ function load_option(){
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
   }else if(type == 'customer'){
-    $.get("info_type.php?type="+type, (data)=>{
+    $.get("info_type.php?type="+type+"&limit=1000", (data)=>{
       // Parse a comma - separated list of data.
       let dt = (data).replaceAll('[','').split('],')
 
@@ -856,7 +854,7 @@ function load_option(){
       document.getElementsByClassName('chart-'+type)[0].style.display = 'block'
     })
   }else if(type == 'wq'){
-    $.get("info_type.php?type="+type, (data)=>{
+    $.get("info_type.php?type="+type+"&limit=1000", (data)=>{
       // Parse a comma - separated list of data.
       let dt = (data).replaceAll('[','').split('],')
 

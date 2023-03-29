@@ -65,7 +65,7 @@
 					</div>
 					<div>
 						<a href="realtime.php" class="tooltip-nav">
-							<i class="fa fa-line-chart"></i>
+                            <img src="./img/icon_realtime.png" width="23px" style="margin-left: 20px;">
 							<span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
 						</a>
 					</div>
@@ -103,7 +103,7 @@
 					</a>
 					<a href="realtime.php">
 						<div>
-							<i class="fa fa-line-chart"></i>
+                            <img src="./img/icon_realtime.png" width="15px" height="15px" style="margin-top:8px;">
 							<p>สรุปสถานการณ์น้ำ</p>
 						</div>
 					</a>

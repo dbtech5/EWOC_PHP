@@ -1,5 +1,5 @@
 <?php 
-    
+    error_reporting(E_ERROR | E_PARSE);
     include 'connect.php';
      
     // Query the database and return the results.
@@ -50,6 +50,12 @@
         }
     }else if($_GET['type']=='customer'){
         $sql = "SELECT * FROM customer_info limit 10";
+        if($_GET['limit']){
+            $sql = "SELECT * FROM customer_info limit ".$_GET['limit'];
+        }else{
+            
+        }
+        
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
