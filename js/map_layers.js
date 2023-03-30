@@ -179,7 +179,6 @@ $('#reservoir').change(function () {
 
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-                console.log(feature)
                 if (feature.get('name') == 'reservoir') {
                     return feature;
                 };
@@ -636,9 +635,8 @@ $('#Tele_Station').change(function () {
         map.addOverlay(popup);
 
         map.on("pointermove", function (evt) {
-            var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-
-                if (feature.get('name') == 'tele_station') {
+            var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {               
+                if (feature.get('name') == 'Tele_Station') {
                     return feature;
                 };
             });
@@ -663,6 +661,7 @@ $('#Tele_Station').change(function () {
                 map.getTargetElement().style.cursor = '';
             }
         })
+        
     } else {
         del_active([this.name])
         removeLayer(layers[this.name],this.name)
@@ -909,33 +908,36 @@ $('#Pump_PWA').change(function () {
             element_in_layer[i].style.display = "block"
         }
         map.on("pointermove", function (evt) {
+            var element = document.getElementById("hover-pump_pwa");
+    
+    
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-
-                if (feature.get('name') == 'pump_pwa') {
-                    return feature;
-                };
+                
+                    let list_pointer = ['pump_code','res_code']
+                    let check = false
+                    list_pointer.forEach(item=>{
+                        //console.log(Object.keys(feature['values_']['data']['properties']).includes(item))
+                        try{
+                            if(Object.keys(feature['values_']['data']['properties']).includes(item) && check == false){
+                                check = true
+                            }
+                        }catch(e){
+    
+                        }
+                    })
+                    if (check) {
+                        return feature;
+                    };
             });
-
-            let featureContent;
+    
             if (feature) {
-                var coordinates = feature.getGeometry().getCoordinates();
-                popup.setPosition(coordinates);
-                console.log(feature.get('data').properties)
-                featureContent = "สถานี: " + feature.get('data').properties.กปภ_;
-
-                $(element).popover({
-                    placement: "top",
-                    html: true,
-                    content: featureContent
-                });
-                // change mouse cursor when over marker
                 map.getTargetElement().style.cursor = 'pointer';
-                $(element).popover("show");
             } else {
-                $(element).popover("dispose");
                 map.getTargetElement().style.cursor = '';
             }
         })
+
+        
     } else {
         del_active([this.name])
         removeLayer(layers[this.name],this.name)
@@ -943,6 +945,39 @@ $('#Pump_PWA').change(function () {
             removefeatureInfo(this.name)
     }
 })
+
+setTimeout(()=>{
+    console.log('-----------------------------')
+    map.on("pointermove", function (evt) {
+        var element = document.getElementById("hover-pump_pwa");
+
+
+        var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+            
+                let list_pointer = ['pump_code','res_code']
+                let check = false
+                list_pointer.forEach(item=>{
+                    //console.log(Object.keys(feature['values_']['data']['properties']).includes(item))
+                    try{
+                        if(Object.keys(feature['values_']['data']['properties']).includes(item) && check == false){
+                            check = true
+                        }
+                    }catch(e){
+
+                    }
+                })
+                if (check) {
+                    return feature;
+                };
+        });
+
+        if (feature) {
+            map.getTargetElement().style.cursor = 'pointer';
+        } else {
+            map.getTargetElement().style.cursor = '';
+        }
+    })
+},1000)
 // สถานีสูบน้ำ รอง.
 $('#Pump_Minor').change(function () {
     if (this.checked) {
@@ -970,10 +1005,14 @@ $('#Pump_Minor').change(function () {
         }
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+                try{
+                    console.log(feature.get('name'),feature['values_']['data']['properties'])
+                    if (feature['values_']['data']['properties']['pump_code']) {
+                        return feature;
+                    };
+                }catch(e){
 
-                if (feature.get('name') == 'pump_name') {
-                    return feature;
-                };
+                }
             });
 
             let featureContent;
