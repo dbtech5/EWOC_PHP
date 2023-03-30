@@ -279,11 +279,11 @@ $('#Pipe_Main').change(function () {
         izIndex = 2;
         ilinedash = '0, 0, 0';
         ilabel = 'name'
-        //choose_active([ilayer])
+        choose_active([ilayer])
         geojson_vt(ilayer, ilayerfile, ilayerobject, ifillcolor, istrokecolor, istrokewidth, ilinedash,ilabel,izIndex,);
     } else {
         del_active([this.name])
-        //removeLayer(layers[this.name],this.name)
+        removeLayer(layers[this.name],this.name)
     }
 })
 

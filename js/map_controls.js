@@ -131,6 +131,9 @@ $(document).ready(function () {
     $('#Water_group').prop('checked', true)
     $("#Water_group").trigger("change")
 
+    $('#Pipe_Main').prop('checked', true)
+    $("#Pipe_Main").trigger("change")
+    
     $('#reservoir').prop('checked', true)
     $("#reservoir").trigger("change")
 
@@ -140,8 +143,7 @@ $(document).ready(function () {
     $('#Pipe_group').prop('checked', false)
     $("#Pipe_group").trigger("change")
 
-    $('#Pipe_Main').prop('checked', true)
-    $("#Pipe_Main").trigger("change")
+    
 /*
     
     $('#Pipe_Klongluang').prop('checked', true)
