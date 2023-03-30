@@ -182,6 +182,7 @@ var name_json = {
     'Rain_Station_Code':'สถานีวัดน้ำฝน',
     'Level_Station':'สถานีวัดน้ำท่า',
     'Trans_Station':'สถานีคมนาคม',
+    'Pipe_Main':'ท่อ East Water ปัจจุบัน',
 
 }
 
@@ -210,7 +211,7 @@ function choose_active(text){
         text_format += "'" + item + "',"
     })
     console.log(layer_option.includes(text),text)
-    if(!layer_option.includes(text[0]) && text[0] != 'Pipe_Main'){
+    if(!layer_option.includes(text[0])){
         layer_option.push(text[0])
         $('.group-property').append(`
         <div class="property-item property-${text}">
@@ -224,43 +225,17 @@ function choose_active(text){
             </div>
         </div>
         `)
-    }else if(!layer_option.includes(text[0])){
-        layer_option.push(text[0])
-        $('.group-property').append(`
-        <div class="property-item style='display:none;' property-${text}">
-            <input type="checkbox" id="text-${text}" onchange="refresh_layer('${text}')" ${(default_checkbox[text]?'':'checked')}>
-            <p>แสดงข้อความ</p>
-            <br>
-            <div class="control_font_size">
-                <button onclick="size_text('${text}',-1,'${text}')"><i class="fa fa-minus"></i></button>
-                <p id="size-${text}">12</p>
-                <button onclick="size_text('${text}',1,'${text}')"><i class="fa fa-plus"></i></button>
-            </div>
-        </div>
-        `)
     }
-    if(text[0] != 'Pipe_Main'){
-        $('#container-layer').prepend(`
+
+    $('#container-layer').prepend(`
         <div class="element-layer" onclick="active_layer([${text_format.substring(0,text_format.length-1)}])">${(name_json[text])?name_json[text]:text}<div>
-        `)
-        let element_in_layer = document.getElementsByClassName('property-'+text[0])
-        console.log('property-'+text[0])
-        for(let i=0;i<element_in_layer.length;i++){
-            element_in_layer[i].style.display = "block"
-        }
-        console.log(text)
-        
-    }else{
-        $('#container-layer').prepend(`
-        <div class="element-layer" style='display:none;' onclick="active_layer([${text_format.substring(0,text_format.length-1)}])">${(name_json[text])?name_json[text]:text}<div>
-        `)
-        let element_in_layer = document.getElementsByClassName('property-'+text[0])
-        console.log('property-'+text[0])
-        for(let i=0;i<element_in_layer.length;i++){
-            element_in_layer[i].style.display = "block"
-        }
-        console.log(text)
+    `)
+    let element_in_layer = document.getElementsByClassName('property-'+text[0])
+    console.log('property-'+text[0])
+    for(let i=0;i<element_in_layer.length;i++){
+        element_in_layer[i].style.display = "block"
     }
+    console.log(text)
     layer_active.push(text)
 }
 
