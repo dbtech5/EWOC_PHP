@@ -208,7 +208,7 @@ error_reporting(E_ERROR | E_PARSE);
 			<!-- Main Content -->
 			<div class="Main-container pad-Main" style="overflow-y: scroll;">
 				<div style="text-align:center;padding: 10px;height:5%;font-size:13px;background-color: #adcdea;">
-					<h5 style="display: inline-block;font-size:13px;" id="date_show">วันที่</h5>
+					<h5 style="display: inline-block;font-size:18px;" id="date_show">วันที่</h5>
 					<img src="./img/icon/clock.png" width="20px" style="display: inline-block;">
 				</div>
 				<div class="flex pl-main" style="overflow: hidden;height: 42.5%;">
@@ -217,7 +217,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<a href="./popup_more.php?type=rain" target="_blank">
 								<img src="./img/icon/rain.png" width="20px" style="display: inline-block;">
 							</a>
-							<h5 style="display: inline-block;font-size:13px;">ปริมาณน้ำฝน</h5>
+							<h5 style="display: inline-block;font-size:16px;">ปริมาณน้ำฝน</h5>
 							<div id="content_rain">
 
 							</div>
@@ -229,7 +229,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<a href="./popup_more.php?type=reservoir" target="_blank">
 								<img src="./img/icon/resvoir.png" width="20px" style="display: inline-block;">
 							</a>
-							<h5 style="display: inline-block;font-size:13px;">อ่างเก็บน้ำ</h5>
+							<h5 style="display: inline-block;font-size:16px;">อ่างเก็บน้ำ</h5>
 							<div id="content_reservoir" style="position:relative;width: 400px;height: 280px;background-image:url('./img/ภาพรวมอ่างเก็บน้ำใหม่.png');background-size:400px 280px;">
 
 							</div>
@@ -239,7 +239,7 @@ error_reporting(E_ERROR | E_PARSE);
 					<div class="w-30" style="overflow-y: scroll;position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<img src="./img/icon/customer.png" width="20px" height="15px" style="display: inline-block;">
-							<h5 style="display: inline-block;font-size:13px;">การใช้น้ำลูกค้าสะสม</h5>
+							<h5 style="display: inline-block;font-size:16px;">การใช้น้ำลูกค้าสะสม</h5>
 							<div id="content_customer">
 								<figure class="highcharts-customer">
 									<div id="highcharts-customer" style="height: 200px;"></div>
@@ -255,7 +255,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<a href="./popup_more.php?type=flow" target="_blank">
 								<img src="./img/icon/flow.png" width="20px" height="15px" style="display: inline-block;">
 							</a>
-							<h5 style="display: inline-block;font-size:13px;">ปริมาณน้ำท่า</h5>
+							<h5 style="display: inline-block;font-size:16px;">ปริมาณน้ำท่า</h5>
 							<div id="content_flow">
 								<figure class="highcharts-flow">
 									<div id="highcharts-flow" style="height: 400px;"></div>
@@ -267,7 +267,7 @@ error_reporting(E_ERROR | E_PARSE);
 					<div class="w-40" style="position:relative;background: linear-gradient(#FFFFFF,#1c5e9d);">
 						<center>
 							<img src="./img/icon/pump.png" width="20px" height="15px" style="display: inline-block;">
-							<h5 style="display: inline-block;font-size:13px;">สถานีสูบน้ำ</h5>
+							<h5 style="display: inline-block;font-size:16px;">สถานีสูบน้ำ</h5>
 
 
 							<div id="content_pump">
@@ -281,7 +281,7 @@ error_reporting(E_ERROR | E_PARSE);
 							<a href="./popup_more.php?type=wq" target="_blank">
 								<img src="./img/icon/wq.png" width="20px" height="15px" style="display: inline-block;">
 							</a>
-							<h5 style="display: inline-block;font-size:13px;">คุณภาพน้ำ</h5>
+							<h5 style="display: inline-block;font-size:16px;">คุณภาพน้ำ</h5>
 							<div id="content_wq" style="position:relative;width: 400px;height: 290px;background-image:url('./img/แผนที่คุณภาพน้ำ.png');background-size:cover;">
 
 							</div>

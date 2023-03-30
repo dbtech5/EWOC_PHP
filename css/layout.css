@@ -63,7 +63,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: #FFFFFF;
 }
 
 .container-right-box {
@@ -247,7 +247,7 @@ a:focus {
     width: 100%;
     line-height: 70px;
     color: #FFF;
-    font-size: 15px !important;
+    font-size: 20px !important;
     /*font-weight: bold;*/
 }
 
