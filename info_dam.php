@@ -82,7 +82,7 @@
 			while($row = $result_s->fetch_assoc()) {
                 
                 // Query for discharges and discharges.
-				$sql = "SELECT * FROM `tele_data` WHERE rain_mm != '' and sta_code ='".$_GET['res_code']."' ORDER BY `date_time` LIMIT 1";
+				$sql = "SELECT * FROM `tele_data` WHERE and sta_code ='".$_GET['res_code']."' ORDER BY `date_time` LIMIT 1";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 					while($row_s = $result->fetch_assoc()) {
