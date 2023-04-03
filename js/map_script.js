@@ -414,10 +414,12 @@ function displayFeatureInfo(pixel, coordinate) {
                         alert("Posting failed.");
                     });
                 }else if(features[i]['values_']['name']=='Level_Station'){
-                    code = features[i]['values_']['data']['properties']['Level_Station_Code']
-                    console.log('info_dam.php?res_code='+code+"&type=Level_Station")
+                    console.log(features[i]['values_']['data']['properties'])
+                    code_name = features[i]['values_']['data']['properties']['Level_Station_Code']
+                    code = features[i]['values_']['data']['properties']['sta_id']
+                    console.log('info_dam.php?res_code='+code_name+"&type=Level_Station")
                     $.ajax({
-                        url: 'info_dam.php?res_code='+code+"&type=Level_Station",
+                        url: 'info_dam.php?res_code='+code_name+"&type=Level_Station",
                     }).done(function(val) {
                         let values = val.split(',')
                         console.log(val)
@@ -537,6 +539,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         alert("Posting failed.");
                     });
                 }else if(keys_check.includes("pump_name") || keys_check.includes('pump_code')){
+                    console.log(features[i]['values_']['data']['properties'])
                     code = features[i]['values_']['data']['properties']['pump_code']
                     console.log('info_dam.php?res_code='+code+"&type=Pump")
                     $.ajax({

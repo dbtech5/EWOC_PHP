@@ -487,3 +487,7 @@ h4 {
     font-size: 18px;
     display: none;
 }
+
+.box-group > p {
+    font-size: 12px !important;
+}

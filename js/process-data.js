@@ -227,7 +227,7 @@ function load_csv_totable(){
       })
     });
 
-    $.get("info_name.php?res_code="+$('#val_data').val(), function( data ) {
+    $.get("info_name.php?res_code="+name_select, function( data ) {
       name_reservoir = data
     })
 
@@ -237,12 +237,13 @@ function load_csv_totable(){
     console.log($('#val_data option:selected').text())
     document.getElementById('img_flow').src = './img/flow/'+$('#val_data option:selected').text()+'_img.jpg'
     document.getElementById('map_flow').src = './img/flow/'+$('#val_data option:selected').text()+'_map.jpg'
-    $.get("load_data.php?type=flow&id="+$('#val_data').val(), function( datas ) {
+    $.get("load_data.php?type=flow&id="+$('#val_data option:selected').text(), function( datas ) {
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       //console.log(tmp)
       tmp.forEach((data)=>{
-
+        console.log(data)
         let tmp_split = (data).replace("}","").split(":")
+        
         let tmp_json = {}
         let tmp_key = filter_charecter(tmp_split[3].split(',')[0])
         //console.log(tmp_key)
@@ -417,8 +418,8 @@ function load_csv_totable(){
 
   }else if($('#val_data').val() != "เลือกสถานีสูบน้ำ" && type == 'pump'){
     storage_data = {}
-    console.log("load_data.php?type=pump&id="+$('#val_data').val())
-    $.get("load_data.php?type=pump&id="+$('#val_data').val(), function( datas ) {
+    console.log("load_data.php?type=pump&id="+$('#val_data option:selected').text())
+    $.get("load_data.php?type=pump&id="+$('#val_data option:selected').text(), function( datas ) {
       console.log(datas)
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       console.log(tmp)
@@ -616,7 +617,7 @@ function select_data(type){
     setTimeout(()=>{
       document.getElementById('val_data').value = urlParams.get('name')
       
-      console.log('successful load parameters')
+      console.log('successful load parameters',document.getElementById('val_data').value)
 
       // Load csv to table
       load_csv_totable()

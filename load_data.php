@@ -22,7 +22,7 @@
         $txt =  $txt."}";
         echo json_encode($txt);
     }else if($_GET['type']=='flow'){
-        $sql = "SELECT * FROM `flow_data` WHERE sta_id = '".$_GET['id']."'";
+        $sql = "SELECT * FROM `flow_data` WHERE sta_code = '".$_GET['id']."'";
         $result = $conn->query($sql);
         $txt = "{";
         // Outputs the result as a JSON string.
@@ -90,7 +90,7 @@
         $txt =  $txt."}";
         echo json_encode($txt);
     }else if($_GET['type']=='tele'){
-        $sql = "SELECT * FROM `tele_data` WHERE sta_code = '".$_GET['id']."'";
+        $sql = "SELECT * FROM `tele_data` WHERE sta_code = '".$_GET['id']."' ORDER BY `date_time`";
         $result = $conn->query($sql);
         $txt = "{";
         // Outputs the result as a JSON string.
