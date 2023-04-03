@@ -498,10 +498,10 @@ function displayFeatureInfo(pixel, coordinate) {
                         let values = val.split(',')
                         console.log(val)
 
-                        let temp_date = values[4].split(' ')[0].split('-')
+                        let temp_date = values[3].split(' ')[0].split('-')
                         temp_date[0] = parseInt(temp_date[0])+543
                         temp_date = temp_date.reverse().join('/')
-                        let temp_time = values[4].split(' ')[1]
+                        let temp_time = values[3].split(' ')[1]
                         text += "<b style='color:#000'>สถานีโทรมาตรวัดละหารไร่</b><a></a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[0]+" "+values[1]+" "+values[2]+"</a><br>"
                         text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date+" "+temp_time+"</a><br>"
