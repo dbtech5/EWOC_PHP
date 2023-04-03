@@ -470,7 +470,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+" ("+values[1]+")</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[2]+" "+values[3]+"</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+values[4]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+values[4].split(' ')[0].split('-').reverse().join('/')+"</a><br>"
                         text += "<b style='color:#000'>ระยะจากทะเล: </b><a>"+values[5]+" กม.</a><br>"
                         text += "<b style='color:#000'>ความเค็ม: </b><a>"+values[6]+" ก./ล</a><br>"
                         text += "<b style='color:#000'>ค่าการนำไฟฟ้า: </b><a>"+values[7]+" ไมโครซีเมนส์/เซนติเมตร</a><br>"
@@ -497,7 +497,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานีโทรมาตรวัดละหารไร่</b><a></a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[0]+" "+values[1]+" "+values[2]+"</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+values[3]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+values[3].split(' ')[0].split('-').reverse().join('/')+"</a><br>"
                         text += "<b style='color:#000'>ระดับน้ำ: </b><a>"+values[4]+" ม.รทก.</a><br>"
                         text += "<b style='color:#000'>ปริมาณน้ำ: </b><a>"+values[5]+" ลบ.ม./วินาที</a><br>"
                         text += "<b style='color:#000'>ปริมาณน้ำฝน: </b><a>"+values[6]+" มม.</a><br>"
