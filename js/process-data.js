@@ -419,7 +419,7 @@ function load_csv_totable(){
   }else if($('#val_data').val() != "เลือกสถานีสูบน้ำ" && type == 'pump'){
     storage_data = {}
     console.log("load_data.php?type=pump&id="+$('#val_data option:selected').text())
-    $.get("load_data.php?type=pump&id="+$('#val_data option:selected').text(), function( datas ) {
+    $.get("load_data.php?type=pump&id="+$('#val_data').val(), function( datas ) {
       console.log(datas)
       let tmp = (datas.replaceAll('{','').replace('[','').replace(']','').split('},'))
       console.log(tmp)
