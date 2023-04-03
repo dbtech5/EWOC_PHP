@@ -426,7 +426,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+" "+values[2]+" "+values[3]+"</a><br>"
                         text += "<b style='color:#000'>พื้นที่รับน้ำ: </b><a>"+values[4]+" ตร.กม.</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+temp_date[0]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+(parseInt(temp_date[0])+543)+"</a><br>"
                         //text += "<b style='color:#000'>ความจุลำน้ำ: </b><a>"+values[5]+" ลบ.ม./วินาที</a><br>"
                         text += "<b style='color:#000'>ระดับน้ำ: </b><a>"+values[6]+" ม.รทก.</a><br>"
                         text += "<b style='color:#000'>ปริมาณน้ำ: </b><a>"+values[7]+" ลบ.ม./วินาที</a><br>"
@@ -449,7 +449,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         let temp_date = values[4].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+" "+values[1]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[2]+" "+values[3]+"</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+temp_date[0]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[1]+'/'+temp_date[2]+'/'+(parseInt(temp_date[0])+543)+"</a><br>"
                         text += "<b style='color:#000'>ปริมาณน้ำฝน: </b><a>"+values[5]+" ลบ.ม./วินาที</a><br>"
                         text += "<a href='data.php?type=3&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
@@ -467,7 +467,9 @@ function displayFeatureInfo(pixel, coordinate) {
                         let values = val.split(',')
                         console.log(val)
 
-                        let temp_date = values[3].split(' ')[0].split('-').reverse().join('/')
+                        let temp_date = values[3].split(' ')[0].split('-')
+                        temp_date[0] = parseInt(temp_date[0])+543
+                        temp_date = temp_date.reverse().join('/')
                         let temp_time = values[3].split(' ')[1]
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+" ("+values[1]+")</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[2]+" "+values[3]+"</a><br>"
@@ -495,7 +497,9 @@ function displayFeatureInfo(pixel, coordinate) {
                         let values = val.split(',')
                         console.log(val)
 
-                        let temp_date = values[3].split(' ')[0].split('-').reverse().join('/')
+                        let temp_date = values[3].split(' ')[0].split('-')
+                        temp_date[0] = parseInt(temp_date[0])+543
+                        temp_date = temp_date.reverse().join('/')
                         let temp_time = values[3].split(' ')[1]
                         text += "<b style='color:#000'>สถานีโทรมาตรวัดละหารไร่</b><a></a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[0]+" "+values[1]+" "+values[2]+"</a><br>"
