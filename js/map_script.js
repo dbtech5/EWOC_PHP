@@ -468,7 +468,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         console.log(val)
 
                         let temp_date = values[4].split(' ')[0].split('-')
-                        
+
                         temp_date[0] = parseInt(temp_date[0])+543
                         temp_date = temp_date.reverse().join('/')
                         let temp_time = values[4].split(' ')[1]
@@ -527,7 +527,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         let temp_date = values[2].replace(' ','').split('-')
                         text += "<b style='color:#000'>"+values[0]+"</b><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+"</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+temp_date[0]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+(parseInt(temp_date[0])+543)+"</a><br>"
                         text += "<b style='color:#000'>ปริมาณการใช้น้ำ: </b><a>"+values[3]+" ม.รทก.</a><br>"
                         text += "<a href='data.php?type=4&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)
@@ -548,7 +548,7 @@ function displayFeatureInfo(pixel, coordinate) {
                         let temp_date = values[2].replace(' ','').split('-')
                         text += "<b style='color:#000'>สถานี: </b><a>"+values[0]+"</a><br>"
                         text += "<b style='color:#000'>ที่ตั้ง: </b><a>"+values[1]+"</a><br>"
-                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+temp_date[0]+"</a><br>"
+                        text += "<b style='color:#000'>ข้อมูลวันที่: </b><a>"+temp_date[2]+'/'+temp_date[1]+'/'+(parseInt(temp_date[0])+543)+"</a><br>"
                         text += "<b style='color:#000'>ปริมาณการสูบ: </b><a>"+values[3]+" ลบ.ม./วินาที</a><br>"
                         text += "<a href='data.php?type=2&name="+code+"' class='popup-reservoir'>ดูรายละเอียดเพิ่มเติม</a><br>"
                         showDialog(text)

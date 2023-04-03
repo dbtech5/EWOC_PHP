@@ -1,19 +1,19 @@
-<?php 
+<?php
     include 'connect.php';
-    
+
     // Check if a connection failed.
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    
+
     // Query the database for rain information.
     if($_GET['type']=='reservoir'){
         $sql_s = "SELECT * FROM reservoir_info WHERE res_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
 				$sql = "SELECT * FROM `reservoir_data` WHERE res_code ='".$_GET['res_code']."' ORDER BY `date` DESC LIMIT 1";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
@@ -25,11 +25,11 @@
         }
     }else if($_GET['type']=='Level_Station'){
         $sql_s = "SELECT * FROM flow_info WHERE sta_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
                 // Query for discharges.
 				$sql = "SELECT * FROM `flow_data` WHERE sta_code ='".$_GET['res_code']."' ORDER BY `date` DESC LIMIT 1";
 				$result = $conn->query($sql);
@@ -42,11 +42,11 @@
         }
     }else if($_GET['type']=='Rain_Station'){
         $sql_s = "SELECT * FROM rain_info WHERE sta_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
                 // Query for a row.
 				$sql = "SELECT * FROM `rain_data` WHERE sta_code ='".$_GET['res_code']."' ORDER BY `date` DESC LIMIT 1";
 				$result = $conn->query($sql);
@@ -59,13 +59,13 @@
         }
     }else if($_GET['type']=='Waterquality_Station'){
         $sql_s = "SELECT * FROM wq_info WHERE sta_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
                 // Fetch data from wq_data.
-				$sql = "SELECT * FROM `wq_data` WHERE sta_code ='".$_GET['res_code']."' AND ec !='' ORDER BY `date_time` LIMIT 1";
+				$sql = "SELECT * FROM `wq_data` WHERE sta_code ='".$_GET['res_code']."' AND ec !='' ORDER BY `date_time`DESC LIMIT 1";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 					while($row_s = $result->fetch_assoc()) {
@@ -76,13 +76,13 @@
         }
     }else if($_GET['type']=='Tele_Station'){
         $sql_s = "SELECT * FROM tele_info WHERE sta_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
                 // Query for discharges and discharges.
-				$sql = "SELECT * FROM `tele_data` WHERE sta_code ='".$_GET['res_code']."' ORDER BY `date_time` LIMIT 1";
+				$sql = "SELECT * FROM `tele_data` WHERE sta_code ='".$_GET['res_code']."' ORDER BY `date_time` DESC LIMIT 1";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 					while($row_s = $result->fetch_assoc()) {
@@ -93,11 +93,11 @@
         }
     }else if($_GET['type']=='Customer'){
         $sql_s = "SELECT * FROM customer_info WHERE customer_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
 				$sql = "SELECT * FROM `customer_wateruse` WHERE customer_code ='".$_GET['res_code']."' ORDER BY `date` DESC LIMIT 1";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
@@ -109,11 +109,11 @@
         }
     }else if($_GET['type']=='Pump'){
         $sql_s = "SELECT * FROM pump_info WHERE pump_code = '".$_GET['res_code']."'";
-        
+
         $result_s = $conn->query($sql_s);
 		if ($result_s->num_rows > 0) {
 			while($row = $result_s->fetch_assoc()) {
-                
+
                 // Query for pump data.
 				$sql = "SELECT * FROM `pump_data` WHERE pump_code ='".$_GET['res_code']."' ORDER BY `date` DESC LIMIT 1";
 				$result = $conn->query($sql);
@@ -125,6 +125,6 @@
             }
         }
     }
-    
+
     $conn->close();
 ?>
