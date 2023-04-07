@@ -64,7 +64,7 @@
 						</a>
 					</div>
 					<div>
-						<a href="realtime.php" class="tooltip-nav">
+						<a href="realtime.php?type=reservoir" class="tooltip-nav">
                             <img src="./img/icon_realtime.png" width="23px" style="margin-left: 20px;">
 							<span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
 						</a>
@@ -101,7 +101,7 @@
 							<p>หน้าแรก</p>
 						</div>
 					</a>
-					<a href="realtime.php">
+					<a href="realtime.php?type=reservoir">
 						<div>
                             <img src="./img/icon_realtime.png" width="15px" height="15px" style="margin-top:8px;">
 							<p>สรุปสถานการณ์น้ำ</p>
