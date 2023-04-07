@@ -1195,7 +1195,7 @@ function plot_data_list(){
 
 
     document.getElementById('alert_reservoir').innerHTML = getTextRange()
-
+    let name_bar = []
     index = 0
     Object.entries(storage_data_viow).forEach(([key, value]) => {
       dataset_series.push({
@@ -1203,6 +1203,7 @@ function plot_data_list(){
         data: value,
         color: color_list[index]
       })
+      name_bar.push(key)
       index += 1
     })
 
@@ -1211,14 +1212,14 @@ function plot_data_list(){
       color: '#ff0000d9',
       data: upper_data
     })
-
+    
     dataset_series.push({
       name: 'lower',
       dashStyle: 'dash',
       color: '#ff0000d9',
       data: lower_data
     })
-
+    
     dataset_series.push({
       name: 'mid',
       color: '#0000c9d9',
@@ -1245,6 +1246,12 @@ function plot_data_list(){
       data: new Array(365).fill(min[0])
     })
 
+    name_bar.push('upper')
+    name_bar.push('lower')
+    name_bar.push('mid')
+    name_bar.push('nh')
+    name_bar.push('max')
+    name_bar.push('min')
     Highcharts.chart('highcharts-main', {
       chart: {
         type: 'spline'
@@ -1291,7 +1298,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1350,7 +1357,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1406,7 +1413,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1450,12 +1457,13 @@ function plot_data_list(){
         key_label.push(parttern_label[value['date'].split('-')[1]])
       }
     })
-
+    let name_bar = []
     Object.entries(year_item).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
         data: value
       })
+      name_bar.push(key)
     })
     Highcharts.chart('highcharts-pump', {
       chart: {
@@ -1498,7 +1506,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1548,7 +1556,7 @@ function plot_data_list(){
         console.log(value['date'],value['wl'])
       }
     })
-
+    let name_bar = []
     let i = 0
     Object.entries(year_tmp).forEach(([key,value])=>{
       dataset_series.push({
@@ -1556,6 +1564,7 @@ function plot_data_list(){
         data: value,
         color: color_list[i]
       })
+      name_bar.push(key)
       i+=1
     })
 
@@ -1600,7 +1609,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ล้าน ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1649,15 +1658,18 @@ function plot_data_list(){
     })
     dataset_series = []
     i = 0
+    name_bar = []
     Object.entries(year_tmp).forEach(([key,value])=>{
       dataset_series.push({
         name: key,
         data: value,
         color: color_list[i]
       })
+      name_bar.push(key)
       i+=1
     })
     console.log(year_name)
+    
     Highcharts.chart('highcharts-flow-discharge', {
       chart: {
         type: 'spline'
@@ -1699,7 +1711,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
           }
           console.log(this.points)
             return txt
@@ -1750,12 +1762,13 @@ function plot_data_list(){
       console.log(value['date'],value['wateruse'],((value['wateruse']+""=="NaN"?" ":value['wateruse'])))
     })
     console.log(item_lit)
-
+    let name_bar = []
     Object.entries(year_item).forEach(([key, value]) => {
       dataset_series.push({
         name: key,
         data: value
       })
+      name_bar.push(key)
     })
     Highcharts.chart('highcharts-customer', {
       chart: {
@@ -1795,7 +1808,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ลบ.ม.<br>"
           }
           console.log(this.points)
             return txt
@@ -1840,7 +1853,7 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['Salinty'])?0:value['Salinty'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    let name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       console.log(key,document.getElementById('year_select_start').value)
       if(key == document.getElementById('year_select_start').value){
@@ -1848,6 +1861,7 @@ function plot_data_list(){
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -1893,7 +1907,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" g/l<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" g/l<br>"
           }
           console.log(this.points)
             return txt
@@ -1926,13 +1940,14 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['pH'])?0:value['pH'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -1977,7 +1992,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" pH<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" pH<br>"
           }
           console.log(this.points)
             return txt
@@ -2010,13 +2025,14 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['Temp'])?0:value['Temp'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -2061,7 +2077,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" °C<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" °C<br>"
           }
           console.log(this.points)
             return txt
@@ -2094,13 +2110,14 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['TDS'])?0:value['TDS'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -2145,7 +2162,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" mg/l<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" mg/l<br>"
           }
           console.log(this.points)
             return txt
@@ -2178,13 +2195,14 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['DO'])?0:value['DO'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       if(key == document.getElementById('year_select_start').value){
         dataset_series.push({
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -2229,7 +2247,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" mg/l<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" mg/l<br>"
           }
           console.log(this.points)
             return txt
@@ -2262,7 +2280,7 @@ function plot_data_list(){
       data_lit[parseInt(tmp_date_format)+543].push(!Number.isInteger(value['EC'])?0:value['EC'])
       data_lit_key[parseInt(tmp_date_format)+543].push(parttern_label[tmp_date.split('-')[1]])
     })
-
+    name_bar = []
     Object.entries(data_lit).forEach(([key, value]) => {
       console.log(key,)
       if(key == document.getElementById('year_select_start').value){
@@ -2270,6 +2288,7 @@ function plot_data_list(){
           name: key,
           data: value
         })
+        name_bar.push(key)
       }
     })
 
@@ -2314,7 +2333,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" µS/cm<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" µS/cm<br>"
           }
           console.log(this.points)
             return txt
@@ -2369,12 +2388,14 @@ function plot_data_list(){
     })
     dataset_series = []
     i = 0
+    let name_bar = []
     Object.entries(year_tmp).forEach(([key,value])=>{
       dataset_series.push({
         name: key,
         data: value,
         color: color_list[i]
       })
+      name_bar.push(key)
       i+=1
       let last = ''
       key_label = []
@@ -2442,7 +2463,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" มม.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" มม.<br>"
           }
           console.log(this.points)
             return txt
@@ -2510,6 +2531,7 @@ function plot_data_list(){
         key_label.push(parttern_label[(((n+1)+[]).length == 1?'0'+((n+1)+[]):(n+1)+[])])
       }
     }
+    let name_bar = []
     console.log(key_label,key_label.length,data_set)
     for(let n=0;n<Object.values(data_set).length;n++){
       let tmp_l = (365-Object.values(data_set)[n].length)
@@ -2527,6 +2549,7 @@ function plot_data_list(){
         data: Object.values(data_set)[n],
         color: color_list[n]
       })
+      name_bar.push(parseInt(Object.keys(data_set)[n])+543)
     }
 
 
@@ -2572,7 +2595,7 @@ function plot_data_list(){
           let txt= ""
           txt += this.x+"<br>"
           for(let i=0;i<this.points.length;i++){
-            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
+            txt+= "<div style='border-radius:25px;width:10px;height:10px;display:inline-block;background:"+this.points[i]['color']+";'></div>&nbsp;"+name_bar[i]+"&nbsp;"+this.points[i]['y']+" ม.รทก.<br>"
           }
           console.log(this.points)
             return txt
