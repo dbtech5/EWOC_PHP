@@ -62,7 +62,7 @@
 						</a>
 					</div>
 					<div>
-						<a href="realtime.php?type=reservoir?type=reservoir" class="tooltip-nav">
+						<a href="realtime.php?type=reservoir" class="tooltip-nav">
 							<img src="./img/icon_realtime.png" width="23px">
 							<span class="tooltiptext">สรุปสถานการณ์น้ำ</span>
 						</a>
