@@ -596,7 +596,7 @@
         <br>
 
         <div class="chart-reservoir">
-            <figure class="highcharts-main" style="transform:scale(.5);left:0;top:0;">
+            <figure class="highcharts-main">
                 <div id="highcharts-main" style="height: 800px;"></div>
             </figure>
 
