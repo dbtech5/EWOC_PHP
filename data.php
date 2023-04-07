@@ -325,7 +325,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:70%;">
                         <h4 style="margin-left:0;" id="alert_reservoir">รายงานปริมาณน้ำ</h4>
                     </div>
@@ -364,7 +364,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:40%;">
                         <h4 style="margin-left:0;" id="alert_flow">รายงานปริมาณน้ำท่า</h4>
                     </div>
@@ -428,7 +428,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:40%;">
                         <h4 style="margin-left:0;" id="alert_customer">รายงานปริมาณการใช้น้ำของลูกค้า</h4>
                     </div>
@@ -467,7 +467,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:40%;">
                         <h4 style="margin-left:0;" id="alert_pump">รายงานสถานีสูบน้ำ</h4>
                     </div>
@@ -506,7 +506,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:40%;">
                         <h4 style="margin-left:0;" id="alert_rain">รายงานสถานีน้ำฝน</h4>
                     </div>
@@ -542,7 +542,7 @@
                 </div>
             </div>
             <div style="width:70%;margin-left:0;padding-left:2%;">
-                <div class="tool-bar" style="width:100%;display:flex;margin-left:0;">
+                <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:40%;">
                         <h4 style="margin-left:0;" id="alert_tele">รายงานสถานีโทรมาตรวัดละหารไร่</h4>
                     </div>
@@ -596,7 +596,7 @@
         <br>
 
         <div class="chart-reservoir">
-            <figure class="highcharts-main">
+            <figure class="highcharts-main" style="transform:scale(.5);left:0;top:0;">
                 <div id="highcharts-main" style="height: 800px;"></div>
             </figure>
 

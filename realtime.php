@@ -26,6 +26,9 @@ error_reporting(E_ERROR | E_PARSE);
 		.ol-viewport {
 			height: 600px !important;
 		}
+		.tooltip-info > p {
+			color: #000 !important;
+		}
 	</style>
 </head>
 
@@ -1057,30 +1060,31 @@ error_reporting(E_ERROR | E_PARSE);
 			ilinedash = '0, 0, 0';
 			topojson_label(ilayer, ilayerfile, ifont, itextfillcolor, itextstrokecolor, itextstrokewidth, ifillcolor, istrokecolor, istrokewidth, ilinedash);
 
-
+			console.log(position_label)
 			Object.entries(position_label).forEach((k, v) => {
 				measureTooltipElement = document.createElement('div');
 				let txt = document.createElement('p');
+				
 				measureTooltipElement.className = 'tooltip-info';
 				<?php
 				if ($_GET['type']) {
 					if ($_GET['type'] == 'reservoir') {
 				?>
-						let txts = ""
+						txts = ""
 						txts += "V : " + k[1][3] + " m³<br>"
 						txts += "% : " + k[1][4] + "<br>"
 						txt.innerHTML = txts;
 					<?php
 					} else if ($_GET['type'] == 'flow') {
 					?>
-						let txts = ""
+						txts = ""
 						txts += "wl : " + k[1][3] + " MSL<br>"
 						txts += "discharge : " + k[1][4] + " m³/s<br>"
 						txt.innerHTML = txts;
 					<?php
 					} else if ($_GET['type'] == 'rain') {
 					?>
-						let txts = ""
+						txts = ""
 						txts += "rain : " + k[1][3] + " mm<br>"
 						txt.innerHTML = txts;
 					<?php
