@@ -560,6 +560,9 @@ error_reporting(E_ERROR | E_PARSE);
 									series: [{
 										name: 'Population',
 										data: dataset_customer,
+										dataLabels: {
+											enabled: true
+										},
 									}]
 								});
 
