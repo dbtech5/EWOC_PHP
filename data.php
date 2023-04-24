@@ -611,12 +611,12 @@
         </div>
 
         <div class="chart-flow">
-            <div style="display: flex;width:90%;height: 50vh;">
+            <div style="display: flex;width:90%;height: 50vh;float:left;">
                 <figure class="highcharts-main">
                     <div id="highcharts-flow-discharge" style="width: 40vw;height: 100%;"></div>
                 </figure>
-                <figure class="highcharts-main" style="float: left;">
-                    <div id="highcharts-flow-wl" style="width: 40vw;height: 100%;"></div>
+                <figure class="highcharts-main" style="float: left;margin-left:0;">
+                    <div id="highcharts-flow-wl" style="width: 40vw;height: 100%;margin-left:0;"></div>
                 </figure>
             </div>
         </div>
