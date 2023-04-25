@@ -357,13 +357,13 @@
     <div id="flow_info" class="info_div">
         <br>
         <div style="display:flex;height:40vh;">
-            <div style="width:20%;padding-left:10%">
+            <div style="width:30%;padding-left:10%">
                 <div>
-                    <img src="./img/reservoir/bp_img01.jpg" width="100%" height="100px" style="margin-bottom: 20px;" id="img_flow">
-                    <img src="./img/reservoir/bp_map01.jpg" width="100%" height="100px" id="map_flow">
+                    <img src="./img/reservoir/bp_img01.jpg" width="100%" height="150px" style="margin-bottom: 20px;" id="img_flow">
+                    <img src="./img/reservoir/bp_map01.jpg" width="100%" height="150px" id="map_flow">
                 </div>
             </div>
-            <div style="width:80%;margin-left:0;padding-left:2%;">
+            <div style="width:70%;margin-left:0;padding-left:2%;">
                 <div class="tool-bar" style="width:90%;display:flex;margin-left:0;">
                     <div style="width:75%;">
                         <h4 style="margin-left:0;" id="alert_flow">รายงานปริมาณน้ำท่า</h4>
