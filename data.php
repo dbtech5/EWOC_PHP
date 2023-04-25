@@ -356,7 +356,7 @@
     <!-- flow -->
     <div id="flow_info" class="info_div">
         <br>
-        <div style="display:flex;height:250px;">
+        <div style="display:flex;height:40vh;">
             <div style="width:20%;padding-left:10%">
                 <div>
                     <img src="./img/reservoir/bp_img01.jpg" width="100%" height="100px" style="margin-bottom: 20px;" id="img_flow">
@@ -380,7 +380,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="flow_group_make_table" style="width:87%;height:150px;margin-left:0;">
+                <div id="flow_group_make_table" style="width:87%;height:70%;margin-left:0;">
 
                     <table id="flow_table_data" >
                         <tr style="display: none;">
