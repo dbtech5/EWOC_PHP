@@ -492,3 +492,7 @@ h4 {
     font-size: 12px !important;
     color: #000 !important;
 }
+
+.Main-container {
+    padding-bottom: 50px;
+}
