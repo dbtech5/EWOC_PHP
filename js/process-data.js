@@ -1545,7 +1545,7 @@ function plot_data_list(){
         year_name[tmp_split].push(parttern_label[value['date'].split('-')[1]])
 
         console.log(value['date'],value['wl'])
-      }else if(document.getElementById('year_select_start').value <= tmp_split && document.getElementById('year_select_end').value >= tmp_split || document.getElementById('year_select').value >= tmp_split){
+      }else if(document.getElementById('year_select_start').value <= tmp_split && document.getElementById('year_select_end').value >= tmp_split || document.getElementById('year_select').value == tmp_split){
         if(year_tmp[tmp_split] == undefined){
           year_tmp[tmp_split] = []
           year_name[tmp_split] = []
