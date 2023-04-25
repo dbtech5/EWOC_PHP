@@ -356,7 +356,7 @@
     <!-- flow -->
     <div id="flow_info" class="info_div">
         <br>
-        <div style="display:flex;height:200px;">
+        <div style="display:flex;height:250px;">
             <div style="width:20%;padding-left:10%">
                 <div>
                     <img src="./img/reservoir/bp_img01.jpg" width="100%" height="100px" style="margin-bottom: 20px;" id="img_flow">
@@ -380,7 +380,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="flow_group_make_table" style="width:87%;height:120px;margin-left:0;">
+                <div id="flow_group_make_table" style="width:87%;height:150px;margin-left:0;">
 
                     <table id="flow_table_data" >
                         <tr style="display: none;">
@@ -611,7 +611,7 @@
         </div>
 
         <div class="chart-flow">
-            <div style="display: flex;width:90%;height: 50vh;float:left;">
+            <div style="display: flex;width:90%;height: 30vh;float:left;">
                 <figure class="highcharts-main">
                     <div id="highcharts-flow-discharge" style="width: 40vw;height: 100%;"></div>
                 </figure>
