@@ -1573,7 +1573,7 @@ function plot_data_list(){
         type: 'spline'
       },
       title: {
-        text: 'ปริมาตรน้ำ'
+        text: 'ปริมาตรการไหล'
       },
       xAxis: {
         categories:Object.values(year_name)[0],
