@@ -833,6 +833,8 @@
 							</div>
 
 							<!-- Hover -->
+							<div id="hover-Waterquality_Station"></div>
+							<div id="hover-rain_station"></div>
 							<div id="hover-Cross_Section"></div>
 							<div id="hover-MapControl"></div>
 							<div id="hover-Trans_Station"></div>

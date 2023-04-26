@@ -179,18 +179,26 @@ $('#reservoir').change(function () {
 
         map.on("pointermove", function (evt) {
             var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-                if (feature.get('name') == 'reservoir') {
-                    return feature;
-                };
+                try {
+                    console.log(Object.keys(feature.get('data').properties).includes('Reservoir_Name_T'))
+                    if (Object.keys(feature.get('data').properties).includes('Reservoir_Name_T')) {
+                        return feature;
+                    };
+                } catch (error) {
+                    
+                }
+                
             });
 
             let featureContent;
+            
             if (feature) {
                 var coordinates = feature.getGeometry().getCoordinates();
                 popup.setPosition(coordinates);
 
                 featureContent = "อ่างเก็บน้ำ: " + feature.get('data').properties.Reservoir_Name_T;
-
+                
+                console.log(element,featureContent)
                 $(element).popover({
                     placement: "top",
                     html: true,
@@ -204,6 +212,8 @@ $('#reservoir').change(function () {
                 map.getTargetElement().style.cursor = '';
             }
         })
+
+       
 
         markerName = $(this).attr('marker-id')
         ilayer = 'Reservoir_Reserv';
@@ -213,44 +223,6 @@ $('#reservoir').change(function () {
         ilabel = 'Reservoir_Reserv'
         point_label(ilayer, ilayerfile, iconfile, markerName, iconscale,'Reservoir_Name_T');
 
-        // display popup on hover
-        var element = document.getElementById("hover-Reservoir");
-
-        var popup = new ol.Overlay({
-            element: element,
-            positioning: "bottom-center",
-            stopEvent: false,
-            offset: [0, -20]
-        });
-        map.addOverlay(popup);
-        map.on("pointermove", function (evt) {
-            var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
-
-                if (feature.get('name') == 'Reservoir') {
-                    return feature;
-                };
-            });
-
-            let featureContent;
-            if (feature) {
-                var coordinates = feature.getGeometry().getCoordinates();
-                popup.setPosition(coordinates);
-
-                featureContent = "สถานี: " + feature.get('data').properties.IRR_Name_T;
-
-                $(element).popover({
-                    placement: "top",
-                    html: true,
-                    content: featureContent
-                });
-                // change mouse cursor when over marker
-                map.getTargetElement().style.cursor = 'pointer';
-                $(element).popover("show");
-            } else {
-                $(element).popover("dispose");
-                map.getTargetElement().style.cursor = '';
-            }
-        })
     } else {
         removeLayer(layers['Reservoir_Main'],'Reservoir_Main')
         if (markerName)
@@ -596,6 +568,7 @@ $('#Rain_Station').change(function () {
                     content: featureContent
                 });
                 // change mouse cursor when over marker
+                console.log(element,featureContent)
                 map.getTargetElement().style.cursor = 'pointer';
                 $(element).popover("show");
             } else {
