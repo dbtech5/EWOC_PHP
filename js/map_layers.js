@@ -197,7 +197,7 @@ $('#reservoir').change(function () {
                 popup.setPosition(coordinates);
 
                 featureContent = "อ่างเก็บน้ำ: " + feature.get('data').properties.Reservoir_Name_T;
-                
+                map.getTargetElement().style.cursor = 'pointer';
                 console.log(element,featureContent)
                 $(element).popover({
                     placement: "top",
